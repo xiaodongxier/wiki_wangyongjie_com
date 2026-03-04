@@ -1,0 +1,64 @@
+/* ===== Hero Section ===== */
+
+.welcome {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.welcome-inner {
+  max-width: 900px;
+}
+
+.welcome-badge {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 2rem;
+}
+
+.welcome-title {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+}
+
+.welcome-subtitle {
+  font-size: 1.25rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 2.5rem;
+}
+
+.welcome-actions .md-button {
+  margin: 0 0.75rem;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.welcome-actions .md-button:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== Focus Section ===== */
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.focus-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.focus-item p {
+  color: var(--md-default-fg-color--light);
+}
