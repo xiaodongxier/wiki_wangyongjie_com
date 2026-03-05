@@ -1,0 +1,41 @@
+.md-footer-meta__inner.md-grid {
+  /* display: flex; */
+  align-items: center !important;
+  flex-direction: column-reverse;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* 隐藏页面上的统计 */
+/* .heng + .la-data-widget__container */
+.heng + span {
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.md-typeset img, .md-typeset video {
+  border: 4px solid #4051b54a;
+  border-radius: 16px;
+}
+
+
+.md-content iframe:not(.giscus-frame) {
+  width: 100%;
+  height: 60vh;
+  /* background-image: url(https://cdn.jsdelivr.net/gh/xiaodongxier/gitcdn@master/wiki/2024/05/1715087989483.gif); */
+  /* background-image: url(https://gitcdn.xiaodongxier.com/other/2024/05/1715087965830.gif); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15%;
+  border: 4px solid #4051b54a;
+  border-radius: 16px;
+}
+
+.md-content iframe.giscus-frame {
+  width: 100%;
+  min-height: 60vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15%;
+}
