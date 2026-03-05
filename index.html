@@ -772,65 +772,75 @@
 
 
 <h1 id="_1">首页</h1>
-<section class="welcome">
+<div class="home-shell">
+  <section class="hero" data-reveal>
+    <div class="hero-decor" aria-hidden="true"></div>
+    <p class="hero-kicker">JIE'S KNOWLEDGE OS</p>
+    <h1>让知识系统像产品一样持续进化</h1>
+    <p class="hero-desc">
+      前端工程、AI 应用、爬虫实战与生活思考，
+      在一个可迭代、可复用、可落地的知识空间中持续沉淀。
+    </p>
+    <div class="hero-cta">
+      <a href="前端开发/" class="md-button md-button--primary">进入前端笔记</a>
+      <a href="人工智能/" class="md-button">查看 AI 专题</a>
+    </div>
+    <div class="hero-tags">
+      <span data-tilt>工程化</span>
+      <span data-tilt>自动化</span>
+      <span data-tilt>方法论</span>
+      <span data-tilt>长期主义</span>
+    </div>
+  </section>
 
-<div class="welcome-inner">
+  <section class="bento" data-reveal>
+    <a class="bento-card large" href="前端开发/" data-tilt>
+      <h3>Frontend Engineering</h3>
+      <p>Vue3 / TypeScript / 架构设计 / 性能优化</p>
+    </a>
 
-<div class="welcome-badge">
-JIE'S WIKI
+    <a class="bento-card" href="人工智能/" data-tilt>
+      <h3>AI & Agents</h3>
+      <p>LLM 应用、智能体工作流与实践经验。</p>
+    </a>
+
+    <a class="bento-card" href="爬虫/" data-tilt>
+      <h3>Crawler</h3>
+      <p>数据采集、反爬策略、清洗与结构化。</p>
+    </a>
+
+    <a class="bento-card" href="生活记录/" data-tilt>
+      <h3>Life Notes</h3>
+      <p>效率系统、认知升级与生活观察。</p>
+    </a>
+
+  </section>
+
+  <section class="path" data-reveal>
+    <h2>Knowledge Pipeline</h2>
+    <div class="path-grid">
+      <article data-tilt>
+        <em>01</em>
+        <h4>Capture</h4>
+        <p>记录真实问题和关键案例。</p>
+      </article>
+      <article data-tilt>
+        <em>02</em>
+        <h4>Distill</h4>
+        <p>提炼通用模式，沉淀可复用模块。</p>
+      </article>
+      <article data-tilt>
+        <em>03</em>
+        <h4>Apply</h4>
+        <p>投入项目验证，再反馈到文档系统。</p>
+      </article>
+    </div>
+  </section>
 </div>
 
-<h1 class="welcome-title">
-Welcome to Jie's Wiki
-</h1>
-
-<p class="welcome-subtitle">
-前端工程 · 人工智能 · 爬虫实践 · 生活记录  
-一个持续构建与进化的知识空间。
-</p>
-
-<!-- <div class="welcome-actions">
-  <a href="blog/" class="md-button md-button--primary">
-    Enter Wiki
-  </a>
-  <a href="about/" class="md-button">
-    About
-  </a>
-</div> -->
-
-</div>
-
-</section>
-
-<!--
-## Areas of Focus
-
-<div class="focus-grid">
-
-<div class="focus-item">
-<h3>Frontend Engineering</h3>
-<p>Vue3 · TypeScript · 架构设计 · 工程体系</p>
-</div>
-
-<div class="focus-item">
-<h3>AI & Automation</h3>
-<p>智能体 · LLM 应用 · 提示工程 · 自动化实践</p>
-</div>
-
-<div class="focus-item">
-<h3>Data & Crawler</h3>
-<p>数据采集 · 反爬策略 · 结构化处理</p>
-</div>
-
-<div class="focus-item">
-<h3>Life & Cognition</h3>
-<p>效率系统 · 思维模型 · 长期主义</p>
-</div> -->
-
-</div>
-<style>
-#_1{
-    display: none;
+<style> 
+#_1 {
+  display: none;
 }
 </style>
 
