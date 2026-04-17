@@ -2714,10 +2714,14 @@
 </blockquote>
 <h3 id="_1">问题及解决方案</h3>
 <ul>
-<li><a href="https://github.com/501351981/vue-office/issues/463">预览PDF展示不全</a></li>
+<li><a href="https://github.com/501351981/vue-office/issues/463">预览PDF展示不全</a><ul>
 <li>实测给'vue-office-pdf'增加固定高度，如'height: 100%'就可以了</li>
-<li>Safari浏览器不显示内容</li>
+</ul>
+</li>
+<li>Safari浏览器不显示内容<ul>
 <li>因为我是在<code>dialog</code>使用的，谷歌和微信打开都没问题，但是在 mac 上的 Safari浏览器打开的时候不显示内容，判断是 DOM还没渲染完成，加上 <code>nextTick</code> 即可</li>
+</ul>
+</li>
 </ul>
 <h2 id="embedpdf">embedpdf</h2>
 <blockquote>
@@ -2730,8 +2734,10 @@
 <h2 id="iframe">iframe(原生标签)</h2>
 <h3 id="_2">问题及解决方案</h3>
 <ul>
-<li>隐藏下载和打印按钮</li>
+<li>隐藏下载和打印按钮<ul>
 <li><code>url</code> 后面拼接 <code>#toolbar=0</code></li>
+</ul>
+</li>
 </ul>
 
 
