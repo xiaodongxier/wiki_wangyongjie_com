@@ -1723,6 +1723,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其他
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2615,6 +2626,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其他
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2727,6 +2749,79 @@
 <blockquote>
 <p>使用参考 <a href="https://www.embedpdf.com/">官方文档</a> <a href="https://www.embedpdf.com/">https://www.embedpdf.com</a></p>
 </blockquote>
+<pre><code class="language-vue">&lt;script setup lang=&quot;ts&quot;&gt;
+import { PDFViewer } from &quot;@embedpdf/vue-pdf-viewer&quot;;
+const viewerConfig = {
+  src: &quot;https://snippet.embedpdf.com/ebook.pdf&quot;,
+
+  // ✅ 中文化（可选）
+  i18n: {
+    defaultLocale: &quot;zh-CN&quot;,
+  },
+
+  /**
+   * ✅ 核心：禁用所有功能分类（使用父级分类，一次性覆盖子项）
+   * 官方说明：category 是层级结构，禁用父级 = 禁用所有子级
+   */
+  disabledCategories: [
+    // 🔍 缩放相关（包含 zoom-in / zoom-out 等）
+    // &quot;zoom&quot;,
+
+    // ✏️ 所有标注能力（高亮、下划线、画笔等）
+    &quot;annotation&quot;,
+
+    // 🧾 表单填写（输入框、checkbox 等）
+    &quot;form&quot;,
+
+    // 🔺 图形绘制（矩形、圆、箭头等）
+    &quot;annotation-shape&quot;,
+
+    // 🔒 涂黑/脱敏
+    &quot;redaction&quot;,
+
+    // 📄 文档操作（打开/关闭/打印/下载/全屏等）
+    &quot;document&quot;,
+
+    // 📑 页面控制（翻页、滚动、旋转等）
+    // &quot;page&quot;,
+
+    // 📂 侧边栏（搜索、评论面板等）
+    &quot;panel&quot;,
+
+    // 🛠 工具（拖拽、选择指针等）
+    &quot;tools&quot;,
+
+    // 🖱 文本选择（复制等）
+    &quot;selection&quot;,
+
+    // ↩️ 历史记录（撤销/重做）
+    &quot;history&quot;,
+
+    // ➕ 插入内容（图片、签名、印章）
+    &quot;insert&quot;,
+  ],
+
+  /**
+   * ✅ 双保险：直接关闭 UI 容器（防止某些版本 category 不生效）
+   */
+  ui: {
+    toolbar: false, // 顶部工具栏
+    sidebar: false, // 右侧面板
+  },
+};
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;el-watermark :font=&quot;font&quot; content=&quot;num.num1&quot;&gt;
+    &lt;div style=&quot;height: 100vh&quot;&gt;
+      &lt;PDFViewer
+        :config=&quot;viewerConfig&quot;
+        :style=&quot;{ width: '100%', height: '100%' }&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/el-watermark&gt;
+&lt;/template&gt;
+</code></pre>
 <h2 id="pdfjspdfjs-dist">pdf.js(pdfjs-dist)</h2>
 <blockquote>
 <p>使用参考 <a href="https://mozilla.github.io/pdf.js">官方文档</a> <a href="https://mozilla.github.io/pdf.js">https://mozilla.github.io/pdf.js</a></p>
@@ -2738,6 +2833,10 @@
 <li><code>url</code> 后面拼接 <code>#toolbar=0</code></li>
 </ul>
 </li>
+</ul>
+<h2 id="_3">其他</h2>
+<ul>
+<li><a href="https://juejin.cn/post/7304863390941839412">https://juejin.cn/post/7304863390941839412</a></li>
 </ul>
 
 
