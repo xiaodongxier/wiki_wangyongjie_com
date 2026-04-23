@@ -12,31 +12,31 @@
         <meta name="author" content="wangyongjie">
       
       
-        <link rel="canonical" href="https://wiki.wangyongjie.com/%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3/%E5%89%8D%E7%AB%AF/%E9%87%8D%E6%9E%84%20uni-app%20%E9%A1%B9%E7%9B%AE%EF%BC%9A%E9%80%89%E6%8B%A9%20HBuilderX%20%E8%BF%98%E6%98%AF%20CLI%EF%BC%9F/">
+        <link rel="canonical" href="https://wiki.wangyongjie.com/%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3/%E5%89%8D%E7%AB%AF/ElementUI/icon%E7%9A%84%E4%BD%BF%E7%94%A8/">
       
       
-        <link rel="prev" href="../%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/">
+        <link rel="prev" href="../../%E9%87%8D%E6%9E%84%20uni-app%20%E9%A1%B9%E7%9B%AE%EF%BC%9A%E9%80%89%E6%8B%A9%20HBuilderX%20%E8%BF%98%E6%98%AF%20CLI%EF%BC%9F/">
       
       
-        <link rel="next" href="../ElementUI/icon%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        <link rel="next" href="../../JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/ES6%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>重构 uni app 项目：选择 HBuilderX 还是 CLI？ - Jie's Wiki</title>
+        <title>Element Plus 图标：为什么有的需要 import，有的不需要？ - Jie's Wiki</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,11 +55,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+      <link rel="stylesheet" href="../../../../stylesheets/custom.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#uni-app" class="md-skip">
+        <a href="#element-plus-import" class="md-skip">
           跳转至
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="Jie&#39;s Wiki" class="md-header__button md-logo" aria-label="Jie's Wiki" data-md-component="logo">
+    <a href="../../../.." title="Jie&#39;s Wiki" class="md-header__button md-logo" aria-label="Jie's Wiki" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              重构 uni app 项目：选择 HBuilderX 还是 CLI？
+              Element Plus 图标：为什么有的需要 import，有的不需要？
             
           </span>
         </div>
@@ -191,7 +191,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -210,7 +210,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../submission/" class="md-tabs__link">
+      <a href="../../../../submission/" class="md-tabs__link">
         
   
   
@@ -231,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="md-tabs__link">
+        <a href="../../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="md-tabs__link">
           
   
   
@@ -251,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="md-tabs__link">
+        <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="md-tabs__link">
           
   
   
@@ -282,7 +282,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../uniCloud/" class="md-tabs__link">
+        <a href="../../../uniCloud/" class="md-tabs__link">
           
   
   
@@ -305,7 +305,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../%E7%88%AC%E8%99%AB/" class="md-tabs__link">
+        <a href="../../../../%E7%88%AC%E8%99%AB/" class="md-tabs__link">
           
   
   
@@ -325,7 +325,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+        <a href="../../../../%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
           
   
   
@@ -359,7 +359,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Jie&#39;s Wiki" class="md-nav__button md-logo" aria-label="Jie's Wiki" data-md-component="logo">
+    <a href="../../../.." title="Jie&#39;s Wiki" class="md-nav__button md-logo" aria-label="Jie's Wiki" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -377,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -404,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../submission/" class="md-nav__link">
+      <a href="../../../../submission/" class="md-nav__link">
         
   
   
@@ -481,7 +481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="md-nav__link">
+      <a href="../../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="md-nav__link">
         
   
   
@@ -559,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%A6%82%E5%BF%B5%E7%9B%B8%E5%85%B3/AI%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9B%9B%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87%EF%BC%9A%E5%8F%82%E6%95%B0%E9%87%8F%E3%80%81Token%E3%80%81%E4%B8%8A%E4%B8%8B%E6%96%87%E9%95%BF%E5%BA%A6%E3%80%81%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96/" class="md-nav__link">
+      <a href="../../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%A6%82%E5%BF%B5%E7%9B%B8%E5%85%B3/AI%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9B%9B%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87%EF%BC%9A%E5%8F%82%E6%95%B0%E9%87%8F%E3%80%81Token%E3%80%81%E4%B8%8A%E4%B8%8B%E6%96%87%E9%95%BF%E5%BA%A6%E3%80%81%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96/" class="md-nav__link">
         
   
   
@@ -587,7 +587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%A6%82%E5%BF%B5%E7%9B%B8%E5%85%B3/%E4%B8%80%E6%96%87%E7%9C%8B%E6%87%82%20CPU%E3%80%81GPU%E3%80%81%E5%86%85%E5%AD%98%E3%80%81%E6%98%BE%E5%8D%A1%E3%80%81%E6%98%BE%E5%AD%98%20%E2%80%94%E2%80%94%20%E5%AE%83%E4%BB%AC%E4%B8%8E%20AI%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB%EF%BC%9F/" class="md-nav__link">
+      <a href="../../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%A6%82%E5%BF%B5%E7%9B%B8%E5%85%B3/%E4%B8%80%E6%96%87%E7%9C%8B%E6%87%82%20CPU%E3%80%81GPU%E3%80%81%E5%86%85%E5%AD%98%E3%80%81%E6%98%BE%E5%8D%A1%E3%80%81%E6%98%BE%E5%AD%98%20%E2%80%94%E2%80%94%20%E5%AE%83%E4%BB%AC%E4%B8%8E%20AI%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB%EF%BC%9F/" class="md-nav__link">
         
   
   
@@ -615,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%A6%82%E5%BF%B5%E7%9B%B8%E5%85%B3/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%20%E3%80%81%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3%E7%AD%89/" class="md-nav__link">
+      <a href="../../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%A6%82%E5%BF%B5%E7%9B%B8%E5%85%B3/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%20%E3%80%81%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3%E7%AD%89/" class="md-nav__link">
         
   
   
@@ -701,7 +701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E8%AF%A6%E8%A7%A3OpenClaw/" class="md-nav__link">
+      <a href="../../../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E8%AF%A6%E8%A7%A3OpenClaw/" class="md-nav__link">
         
   
   
@@ -794,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="md-nav__link">
         
   
   
@@ -822,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%B8%B8%E7%94%A8%E5%9C%B0%E5%9D%80/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%B8%B8%E7%94%A8%E5%9C%B0%E5%9D%80/" class="md-nav__link">
         
   
   
@@ -900,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/GitHub/GitHubPages%E6%9C%8D%E5%8A%A1https%E8%AF%81%E4%B9%A6/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/GitHub/GitHubPages%E6%9C%8D%E5%8A%A1https%E8%AF%81%E4%B9%A6/" class="md-nav__link">
         
   
   
@@ -986,7 +986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/MkDocs/%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/MkDocs/%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         
   
   
@@ -1014,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/MkDocs/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%A7%A6%E5%8F%91%E8%AE%BE%E7%BD%AE/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/MkDocs/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%A7%A6%E5%8F%91%E8%AE%BE%E7%BD%AE/" class="md-nav__link">
         
   
   
@@ -1042,7 +1042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/MkDocs/%E9%83%A8%E7%BD%B2%E8%87%AA%E5%8A%A8%E4%BD%BF%E7%94%A8commit/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/MkDocs/%E9%83%A8%E7%BD%B2%E8%87%AA%E5%8A%A8%E4%BD%BF%E7%94%A8commit/" class="md-nav__link">
         
   
   
@@ -1128,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/Ollama/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/Ollama/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85/" class="md-nav__link">
         
   
   
@@ -1156,7 +1156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/Ollama/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E9%80%9A%E8%BF%87ip%E8%AE%BF%E9%97%AE/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/Ollama/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E9%80%9A%E8%BF%87ip%E8%AE%BF%E9%97%AE/" class="md-nav__link">
         
   
   
@@ -1242,7 +1242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/OpenClaw/OpenClaw%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%9A%82%E5%81%9C%E5%92%8C%E5%BC%80%E5%A7%8B%E7%9A%84%E5%91%BD%E4%BB%A4%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/OpenClaw/OpenClaw%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%9A%82%E5%81%9C%E5%92%8C%E5%BC%80%E5%A7%8B%E7%9A%84%E5%91%BD%E4%BB%A4%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
         
   
   
@@ -1270,7 +1270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/OpenClaw/%E5%AE%89%E8%A3%85/" class="md-nav__link">
+      <a href="../../../../%E5%B7%A5%E5%85%B7%E7%B1%BB/OpenClaw/%E5%AE%89%E8%A3%85/" class="md-nav__link">
         
   
   
@@ -1418,7 +1418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../uniCloud/" class="md-nav__link">
+      <a href="../../../uniCloud/" class="md-nav__link">
         
   
   
@@ -1506,7 +1506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -1534,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CLI%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-nav__link">
+      <a href="../../CLI%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-nav__link">
         
   
   
@@ -1562,7 +1562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CSS%E6%A0%87%E9%A2%98%E8%83%8C%E6%99%AF%E4%B8%80%E5%8D%8A/" class="md-nav__link">
+      <a href="../../CSS%E6%A0%87%E9%A2%98%E8%83%8C%E6%99%AF%E4%B8%80%E5%8D%8A/" class="md-nav__link">
         
   
   
@@ -1590,7 +1590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PDF%E9%A2%84%E8%A7%88%E6%96%B9%E6%A1%88/" class="md-nav__link">
+      <a href="../../PDF%E9%A2%84%E8%A7%88%E6%96%B9%E6%A1%88/" class="md-nav__link">
         
   
   
@@ -1618,7 +1618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../uniapp%E5%BC%80%E5%8F%91%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%A4%BA%E6%9C%AA%E9%80%9A%E8%BF%87/" class="md-nav__link">
+      <a href="../../uniapp%E5%BC%80%E5%8F%91%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%A4%BA%E6%9C%AA%E9%80%9A%E8%BF%87/" class="md-nav__link">
         
   
   
@@ -1646,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E9%80%82%E9%85%8D/" class="md-nav__link">
+      <a href="../../%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E9%80%82%E9%85%8D/" class="md-nav__link">
         
   
   
@@ -1674,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98H5%E6%94%AF%E4%BB%98/" class="md-nav__link">
+      <a href="../../%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98H5%E6%94%AF%E4%BB%98/" class="md-nav__link">
         
   
   
@@ -1702,7 +1702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/" class="md-nav__link">
+      <a href="../../%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/" class="md-nav__link">
         
   
   
@@ -1727,35 +1727,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    重构 uni app 项目：选择 HBuilderX 还是 CLI？
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../%E9%87%8D%E6%9E%84%20uni-app%20%E9%A1%B9%E7%9B%AE%EF%BC%9A%E9%80%89%E6%8B%A9%20HBuilderX%20%E8%BF%98%E6%98%AF%20CLI%EF%BC%9F/" class="md-nav__link">
         
   
   
@@ -1771,233 +1746,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#uni-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、uni-app 的两种开发方式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-hbuilderx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. HBuilderX 创建项目
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. CLI 脚手架创建项目
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hbuilderx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        二、HBuilderX 的优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 开发门槛低
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2 插件市场安装方便
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3 打包流程简单
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hbuilderx_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三、HBuilderX 的问题
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 依赖管理不透明
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2 团队协作问题
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-cicd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3 CI/CD 不方便
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、CLI 的优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 工程化能力更强
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2 开发体验更好
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3 更符合前端开发习惯
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        五、插件问题：CLI 能用插件吗？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        六、企业项目如何选择？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        七、项目重构时的推荐技术栈
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        总结
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2007,6 +1755,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2017,11 +1767,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_10" checked>
         
           
           <label class="md-nav__link" for="__nav_5_2_10" id="__nav_5_2_10_label" tabindex="0">
@@ -2042,7 +1792,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_2_10">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2057,10 +1807,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ElementUI/icon%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Element Plus 图标：为什么有的需要 import，有的不需要？
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2076,6 +1853,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先看两种常见的图标用法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        根本原因：两种用法，组件解析机制不同
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="根本原因：两种用法，组件解析机制不同">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iconarrowleft-prop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写法一：:icon="ArrowLeft" — prop 传组件对象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-iconcheck-el-icon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写法二：&lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt; — 动态组件容器解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你们项目为什么 Check 可以不 import？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建议：统一风格，全部 import
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2146,7 +2026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/ES6%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/ES6%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -2174,7 +2054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -2202,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/%E5%88%A0%E9%99%A4%E2%80%9C%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%AD%97%E6%AE%B5%E2%80%9D/" class="md-nav__link">
+      <a href="../../JS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/%E5%88%A0%E9%99%A4%E2%80%9C%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%AD%97%E6%AE%B5%E2%80%9D/" class="md-nav__link">
         
   
   
@@ -2288,7 +2168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Vue%E7%9B%B8%E5%85%B3/defineProps%E5%92%8C%E5%8A%A0props%E5%8C%BA%E5%88%AB/" class="md-nav__link">
+      <a href="../../Vue%E7%9B%B8%E5%85%B3/defineProps%E5%92%8C%E5%8A%A0props%E5%8C%BA%E5%88%AB/" class="md-nav__link">
         
   
   
@@ -2374,7 +2254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E8%8B%A5%E4%BE%9D%E7%9B%B8%E5%85%B3/%E6%8E%A5%E6%94%B6%E6%B5%81%E6%96%87%E4%BB%B6/" class="md-nav__link">
+      <a href="../../%E8%8B%A5%E4%BE%9D%E7%9B%B8%E5%85%B3/%E6%8E%A5%E6%94%B6%E6%B5%81%E6%96%87%E4%BB%B6/" class="md-nav__link">
         
   
   
@@ -2402,7 +2282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E8%8B%A5%E4%BE%9D%E7%9B%B8%E5%85%B3/%E6%8E%A5%E6%94%B6%E6%B5%81%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+      <a href="../../%E8%8B%A5%E4%BE%9D%E7%9B%B8%E5%85%B3/%E6%8E%A5%E6%94%B6%E6%B5%81%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
         
   
   
@@ -2496,7 +2376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%A4%87%E6%A1%88%E7%9B%B8%E5%85%B3/%E5%85%AC%E5%AE%89%E8%81%94%E7%BD%91%E5%A4%87%E6%A1%88%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+      <a href="../../../%E5%A4%87%E6%A1%88%E7%9B%B8%E5%85%B3/%E5%85%AC%E5%AE%89%E8%81%94%E7%BD%91%E5%A4%87%E6%A1%88%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
         
   
   
@@ -2582,7 +2462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/%E4%B8%93%E5%88%A9%E4%BB%A3%E7%90%86%E4%BA%BA/" class="md-nav__link">
+      <a href="../../../%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/%E4%B8%93%E5%88%A9%E4%BB%A3%E7%90%86%E4%BA%BA/" class="md-nav__link">
         
   
   
@@ -2610,7 +2490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/%E4%B8%93%E5%88%A9%E7%94%B3%E8%AF%B7/" class="md-nav__link">
+      <a href="../../../%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/%E4%B8%93%E5%88%A9%E7%94%B3%E8%AF%B7/" class="md-nav__link">
         
   
   
@@ -2703,7 +2583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E7%88%AC%E8%99%AB/" class="md-nav__link">
+      <a href="../../../../%E7%88%AC%E8%99%AB/" class="md-nav__link">
         
   
   
@@ -2788,7 +2668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../../%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         
   
   
@@ -2833,6 +2713,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2841,186 +2723,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#uni-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、uni-app 的两种开发方式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-hbuilderx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. HBuilderX 创建项目
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. CLI 脚手架创建项目
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hbuilderx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        二、HBuilderX 的优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 开发门槛低
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2 插件市场安装方便
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3 打包流程简单
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hbuilderx_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三、HBuilderX 的问题
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 依赖管理不透明
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2 团队协作问题
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-cicd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3 CI/CD 不方便
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、CLI 的优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 工程化能力更强
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2 开发体验更好
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3 更符合前端开发习惯
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        五、插件问题：CLI 能用插件吗？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        六、企业项目如何选择？
+        先看两种常见的图标用法
       
     </span>
   </a>
@@ -3031,7 +2737,46 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        七、项目重构时的推荐技术栈
+        根本原因：两种用法，组件解析机制不同
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="根本原因：两种用法，组件解析机制不同">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iconarrowleft-prop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写法一：:icon="ArrowLeft" — prop 传组件对象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-iconcheck-el-icon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写法二：&lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt; — 动态组件容器解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你们项目为什么 Check 可以不 import？
       
     </span>
   </a>
@@ -3042,7 +2787,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        总结
+        总结对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建议：统一风格，全部 import
       
     </span>
   </a>
@@ -3074,7 +2830,7 @@
   
   
     <li class="md-path__item">
-      <a href="../../.." class="md-path__link">
+      <a href="../../../.." class="md-path__link">
         
   <span class="md-ellipsis">
     首页
@@ -3097,7 +2853,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../uniCloud/" class="md-path__link">
+        <a href="../../../uniCloud/" class="md-path__link">
           
   <span class="md-ellipsis">
     开发相关
@@ -3118,10 +2874,28 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   <span class="md-ellipsis">
     前端
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ElementUI
   </span>
 
         </a>
@@ -3140,229 +2914,113 @@
 
 
 
-  <h1>重构 uni app 项目：选择 HBuilderX 还是 CLI？</h1>
+<h1 id="element-plus-import">Element Plus 图标：为什么有的需要 import，有的不需要？</h1>
+<h2 id="_1">先看两种常见的图标用法</h2>
+<pre><code class="language-html">&lt;!-- 写法一：作为 prop 传值 --&gt;
+&lt;el-button :icon=&quot;ArrowLeft&quot;&gt;返回&lt;/el-button&gt;
 
-<p>在使用 uni-app 开发微信小程序的过程中，很多团队在<strong>项目重构</strong>时都会遇到一个问题：</p>
+&lt;!-- 写法二：作为子组件在 el-icon 容器内 --&gt;
+&lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt;
+</code></pre>
+<p><strong>核心区别</strong>：<code>ArrowLeft</code> 作为对象传给 prop，<code>Check</code> 作为组件放进 el-icon 容器。</p>
+<hr />
+<h2 id="_2">根本原因：两种用法，组件解析机制不同</h2>
+<h3 id="iconarrowleft-prop">写法一：<code>:icon="ArrowLeft"</code> — prop 传组件对象</h3>
+<p>el-button 内部会直接<strong>使用 ArrowLeft 这个组件对象</strong>来渲染图标：</p>
+<pre><code class="language-js">// el-button 内部伪代码
+render() {
+  return h(Button, { icon: ArrowLeft })  // 直接用这个对象
+}
+</code></pre>
+<p>如果没 import，<code>ArrowLeft</code> 就是 <code>undefined</code>，按钮里什么都没有。</p>
 <blockquote>
-<p>新项目应该继续使用 HBuilderX 创建项目，还是使用 CLI 脚手架？</p>
+<p>:material-import-icon: <strong>必须 import</strong>，否则图标不显示。</p>
 </blockquote>
-<p>官方文档通常优先推荐 HBuilderX，这让很多开发者认为它是最标准的开发方式。但在真实的企业项目中，情况其实并没有那么简单。</p>
-<p>这篇文章将从 <strong>工程化、团队协作、插件生态、开发效率</strong> 等多个角度，分析在项目重构时应该如何选择。</p>
-<hr />
-<h2 id="uni-app">一、uni-app 的两种开发方式</h2>
-<p>目前使用 uni-app 开发项目，主要有两种方式。</p>
-<h2 id="1-hbuilderx">1. HBuilderX 创建项目</h2>
-<p>HBuilderX 是官方推出的 IDE，内置了 uni-app 的开发环境。</p>
-<p>典型流程：</p>
-<pre><code>下载 HBuilderX
-↓
-创建 uni-app 项目
-↓
-运行到小程序
+<h3 id="el-iconcheck-el-icon">写法二：<code>&lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt;</code> — 动态组件容器解析</h3>
+<p>el-icon 是一个<strong>动态组件容器</strong>，它会从 Vue 的全局组件注册表里查找 <code>Check</code>：</p>
+<pre><code class="language-js">// el-icon 内部伪代码
+const iconName = 'Check'          // 从子组件名拿到
+const component = resolveComponent(iconName)  // 从全局注册表查找
+return h(component)
 </code></pre>
-<p>特点：</p>
+<p>如果全局注册表里有 <code>Check</code>，就能找到并渲染。</p>
+<hr />
+<h2 id="check-import">你们项目为什么 Check 可以不 import？</h2>
+<p>看全局注册代码（<code>src/components/SvgIcon/svgicon.js</code>）：</p>
+<pre><code class="language-js">import * as components from '@element-plus/icons-vue'
+
+export default {
+  install: (app) =&gt; {
+    for (const key in components) {
+      const componentConfig = components[key]
+      app.component(componentConfig.name, componentConfig)  // 全局注册
+    }
+  }
+}
+</code></pre>
+<p>项目启动时把所有 Element Plus 图标都全局注册了，所以 <code>Check</code> 出现在 <code>&lt;el-icon&gt;</code> 里时，el-icon 能从全局注册表找到它，<strong>不需要手动 import</strong>。</p>
+<hr />
+<h2 id="_3">总结对比</h2>
+<table>
+<thead>
+<tr>
+<th>用法</th>
+<th>代码示例</th>
+<th>是否需要 import</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prop 传图标</td>
+<td><code>:icon="ArrowLeft"</code></td>
+<td>:fontawesome-solid-check:{ .green } 必须 import</td>
+<td>需要组件对象本身</td>
+</tr>
+<tr>
+<td>el-icon 容器</td>
+<td><code>&lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt;</code></td>
+<td>:fontawesome-solid-xmark:{ .red } 不需要</td>
+<td>el-icon 从全局注册表查找</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="import">建议：统一风格，全部 import</h2>
+<p>两种写法混着来容易出错，而且：</p>
 <ul>
-<li>内置编译器</li>
-<li>内置插件市场</li>
-<li>一键运行</li>
-<li>一键打包</li>
+<li><strong>全局注册会增加打包体积</strong>（虽然图标一般不大）</li>
+<li><strong>不 import 就用，代码可读性差</strong>（阅读者得去查全局注册才知道从哪来的）</li>
+<li><strong>容易漏掉导致 bug</strong>（哪天 el-icon 不从注册表找了，直接报错）</li>
 </ul>
-<p>对新手来说非常友好。</p>
-<hr />
-<h2 id="2-cli">2. CLI 脚手架创建项目</h2>
-<p>另一种方式是使用官方 CLI 创建项目，例如：</p>
-<pre><code class="language-bash">npm create uni@latest
+<p>推荐统一写法，<strong>不管哪种用法都提前 import</strong>：</p>
+<pre><code class="language-html">&lt;script setup&gt;
+import { Check, ArrowLeft } from &quot;@element-plus/icons-vue&quot;;
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;!-- 两种写法都可以用，逻辑清晰 --&gt;
+  &lt;el-button :icon=&quot;ArrowLeft&quot;&gt;返回&lt;/el-button&gt;
+  &lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt;
+&lt;/template&gt;
 </code></pre>
-<p>然后选择：</p>
-<pre><code>Vue3
-Vite
+<p>!!! tip "最佳实践"</p>
+<pre><code>**代码一致性 &gt; 代码量少**。宁可多写一行 import，也让代码意图更明确。
+
+如果项目图标用量大，建议把常用的图标抽取成一个公共文件集中管理：
+
+```js
+// src/constants/icons.js
+import { Check, ArrowLeft, Plus, Search } from "@element-plus/icons-vue";
+export { Check, ArrowLeft, Plus, Search };
+```
+
+然后在需要的组件里：
+
+```js
+import { Check, ArrowLeft } from "@/constants/icons.js";
+```
 </code></pre>
-<p>开发流程变为：</p>
-<pre><code>VSCode
-↓
-Vite dev server
-↓
-微信开发者工具
-</code></pre>
-<p>这里会使用到：</p>
-<ul>
-<li>Vite</li>
-<li>Vue.js</li>
-<li>WeChat Developer Tools</li>
-</ul>
-<hr />
-<h2 id="hbuilderx">二、HBuilderX 的优势</h2>
-<p>HBuilderX 最大的优势其实是：<strong>简单、开箱即用</strong>。</p>
-<h2 id="1">1 开发门槛低</h2>
-<p>HBuilderX 已经内置了很多东西：</p>
-<ul>
-<li>编译器</li>
-<li>小程序运行环境</li>
-<li>插件市场</li>
-<li>调试工具</li>
-</ul>
-<p>开发者几乎不需要关心：</p>
-<pre><code>Node
-npm
-构建工具
-依赖管理
-</code></pre>
-<p>这对初学者非常友好。</p>
-<hr />
-<h2 id="2">2 插件市场安装方便</h2>
-<p>uni-app 有自己的插件市场：</p>
-<p>DCloud Plugin Market</p>
-<p>在 HBuilderX 中可以：</p>
-<pre><code>右键 → 安装插件
-</code></pre>
-<p>插件会自动下载到：</p>
-<pre><code>uni_modules
-</code></pre>
-<p>整个过程几乎是零配置。</p>
-<hr />
-<h2 id="3">3 打包流程简单</h2>
-<p>在 HBuilderX 中：</p>
-<pre><code>运行 → 运行到小程序
-</code></pre>
-<p>或者：</p>
-<pre><code>发行 → 小程序
-</code></pre>
-<p>整个过程非常直观。</p>
-<hr />
-<h2 id="hbuilderx_1">三、HBuilderX 的问题</h2>
-<p>虽然 HBuilderX 很方便，但在<strong>长期维护的企业项目中</strong>会逐渐暴露一些问题。</p>
-<h2 id="1_1">1 依赖管理不透明</h2>
-<p>HBuilderX 项目很多时候依赖由 IDE 管理。</p>
-<p>开发者难以控制：</p>
-<pre><code>依赖版本
-构建工具版本
-插件版本
-</code></pre>
-<p>而 CLI 项目则是标准的前端工程：</p>
-<pre><code class="language-json">package.json
-</code></pre>
-<p>所有依赖都可控。</p>
-<hr />
-<h2 id="2_1">2 团队协作问题</h2>
-<p>在团队开发中，经常会出现：</p>
-<pre><code>manifest.json 冲突
-插件版本不一致
-构建环境不同
-</code></pre>
-<p>这些问题在 HBuilderX 项目中比较常见。</p>
-<p>CLI 项目则可以通过：</p>
-<pre><code>package.json
-pnpm-lock.yaml
-</code></pre>
-<p>保证依赖一致。</p>
-<hr />
-<h2 id="3-cicd">3 CI/CD 不方便</h2>
-<p>现代项目通常需要：</p>
-<pre><code>自动构建
-自动部署
-自动测试
-</code></pre>
-<p>CI 环境一般只有命令行环境。</p>
-<p>CLI 项目可以直接执行：</p>
-<pre><code class="language-bash">pnpm build
-</code></pre>
-<p>而 HBuilderX 项目通常依赖 IDE。</p>
-<hr />
-<h2 id="cli">四、CLI 的优势</h2>
-<p>CLI 项目本质上是 <strong>标准前端工程项目</strong>。</p>
-<h2 id="1_2">1 工程化能力更强</h2>
-<p>CLI 项目可以轻松集成：</p>
-<ul>
-<li>ESLint</li>
-<li>TypeScript</li>
-<li>自动化构建</li>
-<li>单元测试</li>
-</ul>
-<p>并且与常见前端工具完全兼容。</p>
-<hr />
-<h2 id="2_2">2 开发体验更好</h2>
-<p>使用：</p>
-<ul>
-<li>Visual Studio Code</li>
-<li>Vite</li>
-</ul>
-<p>启动速度通常只需要几秒。</p>
-<p>热更新体验也更好。</p>
-<hr />
-<h2 id="3_1">3 更符合前端开发习惯</h2>
-<p>对于前端开发者来说：</p>
-<pre><code>VSCode
-npm
-pnpm
-Vite
-</code></pre>
-<p>是非常熟悉的开发环境。</p>
-<p>CLI 项目不会引入额外的 IDE 依赖。</p>
-<hr />
-<h2 id="cli_1">五、插件问题：CLI 能用插件吗？</h2>
-<p>很多开发者担心一个问题：</p>
-<blockquote>
-<p>CLI 项目是不是无法使用 uni-app 插件市场？</p>
-</blockquote>
-<p>答案是：</p>
-<p><strong>绝大多数插件都可以使用。</strong></p>
-<p>如果插件结构是：</p>
-<pre><code>uni_modules
-</code></pre>
-<p>只需要复制到项目中即可。</p>
-<p>CLI 完全支持这种结构。</p>
-<p>只有少数旧插件依赖 HBuilderX 编译器，才可能无法使用。</p>
-<hr />
-<h2 id="_1">六、企业项目如何选择？</h2>
-<p>如果只是做 <strong>个人项目或小型项目</strong>：</p>
-<p>推荐：</p>
-<pre><code>HBuilderX
-</code></pre>
-<p>原因是：</p>
-<ul>
-<li>快速</li>
-<li>简单</li>
-<li>上手成本低</li>
-</ul>
-<p>但如果是 <strong>长期维护的企业项目</strong>：</p>
-<p>更推荐：</p>
-<pre><code>uni-app CLI
-</code></pre>
-<p>原因包括：</p>
-<pre><code>工程化能力更强
-团队协作更稳定
-CI/CD 更容易实现
-</code></pre>
-<hr />
-<h2 id="_2">七、项目重构时的推荐技术栈</h2>
-<p>如果准备重构 uni-app 项目，可以考虑升级到现代技术栈：</p>
-<pre><code>uni-app CLI
-Vue3
-Vite
-Pinia
-TypeScript
-</code></pre>
-<p>这样的组合：</p>
-<ul>
-<li>开发体验更好</li>
-<li>类型更安全</li>
-<li>项目结构更清晰</li>
-</ul>
-<p>同时也更符合当前前端技术的发展方向。</p>
-<hr />
-<h2 id="_3">总结</h2>
-<p>在 uni-app 项目开发中：</p>
-<p>HBuilderX 和 CLI 都是官方支持的方案，但定位并不相同。</p>
-<p>简单来说：</p>
-<pre><code>HBuilderX 更适合新手或快速开发
-CLI 更适合企业级项目
-</code></pre>
-<p>如果你的项目需要：</p>
-<pre><code>长期维护
-团队协作
-工程化管理
-</code></pre>
-<p>那么在项目重构时，使用 <strong>CLI 脚手架</strong>通常会是更合理的选择。</p>
 
 
 
@@ -3512,16 +3170,16 @@ CLI 更适合企业级项目
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tabs", "navigation.path", "search.suggest", "search.highlight", "navigation.tabs", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "navigation.tabs", "navigation.path", "search.suggest", "search.highlight", "navigation.tabs", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../../javascripts/extra.js"></script>
+        <script src="../../../../javascripts/extra.js"></script>
       
-        <script src="../../../javascripts/baidu.js"></script>
+        <script src="../../../../javascripts/baidu.js"></script>
       
-        <script src="../../../javascripts/51LA.js"></script>
+        <script src="../../../../javascripts/51LA.js"></script>
       
     
   </body>
