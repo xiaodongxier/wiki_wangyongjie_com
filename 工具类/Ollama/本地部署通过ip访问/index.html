@@ -2879,49 +2879,49 @@
 <hr />
 <h2 id="mac">一、正确解决方案（Mac 推荐）</h2>
 <p>给 Ollama 设置环境变量：</p>
-<pre><code class="language-bash">export OLLAMA_HOST=0.0.0.0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OLLAMA_HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0
+</code></pre></div>
 <p>然后重启 Ollama：</p>
-<pre><code class="language-bash">killall Ollama
-open -a Ollama
-</code></pre>
+<div class="highlight"><pre><span></span><code>killall<span class="w"> </span>Ollama
+open<span class="w"> </span>-a<span class="w"> </span>Ollama
+</code></pre></div>
 <p>再访问：</p>
-<pre><code>http://192.168.31.25:11434
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://192.168.31.25:11434
+</code></pre></div>
 <p>应该就可以了。</p>
 <hr />
 <h2 id="_1">二、永久配置（推荐）</h2>
 <p>mac 客户端通常用 <strong>launchctl</strong> 管理。</p>
 <p>执行：</p>
-<pre><code class="language-bash">launchctl setenv OLLAMA_HOST 0.0.0.0
-</code></pre>
+<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>setenv<span class="w"> </span>OLLAMA_HOST<span class="w"> </span><span class="m">0</span>.0.0.0
+</code></pre></div>
 <p>然后重启：</p>
-<pre><code class="language-bash">killall Ollama
-open -a Ollama
-</code></pre>
+<div class="highlight"><pre><span></span><code>killall<span class="w"> </span>Ollama
+open<span class="w"> </span>-a<span class="w"> </span>Ollama
+</code></pre></div>
 <hr />
 <h2 id="_2">三、验证是否监听成功</h2>
 <p>执行：</p>
-<pre><code class="language-bash">lsof -i :11434
-</code></pre>
+<div class="highlight"><pre><span></span><code>lsof<span class="w"> </span>-i<span class="w"> </span>:11434
+</code></pre></div>
 <p>如果看到：</p>
-<pre><code>ollama  xxxx  TCP *:11434 (LISTEN)
-</code></pre>
+<div class="highlight"><pre><span></span><code>ollama  xxxx  TCP *:11434 (LISTEN)
+</code></pre></div>
 <p>说明监听 <strong>所有网卡</strong>。</p>
 <p>如果是：</p>
-<pre><code>127.0.0.1:11434
-</code></pre>
+<div class="highlight"><pre><span></span><code>127.0.0.1:11434
+</code></pre></div>
 <p>说明仍然只监听本地。</p>
 <hr />
 <h2 id="api">四、测试 API</h2>
 <p>在另一台设备访问：</p>
-<pre><code>http://192.168.31.25:11434/api/tags
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://192.168.31.25:11434/api/tags
+</code></pre></div>
 <p>应该返回：</p>
-<pre><code class="language-json">{
-  &quot;models&quot;: [...]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="mac_1">五、如果仍然访问不了（Mac常见）</h2>
 <p>检查 macOS 防火墙：</p>
@@ -2929,12 +2929,12 @@ open -a Ollama
 <hr />
 <h2 id="ai">六、AI开发常见用法</h2>
 <p>很多开发者会这样用：</p>
-<pre><code>AI工具
+<div class="highlight"><pre><span></span><code>AI工具
   ↓
 http://192.168.31.25:11434
   ↓
 Ollama
-</code></pre>
+</code></pre></div>
 <p>例如：</p>
 <ul>
 <li>Continue</li>
@@ -2944,17 +2944,17 @@ Ollama
 <hr />
 <h2 id="mac_2">七、一个很多人不知道的 Mac 版坑（非常重要）</h2>
 <p>Mac 的 Ollama GUI <strong>有时不会读取 shell 的 env</strong>，如果上面方法不生效，可以直接用：</p>
-<pre><code class="language-bash">OLLAMA_HOST=0.0.0.0 ollama serve
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">OLLAMA_HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>ollama<span class="w"> </span>serve
+</code></pre></div>
 <p>手动启动服务。</p>
 <hr />
 <p>💡 <strong>建议你再确认两件事：</strong></p>
 <p>1️⃣ 你的 IP 是否正确</p>
-<pre><code class="language-bash">ifconfig | grep inet
-</code></pre>
+<div class="highlight"><pre><span></span><code>ifconfig<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>inet
+</code></pre></div>
 <p>2️⃣ Ollama 是否监听 0.0.0.0</p>
-<pre><code class="language-bash">lsof -i :11434
-</code></pre>
+<div class="highlight"><pre><span></span><code>lsof<span class="w"> </span>-i<span class="w"> </span>:11434
+</code></pre></div>
 
 
 

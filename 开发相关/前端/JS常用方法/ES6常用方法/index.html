@@ -3868,10 +3868,10 @@
 <hr />
 <h2 id="es6">一、数组方法（ES6+核心🔥）</h2>
 <h3 id="1-map">1. map（映射）</h3>
-<pre><code class="language-js">const arr = [1, 2, 3];
-const res = arr.map((x) =&gt; x * 2);
-// [2, 4, 6]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="c1">// [2, 4, 6]</span>
+</code></pre></div>
 <p>👉 场景：</p>
 <ul>
 <li>提取字段</li>
@@ -3879,31 +3879,31 @@ const res = arr.map((x) =&gt; x * 2);
 </ul>
 <hr />
 <h3 id="2-filter">2. filter（过滤）</h3>
-<pre><code class="language-js">const res = arr.filter((x) =&gt; x &gt; 1);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="3-find-findindex">3. find / findIndex</h3>
-<pre><code class="language-js">arr.find((x) =&gt; x === 2); // 找值
-arr.findIndex((x) =&gt; x === 2); // 找索引
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">arr</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// 找值</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">findIndex</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// 找索引</span>
+</code></pre></div>
 <hr />
 <h3 id="4-some-every">4. some / every</h3>
-<pre><code class="language-js">arr.some((x) =&gt; x &gt; 2); // 是否存在
-arr.every((x) =&gt; x &gt; 0); // 是否全部满足
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">arr</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// 是否存在</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 是否全部满足</span>
+</code></pre></div>
 <hr />
 <h3 id="5-includeses6">5. includes（ES6）</h3>
-<pre><code class="language-js">arr.includes(2);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">arr</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="6-arrayfrom">6. Array.from（类数组 → 数组）</h3>
-<pre><code class="language-js">Array.from(&quot;123&quot;); // ['1','2','3']
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]</span>
+</code></pre></div>
 <hr />
 <h3 id="7">7. 展开运算符（非常重要🔥）</h3>
-<pre><code class="language-js">const arr = [1, 2];
-const newArr = [...arr, 3];
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">newArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">arr</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+</code></pre></div>
 <p>👉 用途：</p>
 <ul>
 <li>合并数组</li>
@@ -3911,50 +3911,50 @@ const newArr = [...arr, 3];
 </ul>
 <hr />
 <h3 id="8-flat">8. flat（数组扁平化）</h3>
-<pre><code class="language-js">[1, [2, [3]]].flat(Infinity);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">]]].</span><span class="nx">flat</span><span class="p">(</span><span class="kc">Infinity</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="9-reduce">9. reduce（进阶核心🔥）</h3>
-<pre><code class="language-js">const sum = [1, 2, 3].reduce((acc, cur) =&gt; acc + cur, 0);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">].</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span><span class="w"> </span><span class="nx">cur</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cur</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+</code></pre></div>
 <p>👉 常见用途：</p>
-<pre><code class="language-js">// 数组转对象
-const obj = list.reduce((acc, item) =&gt; {
-  acc[item.id] = item;
-  return acc;
-}, {});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// 数组转对象</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">acc</span><span class="p">[</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">item</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">acc</span><span class="p">;</span>
+<span class="p">},</span><span class="w"> </span><span class="p">{});</span>
+</code></pre></div>
 <hr />
 <h2 id="_1">二、对象方法</h2>
 <h3 id="1-objectkeys-values-entries">1. Object.keys / values / entries</h3>
-<pre><code class="language-js">Object.keys(obj);
-Object.values(obj);
-Object.entries(obj);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="2-objectassign">2. Object.assign</h3>
-<pre><code class="language-js">const newObj = Object.assign({}, obj1, obj2);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span><span class="w"> </span><span class="nx">obj1</span><span class="p">,</span><span class="w"> </span><span class="nx">obj2</span><span class="p">);</span>
+</code></pre></div>
 <p>👉 等价于：</p>
-<pre><code class="language-js">const newObj = { ...obj1, ...obj2 };
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">obj1</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">obj2</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
 <hr />
 <h3 id="3-es6">3. 对象展开（ES6🔥）</h3>
-<pre><code class="language-js">const obj = { a: 1, b: 2 };
-const newObj = { ...obj, c: 3 };
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">newObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">obj</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
 <hr />
 <h3 id="4-es2020">4. 可选链（ES2020，但必须会🔥）</h3>
-<pre><code class="language-js">obj?.a?.b;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">obj</span><span class="o">?</span><span class="p">.</span><span class="nx">a</span><span class="o">?</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
+</code></pre></div>
 <p>👉 解决：</p>
 <ul>
 <li>undefined 报错问题（你之前 v-if 那个场景）</li>
 </ul>
 <hr />
 <h3 id="5">5. 空值合并运算符（??）</h3>
-<pre><code class="language-js">const val = input ?? &quot;默认值&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;默认值&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>👉 区别：</p>
 <ul>
 <li><code>||</code> 会把 0 / '' 当 false</li>
@@ -3963,60 +3963,60 @@ const newObj = { ...obj, c: 3 };
 <hr />
 <h2 id="_2">三、解构赋值（超高频🔥）</h2>
 <h3 id="1">1. 数组解构</h3>
-<pre><code class="language-js">const [a, b] = [1, 2];
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span>
+</code></pre></div>
 <hr />
 <h3 id="2">2. 对象解构</h3>
-<pre><code class="language-js">const { name, age } = user;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
+</code></pre></div>
 <hr />
 <h3 id="3">3. 重命名</h3>
-<pre><code class="language-js">const { name: userName } = user;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">userName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
+</code></pre></div>
 <hr />
 <h3 id="4">4. 默认值</h3>
-<pre><code class="language-js">const { age = 18 } = user;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
+</code></pre></div>
 <hr />
 <h2 id="_3">四、函数增强</h2>
 <h3 id="1_1">1. 默认参数</h3>
-<pre><code class="language-js">function fn(a = 10) {
-  return a;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">fn</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3 id="2-args">2. 剩余参数（...args）</h3>
-<pre><code class="language-js">function fn(...args) {
-  console.log(args);
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">fn</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3 id="3_1">3. 展开参数</h3>
-<pre><code class="language-js">fn(...arr);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">fn</span><span class="p">(...</span><span class="nx">arr</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="promise">五、Promise（异步核心🔥）</h2>
 <h3 id="1_2">1. 基础用法</h3>
-<pre><code class="language-js">new Promise((resolve, reject) =&gt; {
-  resolve(&quot;成功&quot;);
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;成功&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 <hr />
 <h3 id="2-then-catch">2. then / catch</h3>
-<pre><code class="language-js">api()
-  .then((res) =&gt; {})
-  .catch((err) =&gt; {});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">api</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{})</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{});</span>
+</code></pre></div>
 <hr />
 <h3 id="3-async-await">3. async / await（必须掌握🔥）</h3>
-<pre><code class="language-js">async function getData() {
-  const res = await api();
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3 id="4-promiseall">4. Promise.all</h3>
-<pre><code class="language-js">await Promise.all([api1(), api2()]);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">api1</span><span class="p">(),</span><span class="w"> </span><span class="nx">api2</span><span class="p">()]);</span>
+</code></pre></div>
 <p>👉 场景：</p>
 <ul>
 <li>多接口并发</li>
@@ -4024,50 +4024,50 @@ const newObj = { ...obj, c: 3 };
 <hr />
 <h2 id="_4">六、字符串增强</h2>
 <h3 id="1_3">1. 模板字符串</h3>
-<pre><code class="language-js">const str = `姓名：${name}`;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`姓名：</span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</code></pre></div>
 <hr />
 <h3 id="2-includes-startswith-endswith">2. includes / startsWith / endsWith</h3>
-<pre><code class="language-js">str.includes(&quot;a&quot;);
-str.startsWith(&quot;a&quot;);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">str</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<span class="nx">str</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="3-repeat">3. repeat</h3>
-<pre><code class="language-js">&quot;a&quot;.repeat(3); // 'aaa'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;a&quot;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#39;aaa&#39;</span>
+</code></pre></div>
 <hr />
 <h2 id="set-map">七、Set / Map（进阶但实用🔥）</h2>
 <h3 id="1-set">1. Set（去重）</h3>
-<pre><code class="language-js">const set = new Set([1, 2, 2]);
-[...set]; // [1,2]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">]);</span>
+<span class="p">[...</span><span class="nx">set</span><span class="p">];</span><span class="w"> </span><span class="c1">// [1,2]</span>
+</code></pre></div>
 <hr />
 <h3 id="2-map">2. Map（比对象更强）</h3>
-<pre><code class="language-js">const map = new Map();
-map.set(&quot;a&quot;, 1);
-map.get(&quot;a&quot;);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="_5">八、你项目里最常用组合（重点🔥）</h2>
 <h3 id="1-ui">1. 接口 → UI</h3>
-<pre><code class="language-js">list.map((item) =&gt; ({
-  label: item.name,
-  value: item.id,
-}));
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<span class="p">}));</span>
+</code></pre></div>
 <hr />
 <h3 id="2_1">2. 多选 → 提交</h3>
-<pre><code class="language-js">selected.map((item) =&gt; item.id);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">selected</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="3_2">3. 安全取值（避免报错）</h3>
-<pre><code class="language-js">data?.introduction?.scaleDesc || [];
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">introduction</span><span class="o">?</span><span class="p">.</span><span class="nx">scaleDesc</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+</code></pre></div>
 <hr />
 <h3 id="4_1">4. 页面传参（你高频用）</h3>
-<pre><code class="language-js">const str = encodeURIComponent(JSON.stringify(obj));
-const obj = JSON.parse(decodeURIComponent(str));
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">obj</span><span class="p">));</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
+</code></pre></div>
 <hr />
 <h2 id="_6">九、你这个阶段最该熟练的（结合你当前技术栈）</h2>
 <p>直接给你结论（优先级）👇</p>

@@ -3003,20 +3003,20 @@
   <h1>客户端安装</h1>
 
 <p>在 <strong>Ollama</strong> 本地运行模型后，其实已经内置了一个 <strong>HTTP API 服务</strong>，默认监听：</p>
-<pre><code>http://localhost:11434
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://localhost:11434
+</code></pre></div>
 <p>你可以像调用普通 REST API 一样调用它。下面给你从 <strong>接口结构 → curl 调用 → Node.js 调用 → 前端调用注意事项</strong>完整讲一遍。</p>
 <hr />
 <h2 id="ollama-api">一、确认 Ollama API 服务是否运行</h2>
 <p>先确认服务是否启动：</p>
-<pre><code class="language-bash">ollama serve
-</code></pre>
+<div class="highlight"><pre><span></span><code>ollama<span class="w"> </span>serve
+</code></pre></div>
 <p>或者直接运行模型：</p>
-<pre><code class="language-bash">ollama run qwen2.5
-</code></pre>
+<div class="highlight"><pre><span></span><code>ollama<span class="w"> </span>run<span class="w"> </span>qwen2.5
+</code></pre></div>
 <p>默认 API：</p>
-<pre><code>http://localhost:11434/api
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://localhost:11434/api
+</code></pre></div>
 <p>常用接口：</p>
 <table>
 <thead>
@@ -3047,97 +3047,97 @@
 <hr />
 <h2 id="apigenerate">二、最常用：生成文本 <code>/api/generate</code></h2>
 <h3 id="curl">curl 示例</h3>
-<pre><code class="language-bash">curl http://localhost:11434/api/generate \
--d '{
-  &quot;model&quot;: &quot;qwen2.5&quot;,
-  &quot;prompt&quot;: &quot;介绍一下人工智能&quot;
-}'
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:11434/api/generate<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">  &quot;model&quot;: &quot;qwen2.5&quot;,</span>
+<span class="s1">  &quot;prompt&quot;: &quot;介绍一下人工智能&quot;</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
 <p>返回示例：</p>
-<pre><code class="language-json">{
-  &quot;model&quot;: &quot;qwen2.5&quot;,
-  &quot;response&quot;: &quot;人工智能（AI）是...&quot;,
-  &quot;done&quot;: true
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;人工智能（AI）是...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;done&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="chat-apichat">三、Chat 对话接口 <code>/api/chat</code></h2>
 <p>这个更接近 <strong>ChatGPT形式</strong>。</p>
 <h3 id="curl_1">curl</h3>
-<pre><code class="language-bash">curl http://localhost:11434/api/chat \
--d '{
-  &quot;model&quot;: &quot;qwen2.5&quot;,
-  &quot;messages&quot;: [
-    { &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;你好&quot; }
-  ]
-}'
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:11434/api/chat<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">  &quot;model&quot;: &quot;qwen2.5&quot;,</span>
+<span class="s1">  &quot;messages&quot;: [</span>
+<span class="s1">    { &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;你好&quot; }</span>
+<span class="s1">  ]</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
 <p>返回：</p>
-<pre><code class="language-json">{
-  &quot;message&quot;: {
-    &quot;role&quot;: &quot;assistant&quot;,
-    &quot;content&quot;: &quot;你好！有什么可以帮助你？&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;你好！有什么可以帮助你？&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="nodejs">四、Node.js 调用（推荐）</h2>
 <p>如果你是做前端 + Node 后端，这是最常见方式。</p>
-<pre><code class="language-js">const res = await fetch(&quot;http://localhost:11434/api/chat&quot;, {
-  method: &quot;POST&quot;,
-  headers: {
-    &quot;Content-Type&quot;: &quot;application/json&quot;,
-  },
-  body: JSON.stringify({
-    model: &quot;qwen2.5&quot;,
-    messages: [{ role: &quot;user&quot;, content: &quot;介绍一下Vue3&quot; }],
-  }),
-});
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;http://localhost:11434/api/chat&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;介绍一下Vue3&quot;</span><span class="w"> </span><span class="p">}],</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="p">});</span>
 
-const data = await res.json();
-console.log(data.message.content);
-</code></pre>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="_1">五、流式输出（最常用）</h2>
 <p>Ollama默认是 <strong>stream流式返回</strong>。</p>
 <p>关闭流：</p>
-<pre><code class="language-json">{
-  &quot;stream&quot;: false
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;stream&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>完整示例：</p>
-<pre><code class="language-bash">curl http://localhost:11434/api/generate \
--d '{
-  &quot;model&quot;: &quot;qwen2.5&quot;,
-  &quot;prompt&quot;: &quot;写一个Vue3例子&quot;,
-  &quot;stream&quot;: false
-}'
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:11434/api/generate<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">  &quot;model&quot;: &quot;qwen2.5&quot;,</span>
+<span class="s1">  &quot;prompt&quot;: &quot;写一个Vue3例子&quot;,</span>
+<span class="s1">  &quot;stream&quot;: false</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
 <hr />
 <h2 id="_2">六、查看本地模型</h2>
-<pre><code class="language-bash">curl http://localhost:11434/api/tags
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:11434/api/tags
+</code></pre></div>
 <p>返回：</p>
-<pre><code class="language-json">{
-  &quot;models&quot;: [
-    {
-      &quot;name&quot;: &quot;qwen2.5:7b&quot;
-    }
-  ]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5:7b&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="_3">七、远程调用（局域网）</h2>
 <p>如果你想 <strong>让其他设备调用你的Mac Ollama</strong>：</p>
 <p>启动：</p>
-<pre><code class="language-bash">OLLAMA_HOST=0.0.0.0 ollama serve
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">OLLAMA_HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>ollama<span class="w"> </span>serve
+</code></pre></div>
 <p>然后访问：</p>
-<pre><code>http://你的IP:11434/api/chat
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://你的IP:11434/api/chat
+</code></pre></div>
 <p>例如</p>
-<pre><code>http://192.168.1.10:11434
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://192.168.1.10:11434
+</code></pre></div>
 <hr />
 <h2 id="openaiai">八、OpenAI兼容接口（很多AI工具用这个）</h2>
 <p>很多工具（如：</p>
@@ -3147,22 +3147,22 @@ console.log(data.message.content);
 </ul>
 <p>支持 <strong>OpenAI格式</strong>。</p>
 <p>Ollama可以这样调用：</p>
-<pre><code>http://localhost:11434/v1/chat/completions
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://localhost:11434/v1/chat/completions
+</code></pre></div>
 <p>示例：</p>
-<pre><code class="language-bash">curl http://localhost:11434/v1/chat/completions \
--H &quot;Content-Type: application/json&quot; \
--d '{
-  &quot;model&quot;: &quot;qwen2.5&quot;,
-  &quot;messages&quot;: [
-    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello&quot;}
-  ]
-}'
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:11434/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">  &quot;model&quot;: &quot;qwen2.5&quot;,</span>
+<span class="s1">  &quot;messages&quot;: [</span>
+<span class="s1">    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello&quot;}</span>
+<span class="s1">  ]</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
 <hr />
 <h2 id="_4">九、你做前端项目的推荐架构</h2>
 <p>你现在是 <strong>Vue + AI项目开发</strong>，建议架构：</p>
-<pre><code>Vue前端
+<div class="highlight"><pre><span></span><code>Vue前端
   │
   │ HTTP
   │
@@ -3170,7 +3170,7 @@ Node / Python API
   │
   │
 Ollama API
-</code></pre>
+</code></pre></div>
 <p>原因：</p>
 <ol>
 <li>前端直接请求会 <strong>跨域</strong></li>
@@ -3184,18 +3184,18 @@ Ollama API
 <p>1️⃣ <strong>Streaming流式输出</strong></p>
 <p>类似ChatGPT逐字输出</p>
 <p>2️⃣ <strong>System Prompt</strong></p>
-<pre><code class="language-json">{
-  &quot;messages&quot;: [{ &quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;你是心理咨询师&quot; }]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;你是心理咨询师&quot;</span><span class="w"> </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>3️⃣ <strong>temperature</strong></p>
 <p>控制随机性</p>
-<pre><code class="language-json">{
-  &quot;options&quot;: {
-    &quot;temperature&quot;: 0.7
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <p>💡 <strong>如果你的目标是：</strong></p>
 <ul>

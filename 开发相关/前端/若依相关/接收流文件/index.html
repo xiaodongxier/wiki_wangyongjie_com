@@ -2778,17 +2778,17 @@
 <hr />
 <h1 id="_1">一、前端怎么接收文件流（核心写法）</h1>
 <h3 id="_2">✅ 标准写法（若依推荐）</h3>
-<pre><code class="language-js">import request from &quot;@/utils/request&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/utils/request&quot;</span><span class="p">;</span>
 
-export function downloadFile(params) {
-  return request({
-    url: &quot;/xxx/download&quot;,
-    method: &quot;get&quot;,
-    params,
-    responseType: &quot;blob&quot;, // ⚠️ 关键
-  });
-}
-</code></pre>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">downloadFile</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">request</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/download&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;get&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">params</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">responseType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;blob&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// ⚠️ 关键</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>👉 关键点：</p>
 <ul>
 <li><code>responseType: 'blob'</code>：告诉 axios <strong>这是二进制流</strong></li>
@@ -2797,24 +2797,24 @@ export function downloadFile(params) {
 <hr />
 <h1 id="_3">二、拿到流之后怎么处理</h1>
 <h2 id="1">✅ 场景1：直接下载文件（最常见）</h2>
-<pre><code class="language-js">downloadFile().then((res) =&gt; {
-  const blob = new Blob([res.data]);
+<div class="highlight"><pre><span></span><code><span class="nx">downloadFile</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">]);</span>
 
-  const url = window.URL.createObjectURL(blob);
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
 
-  const link = document.createElement(&quot;a&quot;);
-  link.href = url;
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">;</span>
 
-  // 文件名（推荐从后端拿）
-  link.download = &quot;文件.xlsx&quot;;
+<span class="w">  </span><span class="c1">// 文件名（推荐从后端拿）</span>
+<span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">download</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;文件.xlsx&quot;</span><span class="p">;</span>
 
-  document.body.appendChild(link);
-  link.click();
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
 
-  document.body.removeChild(link);
-  window.URL.revokeObjectURL(url);
-});
-</code></pre>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">revokeObjectURL</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>👉 原理：</p>
 <ul>
 <li>后端返回 → 二进制流</li>
@@ -2823,99 +2823,99 @@ export function downloadFile(params) {
 </ul>
 <hr />
 <h2 id="2-pdf">✅ 场景2：预览（图片 / PDF）</h2>
-<pre><code class="language-js">const blob = new Blob([res.data]);
-const url = URL.createObjectURL(blob);
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">]);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
 
-this.previewUrl = url;
-</code></pre>
+<span class="k">this</span><span class="p">.</span><span class="nx">previewUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">;</span>
+</code></pre></div>
 <h3 id="_4">用法：</h3>
-<pre><code class="language-html">&lt;img :src=&quot;previewUrl&quot; /&gt;
-&lt;!-- 或 --&gt;
-&lt;iframe :src=&quot;previewUrl&quot;&gt;&lt;/iframe&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">:src</span><span class="o">=</span><span class="s">&quot;previewUrl&quot;</span> <span class="p">/&gt;</span>
+<span class="cm">&lt;!-- 或 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">:src</span><span class="o">=</span><span class="s">&quot;previewUrl&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr />
 <h2 id="3-base64">✅ 场景3：转 base64（小程序/特殊需求）</h2>
-<pre><code class="language-js">const reader = new FileReader();
-reader.readAsDataURL(blob);
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FileReader</span><span class="p">();</span>
+<span class="nx">reader</span><span class="p">.</span><span class="nx">readAsDataURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
 
-reader.onload = () =&gt; {
-  const base64 = reader.result;
-};
-</code></pre>
+<span class="nx">reader</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">base64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reader</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
 <hr />
 <h1 id="_5">三、若依里更优雅的封装（推荐）</h1>
 <p>若依其实一般会封一个工具：</p>
-<pre><code class="language-js">// utils/download.js
-export function downloadBlob(data, filename) {
-  const blob = new Blob([data]);
-  const link = document.createElement(&quot;a&quot;);
-  link.href = window.URL.createObjectURL(blob);
-  link.download = filename;
-  link.click();
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// utils/download.js</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">downloadBlob</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">data</span><span class="p">]);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">download</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">filename</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>使用：</p>
-<pre><code class="language-js">downloadFile().then((res) =&gt; {
-  downloadBlob(res.data, &quot;报表.xlsx&quot;);
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">downloadFile</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">downloadBlob</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;报表.xlsx&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 <hr />
 <h1 id="_6">四、文件名怎么动态获取（重点）</h1>
 <p>后端一般会这样返回：</p>
-<pre><code>Content-Disposition: attachment; filename=xxx.xlsx
-</code></pre>
+<div class="highlight"><pre><span></span><code>Content-Disposition: attachment; filename=xxx.xlsx
+</code></pre></div>
 <p>前端拿：</p>
-<pre><code class="language-js">const disposition = res.headers[&quot;content-disposition&quot;];
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">disposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;content-disposition&quot;</span><span class="p">];</span>
 
-const fileName = decodeURIComponent(disposition.split(&quot;filename=&quot;)[1]);
-</code></pre>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">disposition</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;filename=&quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">]);</span>
+</code></pre></div>
 <hr />
 <h1 id="_7">五、常见坑（若依项目一定会遇到）</h1>
 <h3 id="1-json-blob">❌ 1. 返回 JSON 错误但你用 blob 接收</h3>
 <p>👉 结果：下载了一个“错误文件”</p>
 <p>解决：</p>
-<pre><code class="language-js">const reader = new FileReader();
-reader.onload = () =&gt; {
-  try {
-    const json = JSON.parse(reader.result);
-    console.error(&quot;接口报错&quot;, json);
-  } catch (e) {
-    // 正常文件
-  }
-};
-reader.readAsText(res.data);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FileReader</span><span class="p">();</span>
+<span class="nx">reader</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">reader</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;接口报错&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">json</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 正常文件</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">reader</span><span class="p">.</span><span class="nx">readAsText</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="2-axios-blob">❌ 2. axios 拦截器把 blob 搞没了</h3>
 <p>若依默认拦截器：</p>
-<pre><code class="language-js">return response.data;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</code></pre></div>
 <p>👉 会导致你拿不到 headers（文件名）</p>
 <p>✅ 正确：</p>
-<pre><code class="language-js">return response;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+</code></pre></div>
 <hr />
 <h3 id="3-uniapp">❌ 3. 小程序（uniapp）特殊点</h3>
 <p>如果你是在 <strong>uniapp（微信小程序）</strong>：</p>
 <p>不能用 <code>Blob</code>，要用：</p>
-<pre><code class="language-js">uni.downloadFile({
-  url: &quot;接口地址&quot;,
-  success: (res) =&gt; {
-    const tempFilePath = res.tempFilePath;
-  },
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">uni</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;接口地址&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">tempFilePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">tempFilePath</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>👉 小程序是走文件系统，不是浏览器 Blob</p>
 <hr />
 <h1 id="_8">六、有哪些现成插件（直接可用）</h1>
 <h2 id="1-file-saver">1️⃣ file-saver（最推荐）</h2>
 <p>👉 浏览器下载标准库</p>
-<pre><code class="language-bash">npm install file-saver
-</code></pre>
-<pre><code class="language-js">import { saveAs } from &quot;file-saver&quot;;
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>file-saver
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">saveAs</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;file-saver&quot;</span><span class="p">;</span>
 
-saveAs(new Blob([res.data]), &quot;文件.xlsx&quot;);
-</code></pre>
+<span class="nx">saveAs</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">]),</span><span class="w"> </span><span class="s2">&quot;文件.xlsx&quot;</span><span class="p">);</span>
+</code></pre></div>
 <p>优点：</p>
 <ul>
 <li>兼容性好</li>
@@ -2923,22 +2923,22 @@ saveAs(new Blob([res.data]), &quot;文件.xlsx&quot;);
 </ul>
 <hr />
 <h2 id="2-js-file-download">2️⃣ js-file-download</h2>
-<pre><code class="language-bash">npm install js-file-download
-</code></pre>
-<pre><code class="language-js">import fileDownload from &quot;js-file-download&quot;;
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>js-file-download
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fileDownload</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;js-file-download&quot;</span><span class="p">;</span>
 
-fileDownload(res.data, &quot;文件.xlsx&quot;);
-</code></pre>
+<span class="nx">fileDownload</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;文件.xlsx&quot;</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="3-download">3️⃣ 若依自带 download 方法（最推荐你用这个）</h2>
 <p>若依里通常已经有：</p>
-<pre><code class="language-js">this.$download(url, params, filename);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">$download</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">);</span>
+</code></pre></div>
 <p>👉 内部已经帮你处理好了 blob</p>
 <hr />
 <h1 id="_9">七、总结（给你一套标准认知）</h1>
 <p>你可以这样理解整个链路：</p>
-<pre><code>后端（流）
+<div class="highlight"><pre><span></span><code>后端（流）
    ↓
 axios(responseType=blob)
    ↓
@@ -2949,7 +2949,7 @@ Blob
 URL.createObjectURL
    ↓
 下载 / 预览
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="_10">如果你要更深入（建议你下一步问我）</h1>
 <p>你现在这个阶段，我建议你下一步可以搞：</p>

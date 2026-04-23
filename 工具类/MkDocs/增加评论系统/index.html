@@ -2766,90 +2766,90 @@
 <ol>
 <li>在 <code>mkdocs.yml</code> 中添加评论模版配置</li>
 </ol>
-<pre><code class="language-yml">theme:
+<div class="highlight"><pre><span></span><code>theme:
   name: material
   custom_dir: overrides #主要是这一行-自定义目录内容-评论等html模版文件
-</code></pre>
+</code></pre></div>
 <ol>
 <li>增加 <code>overrides</code> 目录，并创建 <code>partials</code> 文件夹，在 <code>partials</code> 文件夹下创建 <code>comments.html</code> 文件，内容如下：</li>
 </ol>
 <blockquote>
 <p><code>overrides/partials/comments.html</code></p>
 </blockquote>
-<pre><code class="language-html">&lt;!-- comments.html --&gt;
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- comments.html --&gt;</span>
 {% if page.meta.comments %}
-&lt;h2 id=&quot;__comments&quot;&gt;{{ lang.t(&quot;meta.comments&quot;) }}&lt;/h2&gt;
-&lt;!-- Insert generated snippet here --&gt;
-&lt;script
-  src=&quot;https://giscus.app/client.js&quot;
-  data-repo=&quot;KkaiFang/my_notes&quot;
-  data-repo-id=&quot;你的仓库ID&quot;
-  data-category=&quot;General&quot;
-  data-category-id=&quot;你的分类ID&quot;
-  data-mapping=&quot;pathname&quot;
-  data-strict=&quot;0&quot;
-  data-reactions-enabled=&quot;1&quot;
-  data-emit-metadata=&quot;0&quot;
-  data-input-position=&quot;top&quot;
-  data-theme=&quot;noborder_light&quot;
-  data-lang=&quot;zh-CN&quot;
-  data-loading=&quot;lazy&quot;
-  crossorigin=&quot;anonymous&quot;
-  async
-&gt;&lt;/script&gt;
-&lt;!-- Synchronize Giscus theme with palette --&gt;
-&lt;script&gt;
-  var giscus = document.querySelector(&quot;script[src*=giscus]&quot;);
+<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;__comments&quot;</span><span class="p">&gt;</span>{{ lang.t(&quot;meta.comments&quot;) }}<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="cm">&lt;!-- Insert generated snippet here --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://giscus.app/client.js&quot;</span>
+  <span class="na">data-repo</span><span class="o">=</span><span class="s">&quot;KkaiFang/my_notes&quot;</span>
+  <span class="na">data-repo-id</span><span class="o">=</span><span class="s">&quot;你的仓库ID&quot;</span>
+  <span class="na">data-category</span><span class="o">=</span><span class="s">&quot;General&quot;</span>
+  <span class="na">data-category-id</span><span class="o">=</span><span class="s">&quot;你的分类ID&quot;</span>
+  <span class="na">data-mapping</span><span class="o">=</span><span class="s">&quot;pathname&quot;</span>
+  <span class="na">data-strict</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+  <span class="na">data-reactions-enabled</span><span class="o">=</span><span class="s">&quot;1&quot;</span>
+  <span class="na">data-emit-metadata</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+  <span class="na">data-input-position</span><span class="o">=</span><span class="s">&quot;top&quot;</span>
+  <span class="na">data-theme</span><span class="o">=</span><span class="s">&quot;noborder_light&quot;</span>
+  <span class="na">data-lang</span><span class="o">=</span><span class="s">&quot;zh-CN&quot;</span>
+  <span class="na">data-loading</span><span class="o">=</span><span class="s">&quot;lazy&quot;</span>
+  <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span>
+  <span class="na">async</span>
+<span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="cm">&lt;!-- Synchronize Giscus theme with palette --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">giscus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;script[src*=giscus]&quot;</span><span class="p">);</span>
 
-  // Set palette on initial load
-  var palette = __md_get(&quot;__palette&quot;);
-  if (palette &amp;&amp; typeof palette.color === &quot;object&quot;) {
-    var theme = palette.color.scheme === &quot;slate&quot; ? &quot;transparent_dark&quot; : &quot;light&quot;;
+<span class="w">  </span><span class="c1">// Set palette on initial load</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">__md_get</span><span class="p">(</span><span class="s2">&quot;__palette&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">palette</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">palette</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">palette</span><span class="p">.</span><span class="nx">color</span><span class="p">.</span><span class="nx">scheme</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;slate&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;transparent_dark&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;light&quot;</span><span class="p">;</span>
 
-    // Instruct Giscus to set theme
-    giscus.setAttribute(&quot;data-theme&quot;, theme);
-  }
+<span class="w">    </span><span class="c1">// Instruct Giscus to set theme</span>
+<span class="w">    </span><span class="nx">giscus</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;data-theme&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">theme</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-  // Register event handlers after documented loaded
-  document.addEventListener(&quot;DOMContentLoaded&quot;, function () {
-    var ref = document.querySelector(&quot;[data-md-component=palette]&quot;);
-    ref.addEventListener(&quot;change&quot;, function () {
-      var palette = __md_get(&quot;__palette&quot;);
-      if (palette &amp;&amp; typeof palette.color === &quot;object&quot;) {
-        var theme =
-          palette.color.scheme === &quot;slate&quot; ? &quot;transparent_dark&quot; : &quot;light&quot;;
+<span class="w">  </span><span class="c1">// Register event handlers after documented loaded</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;[data-md-component=palette]&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">ref</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">var</span><span class="w"> </span><span class="nx">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">__md_get</span><span class="p">(</span><span class="s2">&quot;__palette&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">palette</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">palette</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="nx">palette</span><span class="p">.</span><span class="nx">color</span><span class="p">.</span><span class="nx">scheme</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;slate&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;transparent_dark&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;light&quot;</span><span class="p">;</span>
 
-        // Instruct Giscus to change theme
-        var frame = document.querySelector(&quot;.giscus-frame&quot;);
-        frame.contentWindow.postMessage(
-          { giscus: { setConfig: { theme } } },
-          &quot;https://giscus.app&quot;,
-        );
-      }
-    });
-  });
-&lt;/script&gt;
+<span class="w">        </span><span class="c1">// Instruct Giscus to change theme</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;.giscus-frame&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">frame</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span>
+<span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nx">giscus</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setConfig</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">theme</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">          </span><span class="s2">&quot;https://giscus.app&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 {% endif %}
-</code></pre>
+</code></pre></div>
 <p>其中下面这段是在 <a href="https://giscus.app/zh-CN/">https://giscus.app/zh-CN/</a> 生成的代码，需要替换成你自己的仓库信息：</p>
-<pre><code class="language-html">&lt;script
-  src=&quot;https://giscus.app/client.js&quot;
-  data-repo=&quot;KkaiFang/my_notes&quot;
-  data-repo-id=&quot;你的仓库ID&quot;
-  data-category=&quot;General&quot;
-  data-category-id=&quot;你的分类ID&quot;
-  data-mapping=&quot;pathname&quot;
-  data-strict=&quot;0&quot;
-  data-reactions-enabled=&quot;1&quot;
-  data-emit-metadata=&quot;0&quot;
-  data-input-position=&quot;top&quot;
-  data-theme=&quot;noborder_light&quot;
-  data-lang=&quot;zh-CN&quot;
-  data-loading=&quot;lazy&quot;
-  crossorigin=&quot;anonymous&quot;
-  async
-&gt;&lt;/script&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://giscus.app/client.js&quot;</span>
+  <span class="na">data-repo</span><span class="o">=</span><span class="s">&quot;KkaiFang/my_notes&quot;</span>
+  <span class="na">data-repo-id</span><span class="o">=</span><span class="s">&quot;你的仓库ID&quot;</span>
+  <span class="na">data-category</span><span class="o">=</span><span class="s">&quot;General&quot;</span>
+  <span class="na">data-category-id</span><span class="o">=</span><span class="s">&quot;你的分类ID&quot;</span>
+  <span class="na">data-mapping</span><span class="o">=</span><span class="s">&quot;pathname&quot;</span>
+  <span class="na">data-strict</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+  <span class="na">data-reactions-enabled</span><span class="o">=</span><span class="s">&quot;1&quot;</span>
+  <span class="na">data-emit-metadata</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+  <span class="na">data-input-position</span><span class="o">=</span><span class="s">&quot;top&quot;</span>
+  <span class="na">data-theme</span><span class="o">=</span><span class="s">&quot;noborder_light&quot;</span>
+  <span class="na">data-lang</span><span class="o">=</span><span class="s">&quot;zh-CN&quot;</span>
+  <span class="na">data-loading</span><span class="o">=</span><span class="s">&quot;lazy&quot;</span>
+  <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span>
+  <span class="na">async</span>
+<span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <h2 id="_2">参考</h2>
 <ol>
 <li><a href="https://wcowin.work/Mkdocs-Wcowin/blog/websitebeauty/mkcomments/#_1">添加评论系统(giscus为例)</a></li>

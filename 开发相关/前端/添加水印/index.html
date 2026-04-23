@@ -2800,96 +2800,96 @@
 <p>参考下面局部水印，同时不要写 <code>parent: ".shuiyin"</code> 即可</p>
 </blockquote>
 <h2 id="_2">局部水印</h2>
-<pre><code class="language-vue">&lt;template&gt;
-  &lt;div class=&quot;shuiyin&quot; style=&quot;position: relative&quot;&gt;
-    &lt;div class=&quot;box&quot; v-for=&quot;item in 10&quot; :key=&quot;item&quot;&gt;
-      {{ item }}
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-&lt;script setup&gt;
-import { Watermark } from &quot;watermark-js-plus&quot;; // 引入水印插件
-import useUserStore from &quot;@/store/modules/user&quot;;
-const userStore = useUserStore();
-onMounted(() =&gt; {
-  const watermark = new Watermark({
-    parent: &quot;.shuiyin&quot;,
-    width: 170,
-    height: 180,
-    rotate: 45,
-    contentType: &quot;multi-line-text&quot;,
-    content:
-      userStore.nickName + &quot;-&quot; + userStore.id + &quot;\n&quot; + new Date().getTime(),
-    // wangxians\n20200102&quot;,
-    globalAlpha: 0.3,
-    mode: &quot;default&quot;,
-    textType: &quot;stroke&quot;,
-    lineHeight: 26,
-    fontSize: &quot;12px&quot;,
-    fontFamily: &quot;sans-serif&quot;,
-    fontStyle: &quot;&quot;,
-    fontVariant: &quot;&quot;,
-    fontColor: &quot;#ccc&quot;,
-    fontWeight: &quot;100&quot;,
-    textAlign: &quot;center&quot;,
-    textBaseline: &quot;top&quot;,
-    filter: &quot;none&quot;,
-    letterSpacing: &quot;0px&quot;,
-    mutationObserve: true,
-    monitorProtection: true,
-    auxiliaryLine: false,
-    movable: false,
-  });
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;shuiyin&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;position: relative&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;box&quot;</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&quot;</span><span class="nx">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mf">10</span><span class="s">&quot;</span> <span class="p">:</span><span class="na">key</span><span class="o">=</span><span class="s">&quot;</span><span class="nx">item</span><span class="s">&quot;</span><span class="p">&gt;</span>
+      <span class="cp">{{</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="cp">}}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span><span class="p">&gt;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Watermark</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;watermark-js-plus&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 引入水印插件</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">useUserStore</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/store/modules/user&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useUserStore</span><span class="p">();</span>
+<span class="nx">onMounted</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">watermark</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Watermark</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">parent</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.shuiyin&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">170</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">180</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">rotate</span><span class="o">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;multi-line-text&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">content</span><span class="o">:</span>
+<span class="w">      </span><span class="nx">userStore</span><span class="p">.</span><span class="nx">nickName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">userStore</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">(),</span>
+<span class="w">    </span><span class="c1">// wangxians\n20200102&quot;,</span>
+<span class="w">    </span><span class="nx">globalAlpha</span><span class="o">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;stroke&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">lineHeight</span><span class="o">:</span><span class="w"> </span><span class="mf">26</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;12px&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontFamily</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;sans-serif&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontStyle</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontVariant</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#ccc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textBaseline</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;top&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">filter</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">letterSpacing</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0px&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">mutationObserve</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">monitorProtection</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">auxiliaryLine</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">movable</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
 
-  watermark.create(); // 添加水印
+<span class="w">  </span><span class="nx">watermark</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span><span class="w"> </span><span class="c1">// 添加水印</span>
 
-  // watermark.destroy(); // 删除水印
-  //
-});
-&lt;/script&gt;
+<span class="w">  </span><span class="c1">// watermark.destroy(); // 删除水印</span>
+<span class="w">  </span><span class="c1">//</span>
+<span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-&lt;style lang=&quot;scss&quot; scoped&gt;
-.shuiyin {
-  width: 400px;
-  height: 400px;
-  border: 1px solid red;
-}
-&lt;/style&gt;
-</code></pre>
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;scss&quot;</span> <span class="na">scoped</span><span class="p">&gt;</span>
+<span class="p">.</span><span class="nc">shuiyin</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</code></pre></div>
 <h2 id="_3">暗水印</h2>
-<pre><code class="language-vue">&lt;template&gt;
-  &lt;div class=&quot;shuiyin&quot; style=&quot;position: relative&quot;&gt;
-    &lt;div class=&quot;box&quot; v-for=&quot;item in 10&quot; :key=&quot;item&quot;&gt;
-      {{ item }}
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-&lt;script setup&gt;
-import { BlindWatermark } from &quot;watermark-js-plus&quot;; // 引入水印插件
-import useUserStore from &quot;@/store/modules/user&quot;;
-const userStore = useUserStore();
-onMounted(() =&gt; {
-  const watermark = new BlindWatermark({
-    content: &quot;hello my watermark&quot;,
-    width: 200,
-    height: 200,
-    onSuccess: () =&gt; {
-      // success callback
-    },
-  });
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;shuiyin&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;position: relative&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;box&quot;</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&quot;</span><span class="nx">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mf">10</span><span class="s">&quot;</span> <span class="p">:</span><span class="na">key</span><span class="o">=</span><span class="s">&quot;</span><span class="nx">item</span><span class="s">&quot;</span><span class="p">&gt;</span>
+      <span class="cp">{{</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="cp">}}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span><span class="p">&gt;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BlindWatermark</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;watermark-js-plus&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 引入水印插件</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">useUserStore</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/store/modules/user&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useUserStore</span><span class="p">();</span>
+<span class="nx">onMounted</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">watermark</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BlindWatermark</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello my watermark&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">onSuccess</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// success callback</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
 
-  watermark.create(); // 添加水印
-});
-&lt;/script&gt;
+<span class="w">  </span><span class="nx">watermark</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span><span class="w"> </span><span class="c1">// 添加水印</span>
+<span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-&lt;style lang=&quot;scss&quot; scoped&gt;
-.shuiyin {
-  width: 400px;
-  height: 400px;
-  border: 1px solid red;
-}
-&lt;/style&gt;
-</code></pre>
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;scss&quot;</span> <span class="na">scoped</span><span class="p">&gt;</span>
+<span class="p">.</span><span class="nc">shuiyin</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</code></pre></div>
 
 
 

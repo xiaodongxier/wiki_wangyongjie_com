@@ -2704,8 +2704,8 @@
 
 
 <p>你现在这个现象：</p>
-<pre><code>页面显示：%PDF-1.6 %���� ...
-</code></pre>
+<div class="highlight"><pre><span></span><code>页面显示：%PDF-1.6 %���� ...
+</code></pre></div>
 <p>这已经非常明确了👇</p>
 <blockquote>
 <p>❗ <strong>前端把 PDF 二进制流当成“文本字符串”在渲染了</strong></p>
@@ -2714,9 +2714,9 @@
 <hr />
 <h1 id="_1">一、问题根因（关键）</h1>
 <p>你现在代码：</p>
-<pre><code class="language-js">const res = await filePreview({ id: 20 });
-const blob = new Blob([res]);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">filePreview</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">res</span><span class="p">]);</span>
+</code></pre></div>
 <p>👉 这里的 <code>res</code> 实际上是：</p>
 <ul>
 <li>❌ 字符串（乱码 PDF 头）</li>
@@ -2726,68 +2726,68 @@ const blob = new Blob([res]);
 <hr />
 <h1 id="_2">二、正确写法（必须改）</h1>
 <h2 id="_3">✅ 第一步：接口层必须加</h2>
-<pre><code class="language-js">// api 文件
-export function filePreview(params) {
-  return request({
-    url: &quot;/xxx/preview&quot;,
-    method: &quot;get&quot;,
-    params,
-    responseType: &quot;blob&quot;, // ⚠️ 核心
-  });
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// api 文件</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">filePreview</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">request</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/preview&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;get&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">params</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">responseType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;blob&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// ⚠️ 核心</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="requestjs">✅ 第二步：若依 request.js 要确认</h2>
 <p>很多若依项目这里有坑👇</p>
 <h3 id="_4">❌ 错误写法（会导致你现在问题）</h3>
-<pre><code class="language-js">return response.data;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</code></pre></div>
 <p>👉 会把 blob 破坏掉</p>
 <hr />
 <h3 id="blob">✅ 正确写法（针对 blob）</h3>
-<pre><code class="language-js">if (response.request.responseType === &quot;blob&quot;) {
-  return response;
-} else {
-  return response.data;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">responseType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;blob&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="_5">✅ 第三步：组件代码改成这样</h2>
-<pre><code class="language-js">const getFilePreview = async () =&gt; {
-  const res = await filePreview({ id: 20 });
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getFilePreview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">filePreview</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">});</span>
 
-  const blob = new Blob([res.data], {
-    type: &quot;application/pdf&quot;,
-  });
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">],</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/pdf&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
 
-  const url = URL.createObjectURL(blob);
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
 
-  path.value = url;
-};
-</code></pre>
+<span class="w">  </span><span class="nx">path</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
 <hr />
 <h2 id="_6">✅ 页面展示（你必须这样用）</h2>
-<pre><code class="language-html">&lt;iframe :src=&quot;path&quot; style=&quot;width:100%;height:100vh;&quot; /&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">:src</span><span class="o">=</span><span class="s">&quot;path&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:100%;height:100vh;&quot;</span> <span class="p">/&gt;</span>
+</code></pre></div>
 <p>或者：</p>
-<pre><code class="language-html">&lt;embed :src=&quot;path&quot; type=&quot;application/pdf&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">embed</span> <span class="na">:src</span><span class="o">=</span><span class="s">&quot;path&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;application/pdf&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="p">/&gt;</span>
+</code></pre></div>
 <hr />
 <h1 id="_7">三、快速自检（你可以立刻验证）</h1>
 <h2 id="consolelog">✅ 正常情况 console.log 应该是：</h2>
-<pre><code class="language-js">console.log(res);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+</code></pre></div>
 <p>👉 你应该看到：</p>
-<pre><code class="language-js">{
-  data: Blob,
-  headers: {...},
-  status: 200
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">Blob</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{...},</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="_8">❌ 如果你看到：</h2>
-<pre><code class="language-js">&quot;%PDF-1.6 %����...&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;%PDF-1.6 %����...&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>👉 说明：</p>
 <ul>
 <li>❌ responseType 没生效</li>
@@ -2795,29 +2795,29 @@ export function filePreview(params) {
 </ul>
 <hr />
 <h1 id="_9">四、再给你一个“防踩坑版本”（建议直接用）</h1>
-<pre><code class="language-js">const getFilePreview = async () =&gt; {
-  const res = await filePreview({ id: 20 });
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getFilePreview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">filePreview</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">});</span>
 
-  // ❗ 防止后端返回 JSON 错误
-  if (res.headers[&quot;content-type&quot;].includes(&quot;application/json&quot;)) {
-    const reader = new FileReader();
-    reader.onload = () =&gt; {
-      const json = JSON.parse(reader.result);
-      console.error(&quot;接口错误:&quot;, json);
-    };
-    reader.readAsText(res.data);
-    return;
-  }
+<span class="w">  </span><span class="c1">// ❗ 防止后端返回 JSON 错误</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;content-type&quot;</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;application/json&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FileReader</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">reader</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">reader</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;接口错误:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">json</span><span class="p">);</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="nx">reader</span><span class="p">.</span><span class="nx">readAsText</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-  const blob = new Blob([res.data], { type: &quot;application/pdf&quot; });
-  path.value = URL.createObjectURL(blob);
-};
-</code></pre>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/pdf&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">path</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
 <hr />
 <h1 id="_10">五、你这个问题本质总结（记住这句话）</h1>
-<pre><code class="language-text">PDF乱码 ≠ PDF坏了
+<div class="highlight"><pre><span></span><code>PDF乱码 ≠ PDF坏了
 而是 前端解析方式错了
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="_11">六、如果你下一步要做“更高级预览”</h1>
 <p>你现在已经解决“能显示”了，下一步可以升级👇</p>

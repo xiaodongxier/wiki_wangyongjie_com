@@ -3148,8 +3148,8 @@
 <p>后来人们发现：</p>
 <p>GPU 的结构 <strong>非常适合做矩阵运算</strong>，而神经网络的核心计算恰恰就是矩阵运算。</p>
 <p>例如：</p>
-<pre><code>Y = W × X + b
-</code></pre>
+<div class="highlight"><pre><span></span><code>Y = W × X + b
+</code></pre></div>
 <p>这类计算在 AI 模型中会 <strong>重复数十亿次</strong>。</p>
 <h3 id="cpu-vs-gpu">CPU vs GPU</h3>
 <table>
@@ -3179,9 +3179,9 @@
 </tbody>
 </table>
 <p>简单理解：</p>
-<pre><code>CPU = 一个数学教授
+<div class="highlight"><pre><span></span><code>CPU = 一个数学教授
 GPU = 上万名小学生同时算题
-</code></pre>
+</code></pre></div>
 <p>虽然每个小学生不厉害，但 <strong>数量多</strong>，算得反而更快。</p>
 <p>常见 GPU：</p>
 <ul>
@@ -3192,8 +3192,8 @@ GPU = 上万名小学生同时算题
 <h2 id="ram">三、内存（RAM）：程序运行的工作台</h2>
 <p><strong>内存（RAM）</strong> 是电脑运行程序时的 <strong>临时工作空间</strong>。</p>
 <p>当你打开一个程序时：</p>
-<pre><code>硬盘 → 加载到内存 → CPU运行
-</code></pre>
+<div class="highlight"><pre><span></span><code>硬盘 → 加载到内存 → CPU运行
+</code></pre></div>
 <p>内存的特点：</p>
 <ul>
 <li>速度非常快</li>
@@ -3201,11 +3201,11 @@ GPU = 上万名小学生同时算题
 <li>断电后数据消失</li>
 </ul>
 <p>常见内存容量：</p>
-<pre><code>8GB
+<div class="highlight"><pre><span></span><code>8GB
 16GB
 32GB
 64GB
-</code></pre>
+</code></pre></div>
 <h3 id="ai">AI 中内存的作用</h3>
 <p>在运行 AI 时，内存会存储：</p>
 <ul>
@@ -3224,16 +3224,16 @@ GPU = 上万名小学生同时算题
 <h2 id="vramgpu">四、显存（VRAM）：GPU 的专属内存</h2>
 <p><strong>显存（VRAM）</strong> 是 <strong>GPU 专用内存</strong>。</p>
 <p>可以理解为：</p>
-<pre><code>RAM = CPU的工作桌
+<div class="highlight"><pre><span></span><code>RAM = CPU的工作桌
 VRAM = GPU的工作桌
-</code></pre>
+</code></pre></div>
 <p>当 AI 模型运行时：</p>
-<pre><code>模型参数
+<div class="highlight"><pre><span></span><code>模型参数
 ↓
 加载到显存
 ↓
 GPU进行计算
-</code></pre>
+</code></pre></div>
 <h3 id="_1">为什么显存非常重要？</h3>
 <p>因为：</p>
 <blockquote>
@@ -3241,14 +3241,14 @@ GPU进行计算
 </blockquote>
 <p>例如：</p>
 <p>一个 <strong>7B 模型</strong></p>
-<pre><code>7B = 70亿参数
-</code></pre>
+<div class="highlight"><pre><span></span><code>7B = 70亿参数
+</code></pre></div>
 <p>如果每个参数占 <strong>2字节（FP16）</strong></p>
-<pre><code>70亿 × 2字节 ≈ 14GB
-</code></pre>
+<div class="highlight"><pre><span></span><code>70亿 × 2字节 ≈ 14GB
+</code></pre></div>
 <p>所以：</p>
-<pre><code>7B模型 ≈ 14GB显存
-</code></pre>
+<div class="highlight"><pre><span></span><code>7B模型 ≈ 14GB显存
+</code></pre></div>
 <p>如果显存不够：</p>
 <ul>
 <li>模型无法运行</li>
@@ -3258,8 +3258,8 @@ GPU进行计算
 <h2 id="gpu_1">五、显卡：GPU + 显存的整体设备</h2>
 <p>很多人会混淆 <strong>GPU 和显卡</strong>。</p>
 <p>实际上：</p>
-<pre><code>显卡 = GPU + 显存 + 电路 + 散热
-</code></pre>
+<div class="highlight"><pre><span></span><code>显卡 = GPU + 显存 + 电路 + 散热
+</code></pre></div>
 <p>GPU 是核心芯片。</p>
 <p>而显卡是一整块硬件设备。</p>
 <p>例如：</p>
@@ -3286,8 +3286,8 @@ GPU进行计算
 </tbody>
 </table>
 <p>AI 领域通常最关注：</p>
-<pre><code>显存大小
-</code></pre>
+<div class="highlight"><pre><span></span><code>显存大小
+</code></pre></div>
 <p>因为它直接决定 <strong>能运行多大的模型</strong>。</p>
 <hr />
 <h2 id="ai_1">六、AI 大模型为什么需要这么多算力</h2>
@@ -3297,27 +3297,27 @@ GPU进行计算
 </ul>
 <p>本质上是 <strong>超大规模神经网络</strong>。</p>
 <p>神经网络计算主要是：</p>
-<pre><code>矩阵 × 矩阵
-</code></pre>
+<div class="highlight"><pre><span></span><code>矩阵 × 矩阵
+</code></pre></div>
 <p>例如：</p>
 <p>一个大模型可能包含：</p>
-<pre><code>数百亿参数
-</code></pre>
+<div class="highlight"><pre><span></span><code>数百亿参数
+</code></pre></div>
 <p>每次生成一句话时，需要进行：</p>
-<pre><code>数十亿次计算
-</code></pre>
+<div class="highlight"><pre><span></span><code>数十亿次计算
+</code></pre></div>
 <p>如果用 CPU 计算：</p>
-<pre><code>速度非常慢
-</code></pre>
+<div class="highlight"><pre><span></span><code>速度非常慢
+</code></pre></div>
 <p>如果用 GPU：</p>
-<pre><code>并行计算
+<div class="highlight"><pre><span></span><code>并行计算
 速度快几十倍甚至上百倍
-</code></pre>
+</code></pre></div>
 <p>所以 AI 训练和推理通常依赖 GPU。</p>
 <hr />
 <h2 id="_2">七、本地运行大模型时硬件如何协同工作</h2>
 <p>AI 模型运行流程大致如下：</p>
-<pre><code>硬盘
+<div class="highlight"><pre><span></span><code>硬盘
 ↓
 加载模型
 ↓
@@ -3328,7 +3328,7 @@ GPU进行计算
 GPU计算
 ↓
 生成文本
-</code></pre>
+</code></pre></div>
 <p>每个硬件负责不同任务：</p>
 <table>
 <thead>
@@ -3368,11 +3368,11 @@ GPU计算
 <li>DeepSeek-R1</li>
 </ul>
 <p>8B 模型大概需要：</p>
-<pre><code>6GB ~ 10GB 显存
-</code></pre>
+<div class="highlight"><pre><span></span><code>6GB ~ 10GB 显存
+</code></pre></div>
 <p>如果你的电脑：</p>
-<pre><code>显存不足
-</code></pre>
+<div class="highlight"><pre><span></span><code>显存不足
+</code></pre></div>
 <p>可能会：</p>
 <ul>
 <li>推理速度非常慢</li>
@@ -3382,8 +3382,8 @@ GPU计算
 <hr />
 <h2 id="ai_2">九、运行 AI 时硬件的重要程度</h2>
 <p>如果你想本地运行 AI，大致优先级是：</p>
-<pre><code>GPU &gt; 显存 &gt; 内存 &gt; CPU
-</code></pre>
+<div class="highlight"><pre><span></span><code>GPU &gt; 显存 &gt; 内存 &gt; CPU
+</code></pre></div>
 <p>例如：</p>
 <table>
 <thead>
@@ -3411,21 +3411,21 @@ GPU计算
 <hr />
 <h2 id="_3">十、总结</h2>
 <p>可以用一个简单比喻来理解：</p>
-<pre><code>CPU  = 大脑
+<div class="highlight"><pre><span></span><code>CPU  = 大脑
 GPU  = 数学计算机器
 RAM  = 工作桌
 VRAM = GPU的工作桌
 硬盘 = 仓库
-</code></pre>
+</code></pre></div>
 <p>AI 模型运行过程：</p>
-<pre><code>仓库拿资料（硬盘）
+<div class="highlight"><pre><span></span><code>仓库拿资料（硬盘）
 ↓
 放到桌子上（内存）
 ↓
 交给计算机器（GPU）
 ↓
 生成结果
-</code></pre>
+</code></pre></div>
 <p>理解这些硬件概念后，你就能更清楚：</p>
 <ul>
 <li>为什么 AI 需要 GPU</li>

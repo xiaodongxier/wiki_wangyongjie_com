@@ -3035,7 +3035,7 @@
 <blockquote>
 <p>在vue3中下面两个写法有什么区别？</p>
 </blockquote>
-<pre><code>defineProps({
+<div class="highlight"><pre><span></span><code>defineProps({
   userId: {
     type: Boolean,
     default: true
@@ -3048,19 +3048,19 @@ const props = defineProps({
     default: true
   }
 });
-</code></pre>
+</code></pre></div>
 <h2 id="_1">区别</h2>
 <hr />
 <p>这两个写法在 <strong>运行时行为上是完全一样的</strong>，区别主要在于<strong>是否接收返回值，从而影响你在 <code>&lt;script setup&gt;</code> 中如何使用 props</strong>。</p>
 <hr />
 <h3 id="1">1️⃣ 不接收返回值的写法</h3>
-<pre><code class="language-js">defineProps({
-  userId: {
-    type: Boolean,
-    default: true
-  }
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">defineProps</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>👉 特点：</p>
 <ul>
 <li><code>defineProps</code> 是 <strong>编译宏（compiler macro）</strong>，在 Vue 3 的 <code>&lt;script setup&gt;</code> 中会被编译掉</li>
@@ -3074,13 +3074,13 @@ const props = defineProps({
 </ul>
 <hr />
 <h3 id="2">2️⃣ 接收返回值的写法</h3>
-<pre><code class="language-js">const props = defineProps({
-  userId: {
-    type: Boolean,
-    default: true
-  }
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">defineProps</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>👉 特点：</p>
 <ul>
 <li><code>defineProps</code> 返回一个 <code>props</code> 对象</li>
@@ -3094,11 +3094,11 @@ const props = defineProps({
 <hr />
 <h3 id="_2">⚠️ 一个容易忽略的点</h3>
 <p>即使你写了：</p>
-<pre><code class="language-js">const props = defineProps(...)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">defineProps</span><span class="p">(...)</span>
+</code></pre></div>
 <p>在 template 里仍然可以这样写：</p>
-<pre><code class="language-html">{{ userId }}
-</code></pre>
+<div class="highlight"><pre><span></span><code>{{ userId }}
+</code></pre></div>
 <p>👉 因为 <code>&lt;script setup&gt;</code> 会自动把 props 暴露给模板（解构式暴露）</p>
 <hr />
 <h3 id="_3">✔️ 总结</h3>
@@ -3139,19 +3139,19 @@ const props = defineProps({
 <p>结论先说清楚：<strong>不需要 <code>.value</code></strong>。</p>
 <hr />
 <h3 id="value_1">✅ 为什么不需要 <code>.value</code></h3>
-<pre><code class="language-js">const props = defineProps({
-  userId: Boolean
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">defineProps</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>这里的 <code>props</code>：</p>
 <ul>
 <li><strong>不是 <code>ref</code></strong></li>
 <li>而是一个由 Vue 3 提供的 <strong>响应式对象（reactive proxy）</strong></li>
 </ul>
 <p>所以你访问时是：</p>
-<pre><code class="language-js">props.userId   // ✅ 正确
-props.userId.value // ❌ 错误
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">props</span><span class="p">.</span><span class="nx">userId</span><span class="w">   </span><span class="c1">// ✅ 正确</span>
+<span class="nx">props</span><span class="p">.</span><span class="nx">userId</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="c1">// ❌ 错误</span>
+</code></pre></div>
 <hr />
 <h3 id="_5">🧠 对比一下就很清楚</h3>
 <table>
@@ -3184,10 +3184,10 @@ props.userId.value // ❌ 错误
 <hr />
 <h3 id="_6">⚠️ 一个常见坑（非常重要）</h3>
 <p>如果你这样写：</p>
-<pre><code class="language-js">const { userId } = defineProps({
-  userId: Boolean
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">defineProps</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>👉 这里的 <code>userId</code>：</p>
 <ul>
 <li><strong>不是响应式的</strong></li>
@@ -3196,17 +3196,17 @@ props.userId.value // ❌ 错误
 <hr />
 <h3 id="_7">✔️ 正确做法（保持响应式）</h3>
 <p>如果你想解构又保持响应式，需要用：</p>
-<pre><code class="language-js">import { toRefs } from 'vue';
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">toRefs</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span><span class="p">;</span>
 
-const props = defineProps({
-  userId: Boolean
-});
+<span class="kd">const</span><span class="w"> </span><span class="nx">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">defineProps</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span>
+<span class="p">});</span>
 
-const { userId } = toRefs(props);
-</code></pre>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">toRefs</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+</code></pre></div>
 <p>👉 这时候：</p>
-<pre><code class="language-js">userId.value  // ✅ 需要 .value，因为它变成 ref 了
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">userId</span><span class="p">.</span><span class="nx">value</span><span class="w">  </span><span class="c1">// ✅ 需要 .value，因为它变成 ref 了</span>
+</code></pre></div>
 <hr />
 <h3 id="_8">🔚 总结一句话</h3>
 <ul>

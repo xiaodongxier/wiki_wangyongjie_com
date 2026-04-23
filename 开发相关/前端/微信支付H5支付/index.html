@@ -2756,214 +2756,214 @@
 <li>3.通过<code>openId</code>、<code>bizType</code>、<code>mobile</code>等业务信息调去后端接口获取支付信息</li>
 <li>4.通过<a href="https://pay.weixin.qq.com/doc/v3/merchant/4012791857">微信方法唤起支付</a></li>
 </ul>
-<pre><code class="language-js">const WECHAT_APP_ID = &quot;wx8888888&quot;; // appId
-const isWeixin = () =&gt; /MicroMessenger/i.test(navigator.userAgent);
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">WECHAT_APP_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;wx8888888&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// appId</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">isWeixin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">/</span><span class="nx">MicroMessenger</span><span class="o">/</span><span class="nx">i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">);</span>
 
-const initAuth = async () =&gt; {
-  const code = route.query.code;
-  if (code) {
-    try {
-      const res = await getOpenid({ code });
-      const nextOpenid = res.msg || &quot;&quot;;
-      if (nextOpenid) {
-        currentOpenid.value = nextOpenid;
-        return nextOpenid;
-      }
-    } catch (error) {
-      // code 失效时重新拉起授权
-    }
-    triggerAuth();
-    return &quot;&quot;;
-  }
-  triggerAuth();
-  return &quot;&quot;;
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">initAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">route</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">code</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getOpenid</span><span class="p">({</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="p">});</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">nextOpenid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">msg</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">nextOpenid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">currentOpenid</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nextOpenid</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">nextOpenid</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// code 失效时重新拉起授权</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">triggerAuth</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">triggerAuth</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="p">};</span>
 
-const triggerAuth = () =&gt; {
-  const url = new URL(window.location.href);
-  url.searchParams.delete(&quot;code&quot;);
-  url.searchParams.delete(&quot;state&quot;);
-  const redirect = encodeURIComponent(url.toString());
-  window.location.href =
-    `https://open.weixin.qq.com/connect/oauth2/authorize` +
-    `?appid=${WECHAT_APP_ID}` +
-    `&amp;redirect_uri=${redirect}` +
-    `&amp;response_type=code` +
-    `&amp;scope=snsapi_base` +
-    `&amp;state=weixin_h5#wechat_redirect`;
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">triggerAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">redirect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="sb">`https://open.weixin.qq.com/connect/oauth2/authorize`</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="sb">`?appid=</span><span class="si">${</span><span class="nx">WECHAT_APP_ID</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="sb">`&amp;redirect_uri=</span><span class="si">${</span><span class="nx">redirect</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="sb">`&amp;response_type=code`</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="sb">`&amp;scope=snsapi_base`</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="sb">`&amp;state=weixin_h5#wechat_redirect`</span><span class="p">;</span>
+<span class="p">};</span>
 
-const waitForWeixinBridge = () =&gt;
-  new Promise((resolve) =&gt; {
-    if (window.WeixinJSBridge) {
-      resolve(window.WeixinJSBridge);
-      return;
-    }
-    const onReady = () =&gt; {
-      document.removeEventListener(&quot;WeixinJSBridgeReady&quot;, onReady);
-      resolve(window.WeixinJSBridge);
-    };
-    document.addEventListener(&quot;WeixinJSBridgeReady&quot;, onReady, false);
-  });
+<span class="kd">const</span><span class="w"> </span><span class="nx">waitForWeixinBridge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">WeixinJSBridge</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">resolve</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">WeixinJSBridge</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">onReady</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb">document</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s2">&quot;WeixinJSBridgeReady&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">onReady</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">resolve</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">WeixinJSBridge</span><span class="p">);</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;WeixinJSBridgeReady&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">onReady</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 
-const normalizePayParams = (payload) =&gt; {
-  if (!payload) {
-    return null;
-  }
-  if (
-    !payload.appId ||
-    !payload.timeStamp ||
-    !payload.nonceStr ||
-    !payload.prepayId ||
-    !payload.signType ||
-    !payload.paySign
-  ) {
-    return null;
-  }
-  return {
-    appId: payload.appId,
-    timeStamp: String(payload.timeStamp),
-    nonceStr: payload.nonceStr,
-    package: `prepay_id=${payload.prepayId}`,
-    signType: payload.signType,
-    paySign: payload.paySign,
-  };
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">normalizePayParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">payload</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">!</span><span class="nx">payload</span><span class="p">.</span><span class="nx">appId</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="o">!</span><span class="nx">payload</span><span class="p">.</span><span class="nx">timeStamp</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="o">!</span><span class="nx">payload</span><span class="p">.</span><span class="nx">nonceStr</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="o">!</span><span class="nx">payload</span><span class="p">.</span><span class="nx">prepayId</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="o">!</span><span class="nx">payload</span><span class="p">.</span><span class="nx">signType</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="o">!</span><span class="nx">payload</span><span class="p">.</span><span class="nx">paySign</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="nx">payload</span><span class="p">.</span><span class="nx">appId</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timeStamp</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">timeStamp</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">nonceStr</span><span class="o">:</span><span class="w"> </span><span class="nx">payload</span><span class="p">.</span><span class="nx">nonceStr</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">package</span><span class="o">:</span><span class="w"> </span><span class="sb">`prepay_id=</span><span class="si">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">prepayId</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">signType</span><span class="o">:</span><span class="w"> </span><span class="nx">payload</span><span class="p">.</span><span class="nx">signType</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">paySign</span><span class="o">:</span><span class="w"> </span><span class="nx">payload</span><span class="p">.</span><span class="nx">paySign</span><span class="p">,</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
 
-const invokeWeChatPay = async (payParams) =&gt; {
-  const bridge = await waitForWeixinBridge();
-  return new Promise((resolve, reject) =&gt; {
-    bridge.invoke(&quot;getBrandWCPayRequest&quot;, payParams, (res) =&gt; {
-      const errMsg = res?.err_msg || &quot;&quot;;
-      if (errMsg.includes(&quot;ok&quot;)) {
-        resolve(res);
-        return;
-      }
-      if (errMsg.includes(&quot;cancel&quot;)) {
-        reject(new Error(&quot;cancel&quot;));
-        return;
-      }
-      reject(new Error(errMsg || &quot;pay failed&quot;));
-    });
-  });
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">invokeWeChatPay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">payParams</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">bridge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">waitForWeixinBridge</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">bridge</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&quot;getBrandWCPayRequest&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">payParams</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">errMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="o">?</span><span class="p">.</span><span class="nx">err_msg</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">errMsg</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;ok&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">errMsg</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;cancel&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;cancel&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">errMsg</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;pay failed&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
 
-const stopPayQueryTimer = () =&gt; {
-  if (payQueryTimer) {
-    clearInterval(payQueryTimer);
-    payQueryTimer = null;
-  }
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">stopPayQueryTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">payQueryTimer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">payQueryTimer</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">payQueryTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
 
-const fillActivationCode = (data) =&gt; {
-  if (data?.remark) {
-    registerForm.value.activationCode = data.remark;
-  }
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">fillActivationCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">remark</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">registerForm</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">activationCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">remark</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
 
-const checkPayResult = async (orderSn, silent = false) =&gt; {
-  if (!orderSn) {
-    return false;
-  }
-  const res = await queryOrderStu({ orderSn });
-  const payload = res.data || {};
-  if (payload.orderStu) {
-    stopPayQueryTimer();
-    fillActivationCode(payload);
-    if (!silent) {
-      proxy.$message.success(&quot;支付成功，激活码已自动填充&quot;);
-    }
-    return true;
-  }
-  return false;
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">checkPayResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">orderSn</span><span class="p">,</span><span class="w"> </span><span class="nx">silent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">orderSn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">queryOrderStu</span><span class="p">({</span><span class="w"> </span><span class="nx">orderSn</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">orderStu</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">stopPayQueryTimer</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">fillActivationCode</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">silent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="s2">&quot;支付成功，激活码已自动填充&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span>
 
-const startPayQueryTimer = (orderSn) =&gt; {
-  stopPayQueryTimer();
-  let currentCount = 0;
-  payQueryTimer = setInterval(async () =&gt; {
-    currentCount += 1;
-    if (currentCount &gt; 30) {
-      stopPayQueryTimer();
-      proxy.$message.warning(&quot;支付结果查询超时，请稍后手动查询密钥&quot;);
-      return;
-    }
-    try {
-      await checkPayResult(orderSn);
-    } catch (error) {
-      if (currentCount &gt;= 30) {
-        stopPayQueryTimer();
-      }
-    }
-  }, 3000);
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">startPayQueryTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">orderSn</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">stopPayQueryTimer</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">currentCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">payQueryTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">currentCount</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">30</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">stopPayQueryTimer</span><span class="p">();</span>
+<span class="w">      </span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span><span class="s2">&quot;支付结果查询超时，请稍后手动查询密钥&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">checkPayResult</span><span class="p">(</span><span class="nx">orderSn</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">30</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">stopPayQueryTimer</span><span class="p">();</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+<span class="p">};</span>
 
-const requestH5PayOrder = async (openid) =&gt; {
-  const res = await buyKey({
-    mobile: registerForm.value.username,
-    bizType: &quot;ACT_CODE&quot;,
-    openid,
-    payType: &quot;JSAPI&quot;,
-    source: &quot;H5_weixin&quot;,
-  });
-  return res?.data || {};
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">requestH5PayOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">openid</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">buyKey</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">mobile</span><span class="o">:</span><span class="w"> </span><span class="nx">registerForm</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">bizType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACT_CODE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">openid</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;JSAPI&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;H5_weixin&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="o">?</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{};</span>
+<span class="p">};</span>
 
-const handleBuyH5Key = async () =&gt; {
-  if (!checkBuyKey()) {
-    return;
-  }
-  if (!isWeixin()) {
-    proxy.$modal.msgWarning(&quot;H5支付请在微信内打开当前页面&quot;);
-    return;
-  }
-  h5PayLoading.value = true;
-  try {
-    let openid = currentOpenid.value;
-    if (!openid) {
-      await initAuth();
-      return;
-    }
-    const orderInfo = await requestH5PayOrder(openid);
-    const orderSn = orderInfo.orderSn;
-    if (!orderSn) {
-      throw new Error(&quot;missing orderSn&quot;);
-    }
-    startPayQueryTimer(orderSn);
+<span class="kd">const</span><span class="w"> </span><span class="nx">handleBuyH5Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">checkBuyKey</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isWeixin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$modal</span><span class="p">.</span><span class="nx">msgWarning</span><span class="p">(</span><span class="s2">&quot;H5支付请在微信内打开当前页面&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">h5PayLoading</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">openid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">currentOpenid</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">openid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">initAuth</span><span class="p">();</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">orderInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">requestH5PayOrder</span><span class="p">(</span><span class="nx">openid</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">orderSn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">orderInfo</span><span class="p">.</span><span class="nx">orderSn</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">orderSn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;missing orderSn&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">startPayQueryTimer</span><span class="p">(</span><span class="nx">orderSn</span><span class="p">);</span>
 
-    const payParams = normalizePayParams(orderInfo);
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">payParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">normalizePayParams</span><span class="p">(</span><span class="nx">orderInfo</span><span class="p">);</span>
 
-    if (payParams) {
-      await invokeWeChatPay(payParams);
-      await checkPayResult(orderSn);
-      return;
-    }
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">payParams</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">invokeWeChatPay</span><span class="p">(</span><span class="nx">payParams</span><span class="p">);</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">checkPayResult</span><span class="p">(</span><span class="nx">orderSn</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    if (orderInfo.codeUrl) {
-      window.location.href = orderInfo.codeUrl;
-      return;
-    }
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">orderInfo</span><span class="p">.</span><span class="nx">codeUrl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">orderInfo</span><span class="p">.</span><span class="nx">codeUrl</span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    proxy.$message.warning(&quot;订单已创建，请等待支付参数返回&quot;);
-  } catch (error) {
-    if (error?.message === &quot;cancel&quot;) {
-      proxy.$message.warning(&quot;已取消支付&quot;);
-    } else {
-      proxy.$message.error(&quot;发起支付失败，请稍后重试&quot;);
-    }
-    stopPayQueryTimer();
-  } finally {
-    h5PayLoading.value = false;
-  }
-};
+<span class="w">    </span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span><span class="s2">&quot;订单已创建，请等待支付参数返回&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="o">?</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;cancel&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span><span class="s2">&quot;已取消支付&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;发起支付失败，请稍后重试&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">stopPayQueryTimer</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">h5PayLoading</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
 
-onMounted(() =&gt; {
-  // 微信环境 且不是 locahost 才执行
-  if (isWeixin() &amp;&amp; !location.host.includes(&quot;localhost&quot;)) {
-    initAuth();
-  }
-});
-</code></pre>
+<span class="nx">onMounted</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 微信环境 且不是 locahost 才执行</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isWeixin</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">initAuth</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 <h2 id="_1">参考</h2>
 <ol>
 <li><a href="https://pay.weixin.qq.com/doc/v3/merchant/4012791869">Q：JSAPI调起支付报错"当前页面的URL未注册"</a></li>

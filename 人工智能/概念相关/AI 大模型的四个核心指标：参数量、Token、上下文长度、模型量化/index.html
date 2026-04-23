@@ -2799,10 +2799,10 @@
 <p>都有不同规模的参数版本。</p>
 <h3 id="_1">参数量越大越好吗？</h3>
 <p>一般来说：</p>
-<pre><code class="language-shell">参数越多
-→ 模型知识容量越大
-→ 推理能力越强
-</code></pre>
+<div class="highlight"><pre><span></span><code>参数越多
+→<span class="w"> </span>模型知识容量越大
+→<span class="w"> </span>推理能力越强
+</code></pre></div>
 <p>但同时也会带来两个问题：</p>
 <p><strong>1 计算成本更高</strong></p>
 <p>参数越多，每次推理计算量越大。</p>
@@ -2845,24 +2845,24 @@
 <p>Token 是一种 <strong>文本切分后的最小单位</strong>。</p>
 <p>举个例子：</p>
 <p>句子：</p>
-<pre><code class="language-shell">I love artificial intelligence
-</code></pre>
+<div class="highlight"><pre><span></span><code>I<span class="w"> </span>love<span class="w"> </span>artificial<span class="w"> </span>intelligence
+</code></pre></div>
 <p>可能被拆分为：</p>
-<pre><code class="language-shell">I
+<div class="highlight"><pre><span></span><code>I
 love
 artificial
 intelligence
-</code></pre>
+</code></pre></div>
 <p>每个都是一个 Token。</p>
 <p>而中文通常会被拆分成：</p>
-<pre><code class="language-shell">我
+<div class="highlight"><pre><span></span><code>我
 喜
 欢
 人
 工
 智
 能
-</code></pre>
+</code></pre></div>
 <p>但在实际模型中，Token 可能是：</p>
 <ul>
 <li>单词</li>
@@ -2871,18 +2871,18 @@ intelligence
 <li>子词</li>
 </ul>
 <p>例如：</p>
-<pre><code class="language-shell">ChatGPT
-</code></pre>
+<div class="highlight"><pre><span></span><code>ChatGPT
+</code></pre></div>
 <p>可能拆分为：</p>
-<pre><code class="language-shell">Chat
+<div class="highlight"><pre><span></span><code>Chat
 G
 PT
-</code></pre>
+</code></pre></div>
 <h3 id="token">Token 与费用</h3>
 <p>很多 AI 服务都是按 Token 收费的。</p>
 <p>原因是：</p>
-<pre><code class="language-shell">Token 数量 ≈ 模型计算量
-</code></pre>
+<div class="highlight"><pre><span></span><code>Token<span class="w"> </span>数量<span class="w"> </span>≈<span class="w"> </span>模型计算量
+</code></pre></div>
 <p>Token 越多：</p>
 <ul>
 <li>计算时间越长</li>
@@ -2894,23 +2894,23 @@ PT
 <p><strong>模型在一次对话中能够记住的最大 Token 数量。</strong></p>
 <p>例如：</p>
 <p>如果模型上下文是：</p>
-<pre><code class="language-shell">8K Token
-</code></pre>
+<div class="highlight"><pre><span></span><code>8K<span class="w"> </span>Token
+</code></pre></div>
 <p>那就意味着：</p>
-<pre><code class="language-shell">模型最多记住约 8000 Token
-</code></pre>
+<div class="highlight"><pre><span></span><code>模型最多记住约<span class="w"> </span><span class="m">8000</span><span class="w"> </span>Token
+</code></pre></div>
 <p>超过这个长度：</p>
-<pre><code class="language-shell">旧内容会被丢弃
-</code></pre>
+<div class="highlight"><pre><span></span><code>旧内容会被丢弃
+</code></pre></div>
 <h3 id="_2">为什么上下文很重要？</h3>
 <p>因为它决定了模型的 <strong>记忆能力</strong>。</p>
 <p>举个例子：</p>
 <p>假设你在让 AI 阅读一篇文章：</p>
-<pre><code class="language-shell">10万字
-</code></pre>
+<div class="highlight"><pre><span></span><code>10万字
+</code></pre></div>
 <p>如果模型上下文只有：</p>
-<pre><code class="language-shell">8K Token
-</code></pre>
+<div class="highlight"><pre><span></span><code>8K<span class="w"> </span>Token
+</code></pre></div>
 <p>那模型一次只能看到很小一部分内容。</p>
 <p>而一些新模型上下文非常长，例如：</p>
 <ul>
@@ -2918,9 +2918,9 @@ PT
 <li>GPT-4</li>
 </ul>
 <p>已经可以支持：</p>
-<pre><code class="language-shell">100K
-甚至 200K Token
-</code></pre>
+<div class="highlight"><pre><span></span><code>100K
+甚至<span class="w"> </span>200K<span class="w"> </span>Token
+</code></pre></div>
 <p>这意味着模型可以：</p>
 <ul>
 <li>阅读整本书</li>
@@ -2931,22 +2931,22 @@ PT
 <h1 id="quantization">四、模型量化（Quantization）</h1>
 <p>模型量化是一种 <strong>降低模型体积和显存占用的技术</strong>。</p>
 <p>在原始模型中，参数通常使用：</p>
-<pre><code class="language-shell">FP32
-</code></pre>
+<div class="highlight"><pre><span></span><code>FP32
+</code></pre></div>
 <p>或：</p>
-<pre><code class="language-shell">FP16
-</code></pre>
+<div class="highlight"><pre><span></span><code>FP16
+</code></pre></div>
 <p>表示。</p>
 <p>例如：</p>
-<pre><code class="language-shell">FP16 = 16bit
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">FP16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>16bit
+</code></pre></div>
 <p>如果模型有：</p>
-<pre><code class="language-shell">70亿参数
-</code></pre>
+<div class="highlight"><pre><span></span><code>70亿参数
+</code></pre></div>
 <p>那显存需求就会很大。</p>
 <p>量化技术的思路是：</p>
-<pre><code class="language-shell">降低参数精度
-</code></pre>
+<div class="highlight"><pre><span></span><code>降低参数精度
+</code></pre></div>
 <p>例如：</p>
 <table>
 <thead>
@@ -3017,37 +3017,37 @@ PT
 <h1 id="_4">五、四个指标之间的关系</h1>
 <p>这四个概念其实是紧密关联的。</p>
 <p>可以这样理解：</p>
-<pre><code class="language-shell">参数量
+<div class="highlight"><pre><span></span><code>参数量
 决定模型能力
-</code></pre>
-<pre><code class="language-shell">Token
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Token
 决定计算量
-</code></pre>
-<pre><code class="language-shell">上下文长度
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>上下文长度
 决定模型记忆能力
-</code></pre>
-<pre><code class="language-shell">量化
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>量化
 决定模型是否能在普通电脑运行
-</code></pre>
+</code></pre></div>
 <p>它们共同决定：</p>
-<pre><code class="language-shell">模型性能
+<div class="highlight"><pre><span></span><code>模型性能
 运行成本
 硬件需求
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="_5">六、一个实际例子</h1>
 <p>假设有一个模型：</p>
-<pre><code class="language-shell">8B 参数
-</code></pre>
+<div class="highlight"><pre><span></span><code>8B<span class="w"> </span>参数
+</code></pre></div>
 <p>上下文：</p>
-<pre><code class="language-shell">32K Token
-</code></pre>
+<div class="highlight"><pre><span></span><code>32K<span class="w"> </span>Token
+</code></pre></div>
 <p>如果使用：</p>
-<pre><code class="language-shell">INT4 量化
-</code></pre>
+<div class="highlight"><pre><span></span><code>INT4<span class="w"> </span>量化
+</code></pre></div>
 <p>那它可能只需要：</p>
-<pre><code class="language-shell">6GB ~ 8GB 显存
-</code></pre>
+<div class="highlight"><pre><span></span><code>6GB<span class="w"> </span>~<span class="w"> </span>8GB<span class="w"> </span>显存
+</code></pre></div>
 <p>这意味着：</p>
 <p>普通电脑也可以运行。</p>
 <p>这也是近年来 <strong>本地 AI 应用快速发展的原因之一</strong>。</p>
@@ -3081,16 +3081,16 @@ PT
 </tbody>
 </table>
 <p>可以用一句话总结：</p>
-<pre><code class="language-shell">参数量决定模型有多聪明
+<div class="highlight"><pre><span></span><code>参数量决定模型有多聪明
 Token决定计算成本
 上下文决定记忆长度
 量化决定电脑能不能跑
-</code></pre>
+</code></pre></div>
 <p>当你看到一个模型描述时，例如：</p>
-<pre><code class="language-shell">8B 参数
-128K Context
+<div class="highlight"><pre><span></span><code>8B<span class="w"> </span>参数
+128K<span class="w"> </span>Context
 INT4
-</code></pre>
+</code></pre></div>
 <p>基本就能判断：</p>
 <ul>
 <li>模型规模</li>

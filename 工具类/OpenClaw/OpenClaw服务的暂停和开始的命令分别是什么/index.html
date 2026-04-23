@@ -2897,36 +2897,36 @@
 <hr />
 <h2 id="1">1️⃣ 启动服务（开始）</h2>
 <h3 id="_1">标准启动</h3>
-<pre><code class="language-bash">openclaw gateway
-</code></pre>
+<div class="highlight"><pre><span></span><code>openclaw<span class="w"> </span>gateway
+</code></pre></div>
 <p>会在默认端口 <code>18789</code> 启动 WebSocket Gateway。</p>
 <h3 id="_2">如果端口被占用（强制启动）</h3>
-<pre><code class="language-bash">openclaw gateway --force
-</code></pre>
+<div class="highlight"><pre><span></span><code>openclaw<span class="w"> </span>gateway<span class="w"> </span>--force
+</code></pre></div>
 <ul>
 <li>会杀掉占用的端口并重新启动</li>
 <li>输出类似：</li>
 </ul>
-<pre><code>Gateway listening on ws://127.0.0.1:18789
-</code></pre>
+<div class="highlight"><pre><span></span><code>Gateway listening on ws://127.0.0.1:18789
+</code></pre></div>
 <hr />
 <h2 id="2">2️⃣ 暂停服务（停止）</h2>
 <h3 id="_3">通过命令行杀掉进程</h3>
-<pre><code class="language-bash">pkill -f openclaw
-</code></pre>
+<div class="highlight"><pre><span></span><code>pkill<span class="w"> </span>-f<span class="w"> </span>openclaw
+</code></pre></div>
 <ul>
 <li>会停止所有 OpenClaw CLI 启动的 Gateway 实例</li>
 <li>或者找到 PID 后手动：</li>
 </ul>
-<pre><code class="language-bash">ps aux | grep openclaw
-kill &lt;PID&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>openclaw
+<span class="nb">kill</span><span class="w"> </span>&lt;PID&gt;
+</code></pre></div>
 <h3 id="_4">注意</h3>
 <p>OpenClaw 没有单独的“pause/resume”命令，<strong>暂停等同于停止 Gateway 服务</strong>，再启动就是恢复服务。</p>
 <hr />
 <h2 id="3">3️⃣ 查看服务状态（可选）</h2>
-<pre><code class="language-bash">openclaw health
-</code></pre>
+<div class="highlight"><pre><span></span><code>openclaw<span class="w"> </span>health
+</code></pre></div>
 <ul>
 <li>会显示 Gateway 是否在运行</li>
 <li>包括端口、连接状态、最近消息等</li>

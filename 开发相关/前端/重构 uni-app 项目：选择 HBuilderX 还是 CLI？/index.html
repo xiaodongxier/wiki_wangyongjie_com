@@ -3154,12 +3154,12 @@
 <h2 id="1-hbuilderx">1. HBuilderX 创建项目</h2>
 <p>HBuilderX 是官方推出的 IDE，内置了 uni-app 的开发环境。</p>
 <p>典型流程：</p>
-<pre><code>下载 HBuilderX
+<div class="highlight"><pre><span></span><code>下载 HBuilderX
 ↓
 创建 uni-app 项目
 ↓
 运行到小程序
-</code></pre>
+</code></pre></div>
 <p>特点：</p>
 <ul>
 <li>内置编译器</li>
@@ -3171,19 +3171,19 @@
 <hr />
 <h2 id="2-cli">2. CLI 脚手架创建项目</h2>
 <p>另一种方式是使用官方 CLI 创建项目，例如：</p>
-<pre><code class="language-bash">npm create uni@latest
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>uni@latest
+</code></pre></div>
 <p>然后选择：</p>
-<pre><code>Vue3
+<div class="highlight"><pre><span></span><code>Vue3
 Vite
-</code></pre>
+</code></pre></div>
 <p>开发流程变为：</p>
-<pre><code>VSCode
+<div class="highlight"><pre><span></span><code>VSCode
 ↓
 Vite dev server
 ↓
 微信开发者工具
-</code></pre>
+</code></pre></div>
 <p>这里会使用到：</p>
 <ul>
 <li>Vite</li>
@@ -3202,31 +3202,31 @@ Vite dev server
 <li>调试工具</li>
 </ul>
 <p>开发者几乎不需要关心：</p>
-<pre><code>Node
+<div class="highlight"><pre><span></span><code>Node
 npm
 构建工具
 依赖管理
-</code></pre>
+</code></pre></div>
 <p>这对初学者非常友好。</p>
 <hr />
 <h2 id="2">2 插件市场安装方便</h2>
 <p>uni-app 有自己的插件市场：</p>
 <p>DCloud Plugin Market</p>
 <p>在 HBuilderX 中可以：</p>
-<pre><code>右键 → 安装插件
-</code></pre>
+<div class="highlight"><pre><span></span><code>右键 → 安装插件
+</code></pre></div>
 <p>插件会自动下载到：</p>
-<pre><code>uni_modules
-</code></pre>
+<div class="highlight"><pre><span></span><code>uni_modules
+</code></pre></div>
 <p>整个过程几乎是零配置。</p>
 <hr />
 <h2 id="3">3 打包流程简单</h2>
 <p>在 HBuilderX 中：</p>
-<pre><code>运行 → 运行到小程序
-</code></pre>
+<div class="highlight"><pre><span></span><code>运行 → 运行到小程序
+</code></pre></div>
 <p>或者：</p>
-<pre><code>发行 → 小程序
-</code></pre>
+<div class="highlight"><pre><span></span><code>发行 → 小程序
+</code></pre></div>
 <p>整个过程非常直观。</p>
 <hr />
 <h2 id="hbuilderx_1">三、HBuilderX 的问题</h2>
@@ -3234,38 +3234,38 @@ npm
 <h2 id="1_1">1 依赖管理不透明</h2>
 <p>HBuilderX 项目很多时候依赖由 IDE 管理。</p>
 <p>开发者难以控制：</p>
-<pre><code>依赖版本
+<div class="highlight"><pre><span></span><code>依赖版本
 构建工具版本
 插件版本
-</code></pre>
+</code></pre></div>
 <p>而 CLI 项目则是标准的前端工程：</p>
-<pre><code class="language-json">package.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="err">package.jso</span><span class="kc">n</span>
+</code></pre></div>
 <p>所有依赖都可控。</p>
 <hr />
 <h2 id="2_1">2 团队协作问题</h2>
 <p>在团队开发中，经常会出现：</p>
-<pre><code>manifest.json 冲突
+<div class="highlight"><pre><span></span><code>manifest.json 冲突
 插件版本不一致
 构建环境不同
-</code></pre>
+</code></pre></div>
 <p>这些问题在 HBuilderX 项目中比较常见。</p>
 <p>CLI 项目则可以通过：</p>
-<pre><code>package.json
+<div class="highlight"><pre><span></span><code>package.json
 pnpm-lock.yaml
-</code></pre>
+</code></pre></div>
 <p>保证依赖一致。</p>
 <hr />
 <h2 id="3-cicd">3 CI/CD 不方便</h2>
 <p>现代项目通常需要：</p>
-<pre><code>自动构建
+<div class="highlight"><pre><span></span><code>自动构建
 自动部署
 自动测试
-</code></pre>
+</code></pre></div>
 <p>CI 环境一般只有命令行环境。</p>
 <p>CLI 项目可以直接执行：</p>
-<pre><code class="language-bash">pnpm build
-</code></pre>
+<div class="highlight"><pre><span></span><code>pnpm<span class="w"> </span>build
+</code></pre></div>
 <p>而 HBuilderX 项目通常依赖 IDE。</p>
 <hr />
 <h2 id="cli">四、CLI 的优势</h2>
@@ -3291,11 +3291,11 @@ pnpm-lock.yaml
 <hr />
 <h2 id="3_1">3 更符合前端开发习惯</h2>
 <p>对于前端开发者来说：</p>
-<pre><code>VSCode
+<div class="highlight"><pre><span></span><code>VSCode
 npm
 pnpm
 Vite
-</code></pre>
+</code></pre></div>
 <p>是非常熟悉的开发环境。</p>
 <p>CLI 项目不会引入额外的 IDE 依赖。</p>
 <hr />
@@ -3307,8 +3307,8 @@ Vite
 <p>答案是：</p>
 <p><strong>绝大多数插件都可以使用。</strong></p>
 <p>如果插件结构是：</p>
-<pre><code>uni_modules
-</code></pre>
+<div class="highlight"><pre><span></span><code>uni_modules
+</code></pre></div>
 <p>只需要复制到项目中即可。</p>
 <p>CLI 完全支持这种结构。</p>
 <p>只有少数旧插件依赖 HBuilderX 编译器，才可能无法使用。</p>
@@ -3316,8 +3316,8 @@ Vite
 <h2 id="_1">六、企业项目如何选择？</h2>
 <p>如果只是做 <strong>个人项目或小型项目</strong>：</p>
 <p>推荐：</p>
-<pre><code>HBuilderX
-</code></pre>
+<div class="highlight"><pre><span></span><code>HBuilderX
+</code></pre></div>
 <p>原因是：</p>
 <ul>
 <li>快速</li>
@@ -3326,22 +3326,22 @@ Vite
 </ul>
 <p>但如果是 <strong>长期维护的企业项目</strong>：</p>
 <p>更推荐：</p>
-<pre><code>uni-app CLI
-</code></pre>
+<div class="highlight"><pre><span></span><code>uni-app CLI
+</code></pre></div>
 <p>原因包括：</p>
-<pre><code>工程化能力更强
+<div class="highlight"><pre><span></span><code>工程化能力更强
 团队协作更稳定
 CI/CD 更容易实现
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="_2">七、项目重构时的推荐技术栈</h2>
 <p>如果准备重构 uni-app 项目，可以考虑升级到现代技术栈：</p>
-<pre><code>uni-app CLI
+<div class="highlight"><pre><span></span><code>uni-app CLI
 Vue3
 Vite
 Pinia
 TypeScript
-</code></pre>
+</code></pre></div>
 <p>这样的组合：</p>
 <ul>
 <li>开发体验更好</li>
@@ -3354,14 +3354,14 @@ TypeScript
 <p>在 uni-app 项目开发中：</p>
 <p>HBuilderX 和 CLI 都是官方支持的方案，但定位并不相同。</p>
 <p>简单来说：</p>
-<pre><code>HBuilderX 更适合新手或快速开发
+<div class="highlight"><pre><span></span><code>HBuilderX 更适合新手或快速开发
 CLI 更适合企业级项目
-</code></pre>
+</code></pre></div>
 <p>如果你的项目需要：</p>
-<pre><code>长期维护
+<div class="highlight"><pre><span></span><code>长期维护
 团队协作
 工程化管理
-</code></pre>
+</code></pre></div>
 <p>那么在项目重构时，使用 <strong>CLI 脚手架</strong>通常会是更合理的选择。</p>
 
 

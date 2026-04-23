@@ -2921,79 +2921,79 @@
 <blockquote>
 <p>使用参考 <a href="https://www.embedpdf.com/">官方文档</a> <a href="https://www.embedpdf.com/">https://www.embedpdf.com</a></p>
 </blockquote>
-<pre><code class="language-vue">&lt;script setup lang=&quot;ts&quot;&gt;
-import { PDFViewer } from &quot;@embedpdf/vue-pdf-viewer&quot;;
-const viewerConfig = {
-  src: &quot;https://snippet.embedpdf.com/ebook.pdf&quot;,
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;ts&quot;</span><span class="p">&gt;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PDFViewer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@embedpdf/vue-pdf-viewer&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">viewerConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">src</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://snippet.embedpdf.com/ebook.pdf&quot;</span><span class="p">,</span>
 
-  // ✅ 中文化（可选）
-  i18n: {
-    defaultLocale: &quot;zh-CN&quot;,
-  },
+<span class="w">  </span><span class="c1">// ✅ 中文化（可选）</span>
+<span class="w">  </span><span class="nx">i18n</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">defaultLocale</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zh-CN&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 
-  /**
-   * ✅ 核心：禁用所有功能分类（使用父级分类，一次性覆盖子项）
-   * 官方说明：category 是层级结构，禁用父级 = 禁用所有子级
-   */
-  disabledCategories: [
-    // 🔍 缩放相关（包含 zoom-in / zoom-out 等）
-    // &quot;zoom&quot;,
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * ✅ 核心：禁用所有功能分类（使用父级分类，一次性覆盖子项）</span>
+<span class="cm">   * 官方说明：category 是层级结构，禁用父级 = 禁用所有子级</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="nx">disabledCategories</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="c1">// 🔍 缩放相关（包含 zoom-in / zoom-out 等）</span>
+<span class="w">    </span><span class="c1">// &quot;zoom&quot;,</span>
 
-    // ✏️ 所有标注能力（高亮、下划线、画笔等）
-    &quot;annotation&quot;,
+<span class="w">    </span><span class="c1">// ✏️ 所有标注能力（高亮、下划线、画笔等）</span>
+<span class="w">    </span><span class="s2">&quot;annotation&quot;</span><span class="p">,</span>
 
-    // 🧾 表单填写（输入框、checkbox 等）
-    &quot;form&quot;,
+<span class="w">    </span><span class="c1">// 🧾 表单填写（输入框、checkbox 等）</span>
+<span class="w">    </span><span class="s2">&quot;form&quot;</span><span class="p">,</span>
 
-    // 🔺 图形绘制（矩形、圆、箭头等）
-    &quot;annotation-shape&quot;,
+<span class="w">    </span><span class="c1">// 🔺 图形绘制（矩形、圆、箭头等）</span>
+<span class="w">    </span><span class="s2">&quot;annotation-shape&quot;</span><span class="p">,</span>
 
-    // 🔒 涂黑/脱敏
-    &quot;redaction&quot;,
+<span class="w">    </span><span class="c1">// 🔒 涂黑/脱敏</span>
+<span class="w">    </span><span class="s2">&quot;redaction&quot;</span><span class="p">,</span>
 
-    // 📄 文档操作（打开/关闭/打印/下载/全屏等）
-    &quot;document&quot;,
+<span class="w">    </span><span class="c1">// 📄 文档操作（打开/关闭/打印/下载/全屏等）</span>
+<span class="w">    </span><span class="s2">&quot;document&quot;</span><span class="p">,</span>
 
-    // 📑 页面控制（翻页、滚动、旋转等）
-    // &quot;page&quot;,
+<span class="w">    </span><span class="c1">// 📑 页面控制（翻页、滚动、旋转等）</span>
+<span class="w">    </span><span class="c1">// &quot;page&quot;,</span>
 
-    // 📂 侧边栏（搜索、评论面板等）
-    &quot;panel&quot;,
+<span class="w">    </span><span class="c1">// 📂 侧边栏（搜索、评论面板等）</span>
+<span class="w">    </span><span class="s2">&quot;panel&quot;</span><span class="p">,</span>
 
-    // 🛠 工具（拖拽、选择指针等）
-    &quot;tools&quot;,
+<span class="w">    </span><span class="c1">// 🛠 工具（拖拽、选择指针等）</span>
+<span class="w">    </span><span class="s2">&quot;tools&quot;</span><span class="p">,</span>
 
-    // 🖱 文本选择（复制等）
-    &quot;selection&quot;,
+<span class="w">    </span><span class="c1">// 🖱 文本选择（复制等）</span>
+<span class="w">    </span><span class="s2">&quot;selection&quot;</span><span class="p">,</span>
 
-    // ↩️ 历史记录（撤销/重做）
-    &quot;history&quot;,
+<span class="w">    </span><span class="c1">// ↩️ 历史记录（撤销/重做）</span>
+<span class="w">    </span><span class="s2">&quot;history&quot;</span><span class="p">,</span>
 
-    // ➕ 插入内容（图片、签名、印章）
-    &quot;insert&quot;,
-  ],
+<span class="w">    </span><span class="c1">// ➕ 插入内容（图片、签名、印章）</span>
+<span class="w">    </span><span class="s2">&quot;insert&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
 
-  /**
-   * ✅ 双保险：直接关闭 UI 容器（防止某些版本 category 不生效）
-   */
-  ui: {
-    toolbar: false, // 顶部工具栏
-    sidebar: false, // 右侧面板
-  },
-};
-&lt;/script&gt;
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * ✅ 双保险：直接关闭 UI 容器（防止某些版本 category 不生效）</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="nx">ui</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">toolbar</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// 顶部工具栏</span>
+<span class="w">    </span><span class="nx">sidebar</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// 右侧面板</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">};</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-&lt;template&gt;
-  &lt;el-watermark :font=&quot;font&quot; content=&quot;num.num1&quot;&gt;
-    &lt;div style=&quot;height: 100vh&quot;&gt;
-      &lt;PDFViewer
-        :config=&quot;viewerConfig&quot;
-        :style=&quot;{ width: '100%', height: '100%' }&quot;
-      /&gt;
-    &lt;/div&gt;
-  &lt;/el-watermark&gt;
-&lt;/template&gt;
-</code></pre>
+<span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">el-watermark</span> <span class="p">:</span><span class="na">font</span><span class="o">=</span><span class="s">&quot;</span><span class="nx">font</span><span class="s">&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;num.num1&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 100vh&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">PDFViewer</span>
+        <span class="p">:</span><span class="na">config</span><span class="o">=</span><span class="s">&quot;</span><span class="nx">viewerConfig</span><span class="s">&quot;</span>
+        <span class="p">:</span><span class="na">style</span><span class="o">=</span><span class="s">&quot;</span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;100%&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;100%&#39;</span><span class="w"> </span><span class="p">}</span><span class="s">&quot;</span>
+      <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">el-watermark</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</code></pre></div>
 <h2 id="pdfjspdfjs-dist">pdf.js(pdfjs-dist)</h2>
 <blockquote>
 <p>使用参考 <a href="https://mozilla.github.io/pdf.js">官方文档</a> <a href="https://mozilla.github.io/pdf.js">https://mozilla.github.io/pdf.js</a></p>

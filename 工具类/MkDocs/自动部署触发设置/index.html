@@ -2949,111 +2949,111 @@
 <h2 id="commit-message">方案一（最简单推荐）：commit message 触发部署</h2>
 <p>只在 <strong>commit 信息包含某个关键字时才部署</strong>。</p>
 <p>例如：</p>
-<pre><code>deploy
-</code></pre>
+<div class="highlight"><pre><span></span><code>deploy
+</code></pre></div>
 <p>或者</p>
-<pre><code>[deploy]
-</code></pre>
+<div class="highlight"><pre><span></span><code>[deploy]
+</code></pre></div>
 <h2 id="workflow">修改 workflow</h2>
 <p>在 <code>jobs</code> 上增加条件：</p>
-<pre><code class="language-yaml">jobs:
-  build-and-deploy:
-    if: contains(github.event.head_commit.message, 'deploy')
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build-and-deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">contains(github.event.head_commit.message, &#39;deploy&#39;)</span>
+</code></pre></div>
 <p>完整示例：</p>
-<pre><code class="language-yaml">name: Build and Deploy
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and Deploy</span>
 
-on:
-  push:
-    branches:
-      - main
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 
-jobs:
-  build-and-deploy:
-    if: contains(github.event.head_commit.message, 'deploy')
-    runs-on: ubuntu-latest
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build-and-deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">contains(github.event.head_commit.message, &#39;deploy&#39;)</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout Repository</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
 
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Python</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span>
 
-      - name: Install Dependencies
-        run: pip install mkdocs-material
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span>
 
-      - name: Build
-        run: mkdocs build
-</code></pre>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs build</span>
+</code></pre></div>
 <hr />
 <h2 id="_1">使用方式</h2>
 <p>普通提交（不会部署）</p>
-<pre><code>git commit -m &quot;更新文章&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;更新文章&quot;
+</code></pre></div>
 <p>不会触发部署。</p>
 <hr />
 <p>需要部署时：</p>
-<pre><code>git commit -m &quot;更新文章 deploy&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;更新文章 deploy&quot;
+</code></pre></div>
 <p>或者</p>
-<pre><code>git commit -m &quot;[deploy] 发布博客&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;[deploy] 发布博客&quot;
+</code></pre></div>
 <p>就会执行 workflow。</p>
 <hr />
 <h2 id="commit-tag">方案二：使用 commit tag（更规范）</h2>
 <p>例如使用：</p>
-<pre><code>#deploy
-</code></pre>
+<div class="highlight"><pre><span></span><code>#deploy
+</code></pre></div>
 <p>workflow：</p>
-<pre><code class="language-yaml">if: contains(github.event.head_commit.message, '#deploy')
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">contains(github.event.head_commit.message, &#39;#deploy&#39;)</span>
+</code></pre></div>
 <p>commit：</p>
-<pre><code>git commit -m &quot;新增AI文章 #deploy&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;新增AI文章 #deploy&quot;
+</code></pre></div>
 <hr />
 <h2 id="_2">方案三（专业团队用）：手动触发</h2>
 <p>GitHub Actions 支持 <strong>手动运行</strong>。</p>
 <p>workflow：</p>
-<pre><code class="language-yaml">on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+</code></pre></div>
 <p>这样：</p>
 <ul>
 <li>push 不会部署</li>
 <li>在 GitHub 点击按钮部署</li>
 </ul>
 <p>入口：</p>
-<pre><code>GitHub
+<div class="highlight"><pre><span></span><code>GitHub
 → Actions
 → Build and Deploy
 → Run workflow
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="tag">方案四（博客常用）：tag 才部署 ⭐</h2>
 <p>很多博客是 <strong>打 tag 才部署</strong>。</p>
 <p>workflow：</p>
-<pre><code class="language-yaml">on:
-  push:
-    tags:
-      - v*
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v*</span>
+</code></pre></div>
 <p>例如：</p>
-<pre><code>git tag v1.0
+<div class="highlight"><pre><span></span><code>git tag v1.0
 git push origin v1.0
-</code></pre>
+</code></pre></div>
 <p>才会部署。</p>
 <hr />
 <h2 id="_3">我最推荐你的方案</h2>
 <p>对于 <strong>个人博客</strong>，最舒服的是：</p>
 <h3 id="commit-keyword">commit keyword 触发</h3>
-<pre><code>deploy
-</code></pre>
+<div class="highlight"><pre><span></span><code>deploy
+</code></pre></div>
 <p>理由：</p>
 <ul>
 <li>简单</li>
@@ -3061,23 +3061,23 @@ git push origin v1.0
 <li>push 就能控制</li>
 </ul>
 <p>例如：</p>
-<pre><code>git commit -m &quot;新增 AI Agent 文章&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;新增 AI Agent 文章&quot;
+</code></pre></div>
 <p>不会部署。</p>
 <p>需要发布：</p>
-<pre><code>git commit -m &quot;AI Agent 文章发布 deploy&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;AI Agent 文章发布 deploy&quot;
+</code></pre></div>
 <p>自动部署。</p>
 <hr />
 <h2 id="_4">再给你一个隐藏技巧（很多人不知道）</h2>
 <p>你也可以 <strong>阻止 CI 运行</strong>：</p>
-<pre><code>git commit -m &quot;更新文章 [skip ci]&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;更新文章 [skip ci]&quot;
+</code></pre></div>
 <p>GitHub Actions <strong>完全不会运行</strong>。</p>
 <hr />
 <h2 id="_5">推荐你的最终策略</h2>
 <p>我建议你这样：</p>
-<pre><code>普通提交
+<div class="highlight"><pre><span></span><code>普通提交
 git commit -m &quot;更新AI文章&quot;
 
 发布文章
@@ -3085,7 +3085,7 @@ git commit -m &quot;发布AI文章 deploy&quot;
 
 跳过CI
 git commit -m &quot;草稿 [skip ci]&quot;
-</code></pre>
+</code></pre></div>
 <p>非常舒服。</p>
 <hr />
 

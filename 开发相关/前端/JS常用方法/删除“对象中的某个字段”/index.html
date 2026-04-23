@@ -3015,19 +3015,19 @@
 <h2 id="_1">一、删除“对象中的某个字段”（推荐🔥）</h2>
 <p>👉 场景：数组里的每一项对象，去掉某个 key</p>
 <h3 id="1">方式1：解构删除（最优雅）</h3>
-<pre><code class="language-js">const list = [
-  { id: 1, name: &quot;A&quot;, age: 18 },
-  { id: 2, name: &quot;B&quot;, age: 20 },
-];
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">},</span>
+<span class="p">];</span>
 
-const newList = list.map(({ age, ...rest }) =&gt; rest);
-</code></pre>
+<span class="kd">const</span><span class="w"> </span><span class="nx">newList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="w"> </span><span class="nx">age</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">rest</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">rest</span><span class="p">);</span>
+</code></pre></div>
 <p>✅ 结果：</p>
-<pre><code class="language-js">[
-  { id: 1, name: &quot;A&quot; },
-  { id: 2, name: &quot;B&quot; },
-];
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">];</span>
+</code></pre></div>
 <p>👉 推荐原因：</p>
 <ul>
 <li>不修改原数据（符合 Vue 响应式）</li>
@@ -3035,11 +3035,11 @@ const newList = list.map(({ age, ...rest }) =&gt; rest);
 </ul>
 <hr />
 <h3 id="2delete-vue">方式2：delete（不推荐在 Vue 中直接用）</h3>
-<pre><code class="language-js">const newList = list.map((item) =&gt; {
-  delete item.age;
-  return item;
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="ow">delete</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">item</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>⚠️ 问题：</p>
 <ul>
 <li>会修改原对象（副作用）</li>
@@ -3048,39 +3048,39 @@ const newList = list.map(({ age, ...rest }) =&gt; rest);
 <hr />
 <h2 id="_2">二、删除“符合条件的整条数据”</h2>
 <p>👉 场景：删除某个 id 的对象</p>
-<pre><code class="language-js">const newList = list.filter((item) =&gt; item.id !== 1);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="_3">三、删除“多个字段”</h2>
-<pre><code class="language-js">const newList = list.map(({ age, name, ...rest }) =&gt; rest);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="w"> </span><span class="nx">age</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">rest</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">rest</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="_4">四、动态删除字段（字段名不固定🔥）</h2>
 <p>👉 这个你项目里很可能会用</p>
-<pre><code class="language-js">const removeKey = &quot;age&quot;;
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">removeKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;age&quot;</span><span class="p">;</span>
 
-const newList = list.map((item) =&gt; {
-  const { [removeKey]: _, ...rest } = item;
-  return rest;
-});
-</code></pre>
+<span class="kd">const</span><span class="w"> </span><span class="nx">newList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="nx">removeKey</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">rest</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">item</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">rest</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
 <hr />
 <h2 id="_5">五、只保留某些字段（反向思路🔥）</h2>
 <p>👉 比“删除”更安全（推荐）</p>
-<pre><code class="language-js">const newList = list.map((item) =&gt; ({
-  id: item.id,
-  name: item.name,
-}));
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+<span class="p">}));</span>
+</code></pre></div>
 <p>👉 或通用写法：</p>
-<pre><code class="language-js">const pick = (obj, keys) =&gt;
-  keys.reduce((acc, key) =&gt; {
-    acc[key] = obj[key];
-    return acc;
-  }, {});
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">pick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span><span class="w"> </span><span class="nx">keys</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="nx">keys</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">acc</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">acc</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">{});</span>
 
-const newList = list.map((item) =&gt; pick(item, [&quot;id&quot;, &quot;name&quot;]));
-</code></pre>
+<span class="kd">const</span><span class="w"> </span><span class="nx">newList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">pick</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]));</span>
+</code></pre></div>
 <hr />
 <h2 id="_6">六、你当前项目（小程序）建议用法</h2>
 <p>结合你现在：</p>
@@ -3091,12 +3091,12 @@ const newList = list.map((item) =&gt; pick(item, [&quot;id&quot;, &quot;name&quo
 </ul>
 <p>👉 最推荐这一类👇</p>
 <h4 id="_7">提交接口（只要部分字段）</h4>
-<pre><code class="language-js">const params = list.map(({ id, name }) =&gt; ({ id, name }));
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="p">}));</span>
+</code></pre></div>
 <hr />
 <h4 id="ui">去掉 UI 字段</h4>
-<pre><code class="language-js">const params = list.map(({ checked, disabled, ...rest }) =&gt; rest);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="w"> </span><span class="nx">checked</span><span class="p">,</span><span class="w"> </span><span class="nx">disabled</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">rest</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">rest</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="_8">总结（给你一个判断标准）</h2>
 <p>👉 如果你问“该用哪种”：</p>

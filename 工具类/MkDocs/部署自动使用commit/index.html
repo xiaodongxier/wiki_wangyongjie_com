@@ -2870,92 +2870,92 @@
 
 <h2 id="workflow">一、修改你的 workflow</h2>
 <p>把这一行：</p>
-<pre><code class="language-bash">git commit -m &quot;自动化部署完成&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;自动化部署完成&quot;</span>
+</code></pre></div>
 <p>改成：</p>
-<pre><code class="language-bash">git commit -m &quot;${{ github.event.head_commit.message }}&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">{ github.event.head_commit.message </span><span class="si">}</span><span class="s2">}&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="_1">修改后的关键部分</h2>
-<pre><code class="language-yaml">- name: Deploy to Blog Repository
-  run: |
-    git clone https://${{ secrets.GH_TOKEN_BLOG }}@github.com/baidu/wiki_wangyongjie_com.git wiki
-    cd wiki
-    git config --global user.email &quot;baidu@gmail.com&quot;
-    git config --global user.name &quot;baidu&quot;
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to Blog Repository</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">git clone https://${{ secrets.GH_TOKEN_BLOG }}@github.com/baidu/wiki_wangyongjie_com.git wiki</span>
+<span class="w">    </span><span class="no">cd wiki</span>
+<span class="w">    </span><span class="no">git config --global user.email &quot;baidu@gmail.com&quot;</span>
+<span class="w">    </span><span class="no">git config --global user.name &quot;baidu&quot;</span>
 
-    rm -rf ./*
-    cp -r ../site/* .
+<span class="w">    </span><span class="no">rm -rf ./*</span>
+<span class="w">    </span><span class="no">cp -r ../site/* .</span>
 
-    git add .
-    git commit -m &quot;${{ github.event.head_commit.message }}&quot;
-    git push
-</code></pre>
+<span class="w">    </span><span class="no">git add .</span>
+<span class="w">    </span><span class="no">git commit -m &quot;${{ github.event.head_commit.message }}&quot;</span>
+<span class="w">    </span><span class="no">git push</span>
+</code></pre></div>
 <hr />
 <h2 id="_2">二、效果是什么</h2>
 <p>假设你本地提交：</p>
-<pre><code>git commit -m &quot;新增 AI Agent 文章&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;新增 AI Agent 文章&quot;
+</code></pre></div>
 <p>部署仓库的 commit 就会变成：</p>
-<pre><code>新增 AI Agent 文章
-</code></pre>
+<div class="highlight"><pre><span></span><code>新增 AI Agent 文章
+</code></pre></div>
 <p>而不是：</p>
-<pre><code>自动化部署完成
-</code></pre>
+<div class="highlight"><pre><span></span><code>自动化部署完成
+</code></pre></div>
 <hr />
 <h2 id="commit-hash">三、再推荐一个更专业的写法（带 commit hash）</h2>
 <p>很多 CI 会这样写，方便追溯：</p>
-<pre><code class="language-bash">git commit -m &quot;${{ github.event.head_commit.message }} (auto deploy)&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">{ github.event.head_commit.message </span><span class="si">}</span><span class="s2">} (auto deploy)&quot;</span>
+</code></pre></div>
 <p>或者：</p>
-<pre><code class="language-bash">git commit -m &quot;${{ github.event.head_commit.message }} - ${{ github.sha }}&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">{ github.event.head_commit.message </span><span class="si">}</span><span class="s2">} - </span><span class="si">${</span><span class="p">{ github.sha </span><span class="si">}</span><span class="s2">}&quot;</span>
+</code></pre></div>
 <p>示例：</p>
-<pre><code>新增 AI Agent 文章 - 7f3c9b1
-</code></pre>
+<div class="highlight"><pre><span></span><code>新增 AI Agent 文章 - 7f3c9b1
+</code></pre></div>
 <hr />
 <h2 id="push-commit">四、如果 push 多个 commit 会怎样</h2>
 <p>注意：</p>
-<pre><code>github.event.head_commit.message
-</code></pre>
+<div class="highlight"><pre><span></span><code>github.event.head_commit.message
+</code></pre></div>
 <p>只会取 <strong>最后一个 commit</strong>。</p>
 <p>例如：</p>
-<pre><code>commit1
+<div class="highlight"><pre><span></span><code>commit1
 commit2
 commit3
 git push
-</code></pre>
+</code></pre></div>
 <p>部署 message 是：</p>
-<pre><code>commit3
-</code></pre>
+<div class="highlight"><pre><span></span><code>commit3
+</code></pre></div>
 <hr />
 <h2 id="_3">五、最推荐的博客写法</h2>
 <p>我一般建议：</p>
-<pre><code class="language-bash">git commit -m &quot;${{ github.event.head_commit.message }} [deploy]&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">{ github.event.head_commit.message </span><span class="si">}</span><span class="s2">} [deploy]&quot;</span>
+</code></pre></div>
 <p>部署仓库会显示：</p>
-<pre><code>新增 AI Agent 文章 [deploy]
-</code></pre>
+<div class="highlight"><pre><span></span><code>新增 AI Agent 文章 [deploy]
+</code></pre></div>
 <p>很清晰。</p>
 <hr />
 <h2 id="_4">六、再给你一个更高级的小技巧（很多人不知道）</h2>
 <p>你还可以把 <strong>作者也同步过去</strong>：</p>
-<pre><code class="language-bash">git commit \
-  --author=&quot;${{ github.event.head_commit.author.name }} &lt;${{ github.event.head_commit.author.email }}&gt;&quot; \
-  -m &quot;${{ github.event.head_commit.message }}&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--author<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">{ github.event.head_commit.author.name </span><span class="si">}</span><span class="s2">} &lt;</span><span class="si">${</span><span class="p">{ github.event.head_commit.author.email </span><span class="si">}</span><span class="s2">}&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">{ github.event.head_commit.message </span><span class="si">}</span><span class="s2">}&quot;</span>
+</code></pre></div>
 <p>这样部署仓库显示的作者也是：</p>
-<pre><code>JakeWang
-</code></pre>
+<div class="highlight"><pre><span></span><code>JakeWang
+</code></pre></div>
 <p>而不是 CI 机器人。</p>
 <hr />
 <p>✅ <strong>总结</strong></p>
 <p>把：</p>
-<pre><code>git commit -m &quot;自动化部署完成&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;自动化部署完成&quot;
+</code></pre></div>
 <p>改成：</p>
-<pre><code>git commit -m &quot;${{ github.event.head_commit.message }}&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git commit -m &quot;${{ github.event.head_commit.message }}&quot;
+</code></pre></div>
 <p>即可同步 commit message。</p>
 <hr />
 <p>如果你愿意，我可以顺便帮你 <strong>把这整套 GitHub Actions 改成更现代的写法（2026推荐版）</strong>，能解决几个你这份 workflow 里的潜在问题，比如：</p>

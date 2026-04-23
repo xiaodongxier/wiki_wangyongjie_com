@@ -2916,48 +2916,48 @@
 
 <h1 id="element-plus-import">Element Plus 图标：为什么有的需要 import，有的不需要？</h1>
 <h2 id="_1">先看两种常见的图标用法</h2>
-<pre><code class="language-html">&lt;!-- 写法一：作为 prop 传值 --&gt;
-&lt;el-button :icon=&quot;ArrowLeft&quot;&gt;返回&lt;/el-button&gt;
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 写法一：作为 prop 传值 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">el-button</span> <span class="na">:icon</span><span class="o">=</span><span class="s">&quot;ArrowLeft&quot;</span><span class="p">&gt;</span>返回<span class="p">&lt;/</span><span class="nt">el-button</span><span class="p">&gt;</span>
 
-&lt;!-- 写法二：作为子组件在 el-icon 容器内 --&gt;
-&lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt;
-</code></pre>
+<span class="cm">&lt;!-- 写法二：作为子组件在 el-icon 容器内 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">el-icon</span><span class="p">&gt;&lt;</span><span class="nt">Check</span> <span class="p">/&gt;&lt;/</span><span class="nt">el-icon</span><span class="p">&gt;</span>
+</code></pre></div>
 <p><strong>核心区别</strong>：<code>ArrowLeft</code> 作为对象传给 prop，<code>Check</code> 作为组件放进 el-icon 容器。</p>
 <hr />
 <h2 id="_2">根本原因：两种用法，组件解析机制不同</h2>
 <h3 id="iconarrowleft-prop">写法一：<code>:icon="ArrowLeft"</code> — prop 传组件对象</h3>
 <p>el-button 内部会直接<strong>使用 ArrowLeft 这个组件对象</strong>来渲染图标：</p>
-<pre><code class="language-js">// el-button 内部伪代码
-render() {
-  return h(Button, { icon: ArrowLeft })  // 直接用这个对象
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// el-button 内部伪代码</span>
+<span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">h</span><span class="p">(</span><span class="nx">Button</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="nx">ArrowLeft</span><span class="w"> </span><span class="p">})</span><span class="w">  </span><span class="c1">// 直接用这个对象</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>如果没 import，<code>ArrowLeft</code> 就是 <code>undefined</code>，按钮里什么都没有。</p>
 <blockquote>
 <p>:material-import-icon: <strong>必须 import</strong>，否则图标不显示。</p>
 </blockquote>
 <h3 id="el-iconcheck-el-icon">写法二：<code>&lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt;</code> — 动态组件容器解析</h3>
 <p>el-icon 是一个<strong>动态组件容器</strong>，它会从 Vue 的全局组件注册表里查找 <code>Check</code>：</p>
-<pre><code class="language-js">// el-icon 内部伪代码
-const iconName = 'Check'          // 从子组件名拿到
-const component = resolveComponent(iconName)  // 从全局注册表查找
-return h(component)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// el-icon 内部伪代码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">iconName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Check&#39;</span><span class="w">          </span><span class="c1">// 从子组件名拿到</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resolveComponent</span><span class="p">(</span><span class="nx">iconName</span><span class="p">)</span><span class="w">  </span><span class="c1">// 从全局注册表查找</span>
+<span class="k">return</span><span class="w"> </span><span class="nx">h</span><span class="p">(</span><span class="nx">component</span><span class="p">)</span>
+</code></pre></div>
 <p>如果全局注册表里有 <code>Check</code>，就能找到并渲染。</p>
 <hr />
 <h2 id="check-import">你们项目为什么 Check 可以不 import？</h2>
 <p>看全局注册代码（<code>src/components/SvgIcon/svgicon.js</code>）：</p>
-<pre><code class="language-js">import * as components from '@element-plus/icons-vue'
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">components</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@element-plus/icons-vue&#39;</span>
 
-export default {
-  install: (app) =&gt; {
-    for (const key in components) {
-      const componentConfig = components[key]
-      app.component(componentConfig.name, componentConfig)  // 全局注册
-    }
-  }
-}
-</code></pre>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">install</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">components</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">componentConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">components</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+<span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="nx">componentConfig</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">componentConfig</span><span class="p">)</span><span class="w">  </span><span class="c1">// 全局注册</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>项目启动时把所有 Element Plus 图标都全局注册了，所以 <code>Check</code> 出现在 <code>&lt;el-icon&gt;</code> 里时，el-icon 能从全局注册表找到它，<strong>不需要手动 import</strong>。</p>
 <hr />
 <h2 id="_3">总结对比</h2>
@@ -2994,38 +2994,34 @@ export default {
 <li><strong>容易漏掉导致 bug</strong>（哪天 el-icon 不从注册表找了，直接报错）</li>
 </ul>
 <p>推荐统一写法，<strong>不管哪种用法都提前 import</strong>：</p>
-<pre><code class="language-html">&lt;script setup&gt;
-import { Check, ArrowLeft } from &quot;@element-plus/icons-vue&quot;;
-&lt;/script&gt;
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span><span class="p">&gt;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Check</span><span class="p">,</span><span class="w"> </span><span class="nx">ArrowLeft</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@element-plus/icons-vue&quot;</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-&lt;template&gt;
-  &lt;!-- 两种写法都可以用，逻辑清晰 --&gt;
-  &lt;el-button :icon=&quot;ArrowLeft&quot;&gt;返回&lt;/el-button&gt;
-  &lt;el-icon&gt;&lt;Check /&gt;&lt;/el-icon&gt;
-&lt;/template&gt;
-</code></pre>
-<p>!!! tip "最佳实践"</p>
-<pre><code>**代码一致性 &gt; 代码量少**。宁可多写一行 import，也让代码意图更明确。
-
-如果项目图标用量大，建议把常用的图标抽取成一个公共文件集中管理：
-
-```js
-// src/constants/icons.js
-import { Check, ArrowLeft, Plus, Search } from "@element-plus/icons-vue";
-export { Check, ArrowLeft, Plus, Search };
-```
-
-然后在需要的组件里：
-
-```js
-import { Check, ArrowLeft } from "@/constants/icons.js";
-```
-</code></pre>
-<p>!!! note "Phasellus posuere in sem ut cursus"</p>
-<pre><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+<span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- 两种写法都可以用，逻辑清晰 --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">el-button</span> <span class="na">:icon</span><span class="o">=</span><span class="s">&quot;ArrowLeft&quot;</span><span class="p">&gt;</span>返回<span class="p">&lt;/</span><span class="nt">el-button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">el-icon</span><span class="p">&gt;&lt;</span><span class="nt">Check</span> <span class="p">/&gt;&lt;/</span><span class="nt">el-icon</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">最佳实践</p>
+<p><strong>代码一致性 &gt; 代码量少</strong>。宁可多写一行 import，也让代码意图更明确。</p>
+<p>如果项目图标用量大，建议把常用的图标抽取成一个公共文件集中管理：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// src/constants/icons.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Check</span><span class="p">,</span><span class="w"> </span><span class="nx">ArrowLeft</span><span class="p">,</span><span class="w"> </span><span class="nx">Plus</span><span class="p">,</span><span class="w"> </span><span class="nx">Search</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@element-plus/icons-vue&quot;</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Check</span><span class="p">,</span><span class="w"> </span><span class="nx">ArrowLeft</span><span class="p">,</span><span class="w"> </span><span class="nx">Plus</span><span class="p">,</span><span class="w"> </span><span class="nx">Search</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+<p>然后在需要的组件里：</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Check</span><span class="p">,</span><span class="w"> </span><span class="nx">ArrowLeft</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/constants/icons.js&quot;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Phasellus posuere in sem ut cursus</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
 nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-massa, nec semper lorem quam in massa.
-</code></pre>
+massa, nec semper lorem quam in massa.</p>
+</div>
 
 
 
