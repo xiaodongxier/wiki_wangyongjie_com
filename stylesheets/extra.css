@@ -79,6 +79,27 @@ kbd {
   font-weight: 400;
 }
 
+/* .md-banner {
+  background: rgba(234, 244, 255, 0.94);
+  border-bottom: 1px solid rgba(81, 132, 192, 0.18);
+}
+
+.migration-notice {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.38rem 0;
+  color: #527298;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.migration-notice__label {
+  color: #275d9e;
+  font-weight: 500;
+  white-space: nowrap;
+} */
+
 /* 两侧目录使用衬线字体，营造更接近书籍索引的阅读感。 */
 
 body.home-page {
@@ -406,6 +427,11 @@ body.home-page::after {
 }
 
 @media (max-width: 680px) {
+  .migration-notice {
+    justify-content: flex-start;
+    padding: 0.42rem 0;
+  }
+
   .home-shell {
     width: calc(100% - 1.2rem);
     padding-top: 0.4rem;
