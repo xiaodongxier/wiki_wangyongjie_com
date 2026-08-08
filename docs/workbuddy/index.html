@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F4E79" id="themeColor">
+<meta name="description" content="WorkBuddy 上手指南：5 分钟学会用这台全场景 AI 办公工作台，含能力全景、场景示例、安装图解、Prompt 速查卡与动手练习。">
+<title>WorkBuddy 上手指南 · 全场景 AI 办公工作台</title>
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<link rel="stylesheet" href="assets/css/style.css?v=20260807d">
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <button class="iconBtn menuBtn" id="menuBtn" aria-label="打开目录">☰</button>
+  <div class="brand"><span class="logo">W</span><span class="txt">WorkBuddy 培训手册</span></div>
+  <div class="spacer"></div>
+
+  <div class="search-wrap" id="searchWrap">
+    <input id="siteSearch" type="search" placeholder="搜索手册内容…" autocomplete="off" aria-label="搜索手册内容">
+    <button class="searchClose" id="searchClose" aria-label="关闭搜索">✕</button>
+    <div class="search-res" id="searchRes"></div>
+  </div>
+
+  <button class="iconBtn" id="searchBtn" aria-label="搜索">🔍</button>
+  <button class="iconBtn" id="themeBtn" aria-label="切换深浅色">🌙</button>
+</header>
+
+<div class="toc-backdrop" id="tocBackdrop"></div>
+
+<div class="layout">
+  <aside class="toc" id="toc">
+    <h4>目录</h4>
+    <a href="#why">写在前面</a>
+    <a href="#what">第一章　WorkBuddy 是什么</a>
+    <a href="#cap">第二章　核心能力全景</a>
+    <a href="#scene">第三章　真实使用场景</a>
+    <a href="#start">第四章　5 分钟上手</a>
+    <a href="#install">第五章　安装 WorkBuddy</a>
+    <a href="#ui">第六章　界面面板速览</a>
+    <a href="#adv">第七章　进阶技巧</a>
+    <a href="#pc">第八章　Prompt 速查卡</a>
+    <a href="#practice">第九章　动手练习</a>
+    <a href="#faq">第十章　常见问题</a>
+    <a href="#res">附录　学习资源</a>
+  </aside>
+
+  <main>
+    <!-- HERO -->
+    <div class="hero" id="top">
+      <span class="badge">腾讯出品 · 全场景 AI 办公工作台</span>
+      <h1>WorkBuddy 培训手册</h1>
+      <p>说出要求 → 执行任务 → 交付完整成果。它不是陪你聊天的参谋，而是替你把活干完的办公搭子。跟着这份手册，5 分钟上手，半小时用顺。</p>
+      <div class="acts">
+        <a class="btn btn-white" href="#start">5 分钟上手</a>
+        <a class="btn btn-line" href="#scene">看看能干什么</a>
+      </div>
+      <div class="meta">
+        <span>📖 阅读约 15 分钟</span>
+        <span>🧩 10 章 + 6 个练习</span>
+        <span>📱 手机可看</span>
+      </div>
+    </div>
+
+    <!-- 写在前面 -->
+    <section id="why">
+      <span class="chap-tag">写在前面</span>
+      <h2 class="chap">花 10 分钟，换回每天几小时</h2>
+      <p class="lead">我们每天都在和各种各样的工作打交道：写报告、理数据、做图、回邮件、赶方案……大多数 AI 工具能<strong>给建议</strong>，但真正把活干完，还得靠自己一步步操作。</p>
+      <p>WorkBuddy 不一样。它是腾讯出品的全场景 AI 办公工作台——你用一句话说清要求，它自己拆任务、调工具、读文件、出成品，最后把<strong>可验收的成果</strong>交到你手上。</p>
+
+      <h3 class="sub">建议的学习路径</h3>
+      <div class="grid cols3">
+        <div class="card"><h4><span class="ico">1</span>先看懂（3 分钟）</h4><p>第一、二章：它是什么、能干什么，建立整体印象。</p></div>
+        <div class="card"><h4><span class="ico">2</span>照着做（5 分钟）</h4><p>第三、四章：挑一个贴近你日常的例子，跑通第一个任务。</p></div>
+        <div class="card"><h4><span class="ico">3</span>用出花（随时回看）</h4><p>第五至七章：进阶玩法、Prompt 模板，配合练习巩固。</p></div>
+      </div>
+
+      <div class="callout info"><span class="cico">💡</span><div><b>一句话记住它：</b>传统 AI 是“陪你聊天的参谋”，WorkBuddy 是“替你把活干完的搭子”。</div></div>
+    </section>
+
+    <!-- 第一章 -->
+    <section id="what">
+      <span class="chap-tag">第一章</span>
+      <h2 class="chap">WorkBuddy 是什么</h2>
+
+      <h3 class="sub">1.1 一句话定位</h3>
+      <p>WorkBuddy 是腾讯出品的全场景 AI 办公工作台。说出要求、开始执行任务、交付完整成果，并完美连接腾讯办公生态。</p>
+
+      <h3 class="sub">1.2 它和普通 AI 聊天的核心区别</h3>
+      <p>这是最该讲清楚的一点，直接决定了它对你有没有用。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="width:50%">普通 AI 对话</th><th>WorkBuddy</th></tr></thead>
+          <tbody>
+            <tr><td>只能对话，提供建议</td><td>能够实际执行任务，直接产出文件 / 结果</td></tr>
+            <tr><td>需要你手动操作文件</td><td>自动操作你授权的本地文件与系统</td></tr>
+            <tr><td>适合单步骤简单任务</td><td>胜任多步骤、跨工具的复杂任务</td></tr>
+            <tr><td>输出一段文字回复</td><td>交付可验收的成品（文档 / 图表 / 网页 / 视频…）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint">← 表格可左右滑动查看 →</p>
+
+      <h3 class="sub">1.3 三种工作模式，对应三种干活姿态</h3>
+      <div class="grid cols3">
+        <div class="card mode ask"><span class="tag">问一问 Ask</span><h4>只聊不动</h4><p>仅问答与信息查看，不修改任何文件。适合了解内容、确认需求。</p></div>
+        <div class="card mode craft"><span class="tag">做一做 Craft</span><h4>你只管说，我直接干</h4><p>直接执行任务并修改文件。适合文档生成、表格处理、文件整理。</p></div>
+        <div class="card mode plan"><span class="tag">想一想 Plan</span><h4>先想后做</h4><p>先生成执行计划，确认后再操作。适合多步骤、需审阅改动范围的任务。</p></div>
+      </div>
+      <div class="callout tip"><span class="cico">✅</span><div><b>怎么选？</b>官方建议<b>首次使用优先选 Ask</b>，熟悉后再按任务复杂度切到 Plan 或 Craft。模式在对话框里随时可切换，具体位置见 <a href="#ui">第六章 界面面板速览</a>。</div></div>
+    </section>
+
+    <!-- 第二章 -->
+    <section id="cap">
+      <span class="chap-tag">第二章</span>
+      <h2 class="chap">核心能力全景</h2>
+      <p class="lead">WorkBuddy 把多种 AI 能力收进一个工作台。下面这张“能力地图”是它的主要本领，后面章节会结合场景逐一展开。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="width:34%">能力</th><th>能帮你做什么</th></tr></thead>
+          <tbody>
+            <tr><td>1. 对话与写作</td><td>写周报、纪要、方案、邮件、技术文档；联网检索、核对事实、润色改写。</td></tr>
+            <tr><td>2. 数据分析与可视化</td><td>上传 Excel / CSV，自动清洗、统计、画图、出结论，支持中文行情配色。</td></tr>
+            <tr><td>3. 构建网页 / 应用 / 工具</td><td>一句话生成落地页、小工具、交互原型，并能本地预览、部署上线。</td></tr>
+            <tr><td>4. 多模态生成</td><td>文生图、图生图、文生视频、文生 3D 模型，做海报、特效、素材。</td></tr>
+            <tr><td>5. 文件与系统操作</td><td>读取授权文件夹，批量整理、重命名、格式转换、跨文件处理。</td></tr>
+            <tr><td>6. 专家中心</td><td>100+ 领域专家（法律、金融、医疗、代码等），一键发起专业对话。</td></tr>
+            <tr><td>7. 自动化</td><td>设定“每天 / 每周”定时任务，让 AI 自动跑日报、监控、提醒。</td></tr>
+            <tr><td>8. 连接器与技能市场</td><td>接入腾讯文档、邮箱、网盘、地图等常用服务；安装技能扩展新能力。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint">← 表格可左右滑动查看 →</p>
+      <div class="callout warn"><span class="cico">🧭</span><div><b>小结：</b>前台是“一句话对话”，后台是“调工具、读文件、出成品”的能力组合。你不需要记命令，只要把目标说清楚。</div></div>
+    </section>
+
+    <!-- 第三章 -->
+    <section id="scene">
+      <span class="chap-tag">第三章</span>
+      <h2 class="chap">真实使用场景（按你要做的事）</h2>
+      <p class="lead">下面按常见场景给出“你可以直接这样说”的示例。点右上角复制，改成你自己的事，就能马上用。</p>
+      <div class="tabs" id="sceneTabs">
+        <button class="tab active" data-t="ops">文档与表格</button>
+        <button class="tab" data-t="pm">创作与调研</button>
+        <button class="tab" data-t="dev">数据与代码</button>
+        <button class="tab" data-t="all">日常通用</button>
+      </div>
+
+      <div class="panel active" data-p="ops">
+        <ul>
+          <li><button class="mini">复制</button><span class="ex">帮我把这段会议录音的文字稿整理成纪要，按“结论 / 待办 / 负责人 / 截止时间”输出表格。</span></li>
+          <li><button class="mini">复制</button><span class="ex">把这一周的零散记录汇总成一份周报，语气正式一点，控制在 800 字内。</span></li>
+          <li><button class="mini">复制</button><span class="ex">这 30 张照片按“日期-主题”规则批量重命名，并归类到一个新文件夹。</span></li>
+          <li><button class="mini">复制</button><span class="ex">把这份报名表按城市统计人数，画一张柱状图，并标出人数最多的三个城市。</span></li>
+        </ul>
+      </div>
+      <div class="panel" data-p="pm">
+        <ul>
+          <li><button class="mini">复制</button><span class="ex">调研竞品 A 和 B 的定价策略，给我一张对比表和三条建议，标注信息来源。</span></li>
+          <li><button class="mini">复制</button><span class="ex">为新产品写一版小红书风格的种草文案，再配一张主视觉海报图。</span></li>
+          <li><button class="mini">复制</button><span class="ex">把这页需求描述做成一个可点击的落地页原型，手机上也要好看。</span></li>
+          <li><button class="mini">复制</button><span class="ex">把这份用户反馈 Excel 做情感分类，汇总出 Top 5 抱怨点和改进建议。</span></li>
+        </ul>
+      </div>
+      <div class="panel" data-p="dev">
+        <ul>
+          <li><button class="mini">复制</button><span class="ex">读这个仓库的登录模块，帮我找潜在的安全问题并给出修复方案。</span></li>
+          <li><button class="mini">复制</button><span class="ex">用这份销售数据画一个月度趋势图，红色代表上涨、绿色代表下跌。</span></li>
+          <li><button class="mini">复制</button><span class="ex">写个 Python 脚本，把这个 CSV 按城市拆成多个文件，并附一份使用说明。</span></li>
+          <li><button class="mini">复制</button><span class="ex">帮我看看这段报错日志是什么原因，给出定位步骤和最小复现方式。</span></li>
+        </ul>
+      </div>
+      <div class="panel" data-p="all">
+        <ul>
+          <li><button class="mini">复制</button><span class="ex">帮我写一封委婉拒绝合作的邮件，语气客气但态度明确。</span></li>
+          <li><button class="mini">复制</button><span class="ex">把这篇长文总结成 3 条要点，再改写成适合发朋友圈的口语版本。</span></li>
+          <li><button class="mini">复制</button><span class="ex">每天早上 9 点给我一份所在行业的简报，控制在 5 条以内。</span></li>
+          <li><button class="mini">复制</button><span class="ex">把这份 PDF 里的表格提取出来，整理成一个干净的 Excel。</span></li>
+        </ul>
+      </div>
+      <div class="callout info"><span class="cico">💡</span><div><b>提示：</b>说“做什么”时，最好带上“给谁看、什么格式、有什么约束”。信息越具体，结果越省心。</div></div>
+    </section>
+
+    <!-- 第四章 -->
+    <section id="start">
+      <span class="chap-tag">第四章</span>
+      <h2 class="chap">5 分钟上手</h2>
+      <ol class="steps">
+        <li><b>安装登录：</b>下载客户端并微信扫码登录（详细图解见 <a href="#install">第五章</a>）。</li>
+        <li><b>设好工作空间：</b>指定一个文件夹作为本次任务的读写目录，避免文件到处乱放。</li>
+        <li><b>选模式和模型：</b>在对话框选工作模式（新手先用 Ask）与模型（详见 <a href="#ui">第六章</a>）。</li>
+        <li><b>下达任务：</b>用自然语言写清楚你要什么，需要参考的文件直接拖进来。</li>
+        <li><b>取成果：</b>去右侧边栏的「产物」拿生成的文件；不满意就接着追问、让它改。</li>
+      </ol>
+      <div class="callout tip"><span class="cico">🚀</span><div><b>第一个任务就试这句：</b>“用三句话介绍你自己能干什么，并给我一个我平时（填你常做的事）能用上的具体例子。”——既能验证它懂不懂你，又能立刻拿到一个可用的起点。</div></div>
+    </section>
+
+    <!-- 第五章：安装实操 -->
+    <section id="install">
+      <span class="chap-tag">第五章</span>
+      <h2 class="chap">安装 WorkBuddy（实操图解）</h2>
+      <p class="lead">下面把 Windows 和 Mac 的安装过程拆成一步一步，每步都配了官方截图。对照着做，3 分钟就能装好。</p>
+
+      <div class="tabs os-switch" id="installTabs">
+        <button class="tab active" data-t="win">🪟 Windows</button>
+        <button class="tab" data-t="mac">🍎 macOS</button>
+      </div>
+
+      <div id="installPanels">
+        <!-- Windows 面板 -->
+        <div class="panel active" data-p="win">
+          <div class="callout info"><span class="cico">💻</span><div><b>环境要求：</b>Windows 10 及以上。Windows 7/8/8.1 将无法启动 WorkBuddy。</div></div>
+          <h3 class="sub">一、下载安装包</h3>
+          <ol class="install-list">
+            <li>
+              <div class="inst-title">访问官网，点击“立即下载”</div>
+              <p>打开 <a href="https://www.codebuddy.cn/work/" target="_blank">WorkBuddy 官网</a>，找到下载按钮并点击，等待安装包下载完成。</p>
+              <img class="inst-img" src="assets/img/win-01-download.png" alt="官网下载页面" loading="lazy" decoding="async" width="1400" height="742">
+              <div class="img-cap">官网首页的“立即下载”按钮</div>
+            </li>
+            <li>
+              <div class="inst-title">启动安装程序</div>
+              <p>双击已下载的安装包，打开安装向导。</p>
+              <img class="inst-img" src="assets/img/win-02-installer.png" alt="启动安装向导" loading="lazy" decoding="async" width="1400" height="794">
+            </li>
+            <li>
+              <div class="inst-title">同意许可协议</div>
+              <p>勾选“我同意此协议”，然后点击“下一步”。</p>
+              <img class="inst-img" src="assets/img/win-03-license.png" alt="同意许可协议" loading="lazy" decoding="async" width="1018" height="786">
+            </li>
+            <li>
+              <div class="inst-title">选择安装路径</div>
+              <p>默认路径即可；如需修改，点击“浏览”后选择位置，再点“下一步”。</p>
+              <img class="inst-img" src="assets/img/win-04-path.png" alt="选择安装路径" loading="lazy" decoding="async" width="1018" height="786">
+            </li>
+            <li>
+              <div class="inst-title">确认开始菜单文件夹</div>
+              <p>保持默认文件夹名称，点击“下一步”。</p>
+              <img class="inst-img" src="assets/img/win-05-startmenu.png" alt="开始菜单文件夹" loading="lazy" decoding="async" width="1018" height="786">
+            </li>
+            <li>
+              <div class="inst-title">创建桌面快捷方式</div>
+              <p>建议勾选“创建桌面快捷方式”，方便后续打开，然后点击“下一步”。</p>
+              <img class="inst-img" src="assets/img/win-06-shortcut.png" alt="创建桌面快捷方式" loading="lazy" decoding="async" width="1018" height="786">
+            </li>
+            <li>
+              <div class="inst-title">开始安装</div>
+              <p>确认配置无误后，点击“安装”按钮，等待进度条完成。</p>
+              <img class="inst-img" src="assets/img/win-07-confirm.png" alt="确认安装" loading="lazy" decoding="async" width="1018" height="786">
+            </li>
+            <li>
+              <div class="inst-title">完成安装</div>
+              <p>安装完成后点击“完成”，退出安装向导。</p>
+              <img class="inst-img" src="assets/img/win-08-finish.png" alt="安装完成" loading="lazy" decoding="async" width="1018" height="786">
+            </li>
+          </ol>
+
+          <h3 class="sub">二、登录与基础设置</h3>
+          <ol class="install-list">
+            <li>
+              <div class="inst-title">启动并登录</div>
+              <p>打开 WorkBuddy 客户端，点击“登录”按钮。</p>
+              <img class="inst-img" src="assets/img/win-09-login.png" alt="启动登录" loading="lazy" decoding="async" width="1400" height="938">
+            </li>
+            <li>
+              <div class="inst-title">微信扫码登录</div>
+              <p>勾选《服务条款》与《隐私协议》，使用微信扫码完成登录。</p>
+              <img class="inst-img" src="assets/img/win-10-qrcode.png" alt="微信扫码登录" loading="lazy" decoding="async" width="652" height="826">
+            </li>
+            <li>
+              <div class="inst-title">切换界面语言</div>
+              <p>登录成功后，点击左下角“头像”→“语言”即可切换界面语言。</p>
+              <img class="inst-img" src="assets/img/win-11-language.jpg" alt="语言设置" loading="lazy" decoding="async" width="1400" height="938">
+            </li>
+            <li>
+              <div class="inst-title">检查更新</div>
+              <p>点击左下角“头像”→“检查更新”，系统会自动检测并升级到最新版本。</p>
+              <img class="inst-img" src="assets/img/win-12-update.jpg" alt="检查更新" loading="lazy" decoding="async" width="1400" height="938">
+              <img class="inst-img" src="assets/img/win-13-update-done.png" alt="更新完成" loading="lazy" decoding="async" width="551" height="209">
+            </li>
+          </ol>
+        </div>
+
+        <!-- Mac 面板 -->
+        <div class="panel" data-p="mac">
+          <div class="callout info"><span class="cico">🍎</span><div><b>环境要求：</b>macOS 12 (Monterey) 及以上。</div></div>
+          <h3 class="sub">一、下载安装包</h3>
+          <ol class="install-list">
+            <li>
+              <div class="inst-title">访问官网，选择对应版本</div>
+              <p>打开 <a href="https://www.codebuddy.cn/work/" target="_blank">WorkBuddy 官网</a>，点击“下载 WorkBuddy”。根据芯片选择版本：</p>
+              <p>• <b>M 系列芯片</b> → Mac ARM64 版本；<br>• <b>Intel 芯片</b> → Mac X64 版本。</p>
+              <img class="inst-img" src="assets/img/mac-01-download.png" alt="官网选择 Mac 版本" loading="lazy" decoding="async" width="1400" height="830">
+            </li>
+            <li>
+              <div class="inst-title">查看系统版本</div>
+              <p>点击屏幕左上角苹果图标，选择“关于本机”查看芯片与系统版本。</p>
+              <img class="inst-img" src="assets/img/mac-02-about.jpg" alt="关于本机查看系统版本" loading="lazy" decoding="async" width="584" height="420">
+            </li>
+            <li>
+              <div class="inst-title">允许下载</div>
+              <p>在浏览器弹窗中允许下载，等待安装包下载完成。</p>
+              <img class="inst-img" src="assets/img/mac-03-allow.jpg" alt="允许下载" loading="lazy" decoding="async" width="1400" height="543">
+            </li>
+          </ol>
+
+          <h3 class="sub">二、安装</h3>
+          <ol class="install-list">
+            <li>
+              <div class="inst-title">打开 .dmg 安装包</div>
+              <p>双击已下载的 .dmg 磁盘映像文件，打开安装窗口。</p>
+              <img class="inst-img" src="assets/img/mac-04-dmg.png" alt="打开 dmg 文件" loading="lazy" decoding="async" width="1400" height="676">
+            </li>
+            <li>
+              <div class="inst-title">拖入 Applications</div>
+              <p>将 WorkBuddy 图标拖到 Applications 文件夹中，松开鼠标等待拷贝。</p>
+              <img class="inst-img" src="assets/img/mac-05-drag.jpg" alt="拖入 Applications" loading="lazy" decoding="async" width="1196" height="726">
+              <img class="inst-img" src="assets/img/mac-06-drag-done.jpg" alt="完成拖拽" loading="lazy" decoding="async" width="1200" height="728">
+            </li>
+            <li>
+              <div class="inst-title">等待拷贝完成</div>
+              <img class="inst-img" src="assets/img/mac-07-copying.png" alt="拷贝中" loading="lazy" decoding="async" width="1400" height="307">
+            </li>
+            <li>
+              <div class="inst-title">推出磁盘映像</div>
+              <p>拷贝完成后，推出已挂载的 WorkBuddy 磁盘映像；如不再需要，可删除 .dmg 安装包。</p>
+              <img class="inst-img" src="assets/img/mac-08-eject.png" alt="推出映像" loading="lazy" decoding="async" width="1400" height="676">
+            </li>
+          </ol>
+
+          <h3 class="sub">三、登录与更新</h3>
+          <ol class="install-list">
+            <li>
+              <div class="inst-title">打开 WorkBuddy</div>
+              <p>通过“启动台”或按 <code>Command + 空格</code> 搜索打开 WorkBuddy。</p>
+            </li>
+            <li>
+              <div class="inst-title">点击登录</div>
+              <p>打开应用后点击“登录”按钮，浏览器会自动打开登录页面。</p>
+              <img class="inst-img" src="assets/img/mac-09-login.png" alt="Mac 登录界面" loading="lazy" decoding="async" width="1400" height="861">
+            </li>
+            <li>
+              <div class="inst-title">微信扫码登录</div>
+              <p>勾选协议后用微信扫码，登录成功后会自动回到客户端。</p>
+              <img class="inst-img" src="assets/img/mac-10-qrcode.png" alt="Mac 扫码登录" loading="lazy" decoding="async" width="866" height="1090">
+            </li>
+            <li>
+              <div class="inst-title">开始使用</div>
+              <p>登录成功后即可进入主界面，开始使用 WorkBuddy。</p>
+              <img class="inst-img" src="assets/img/mac-11-done.png" alt="登录完成主界面" loading="lazy" decoding="async" width="1400" height="861">
+            </li>
+            <li>
+              <div class="inst-title">检查更新</div>
+              <p>点击左下角“个人中心”→“检查更新”，系统会自动检测并完成升级。</p>
+              <img class="inst-img" src="assets/img/mac-12-update.png" alt="Mac 检查更新" loading="lazy" decoding="async" width="1400" height="861">
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout tip"><span class="cico">🚀</span><div><b>装好了？</b> 回到第四章“5 分钟上手”，用第一句 Prompt 让 WorkBuddy 给你做一个自我介绍 + 场景示例。</div></div>
+    </section>
+
+    <!-- 第六章：界面面板速览 -->
+    <section id="ui">
+      <span class="chap-tag">第六章</span>
+      <h2 class="chap">界面面板速览</h2>
+      <p class="lead">装好打开后，界面上这几个区域最常用。先认清它们在哪、管什么，后面用起来就不会到处找。</p>
+
+      <img class="inst-img shot-lead" src="assets/img/ui-01-main.png" alt="WorkBuddy 主界面" loading="lazy" decoding="async" width="1400" height="999">
+      <div class="img-cap center">WorkBuddy 主界面：左侧任务列表，中间对话区，右侧工作面板</div>
+
+      <h3 class="sub">6.1 工作模式：决定 AI 的“执行权限”</h3>
+      <p>发消息前，先在对话框选一个模式。三种模式对应不同的干活方式：</p>
+      <img class="inst-img" src="assets/img/ui-02-modes.png" alt="三种工作模式入口" loading="lazy" decoding="async" width="1392" height="768">
+
+      <div class="grid cols3 mode-grid">
+        <div class="card mode-card">
+          <h4><span class="ico">💬</span>问一问 Ask</h4>
+          <p class="mode-desc">仅问答与信息查看，<b>不修改文件</b>。</p>
+          <p class="mode-when">适合：了解内容、确认需求</p>
+          <img class="inst-img" src="assets/img/ui-03-ask.png" alt="Ask 模式" loading="lazy" decoding="async" width="557" height="551">
+        </div>
+        <div class="card mode-card">
+          <h4><span class="ico">⚡</span>做一做 Craft</h4>
+          <p class="mode-desc">直接执行任务<b>并修改文件</b>。</p>
+          <p class="mode-when">适合：文档生成、表格处理、文件整理</p>
+          <img class="inst-img" src="assets/img/ui-04-craft.png" alt="Craft 模式" loading="lazy" decoding="async" width="635" height="572">
+        </div>
+        <div class="card mode-card">
+          <h4><span class="ico">🧭</span>想一想 Plan</h4>
+          <p class="mode-desc">先生成执行计划，<b>确认后再操作</b>。</p>
+          <p class="mode-when">适合：多步骤任务、需审阅改动范围</p>
+          <img class="inst-img" src="assets/img/ui-05-plan.png" alt="Plan 模式" loading="lazy" decoding="async" width="595" height="551">
+        </div>
+      </div>
+
+      <div class="callout warn"><span class="cico">⚠️</span><div><b>官方建议：</b>首次使用优先选 <b>Ask</b> 模式；熟悉后再按任务复杂度切换到 <b>Plan</b> 或 <b>Craft</b>。<b>处理重要文件前请先备份。</b></div></div>
+
+      <h3 class="sub">6.2 切换模型：不同的活儿配不同的脑子</h3>
+      <p>WorkBuddy 内置多个主流模型，可以按任务类型随时切换：</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>模型</th><th>适用场景</th></tr></thead>
+          <tbody>
+            <tr><td><b>MiniMax</b></td><td>Excel 处理、数据分析、PPT 生成，执行速度快</td></tr>
+            <tr><td><b>智谱 GLM</b></td><td>多步骤、长流程的复杂任务</td></tr>
+            <tr><td><b>Kimi</b></td><td>截图分析、图片转文档等视觉类任务</td></tr>
+            <tr><td><b>DeepSeek</b></td><td>日常问答、文案撰写，响应快、成本低</td></tr>
+            <tr><td><b>腾讯混元</b></td><td>中文写作、会议纪要、中文文档处理</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint">← 表格可左右滑动查看 →</p>
+
+      <h3 class="sub">6.3 设置工作空间：告诉它去哪读、往哪存</h3>
+      <p>使用前建议先设置工作空间。WorkBuddy 会在这个空间里读取和保存文件，没指定路径的任务也会优先在这里执行。</p>
+      <img class="inst-img" src="assets/img/ui-06-workspace.png" alt="设置工作空间" loading="lazy" decoding="async" width="520" height="734">
+
+      <div class="callout info"><span class="cico">📁</span><div>
+        <b>什么是文件路径？</b>就是文件夹在电脑里的位置。<br>
+        Windows：<code>C:\Users\你的用户名\Desktop\工作资料</code><br>
+        Mac：<code>/Users/你的用户名/Desktop/工作资料</code><br>
+        <b>不用手动输入</b>——设置时在文件选择器里点选目标文件夹就行。若没提前指定，WorkBuddy 会自动创建独立空间。
+      </div></div>
+
+      <div class="callout tip"><span class="cico">💡</span><div><b>怎么选工作空间？</b>建议<b>按任务类型分别建空间</b>，比如「发票整理」「周报」「待处理照片」，既好管理，也能降低误操作风险。</div></div>
+
+      <h3 class="sub">6.4 选择技能：装一个技能，多一种本事</h3>
+      <p>技能（Skills）用来扩展 WorkBuddy 的任务能力。启用后，它就能完成更多特定类型的工作。</p>
+      <img class="inst-img" src="assets/img/ui-07-skills.jpg" alt="技能列表" loading="lazy" decoding="async" width="1400" height="781">
+      <p>在对话框中选择已安装的技能，执行任务时会自动调用对应能力：</p>
+      <img class="inst-img" src="assets/img/ui-08-skill-pick.png" alt="对话框选择技能" loading="lazy" decoding="async" width="876" height="803">
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>技能示例</th><th>效果</th></tr></thead>
+          <tbody>
+            <tr><td><b>PPT 制作</b></td><td>根据资料或数据生成演示文稿</td></tr>
+            <tr><td><b>海报生成</b></td><td>根据需求生成活动海报</td></tr>
+            <tr><td><b>自动化报表</b></td><td>合并多份 Excel 并输出图表报告</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint">← 表格可左右滑动查看 →</p>
+      <div class="callout info"><span class="cico">🧩</span><div>WorkBuddy 内置 <b>20+ 技能包</b>，覆盖文档处理、数据报表、海报设计、文件整理等场景，也支持用自然语言创建自定义技能。</div></div>
+
+      <h3 class="sub">6.5 连接第三方应用</h3>
+      <p>在这里快捷管理连接器，接上外部服务后，WorkBuddy 就能直接读写这些系统的数据，少复制、少粘贴。</p>
+      <img class="inst-img" src="assets/img/ui-09-connector.png" alt="连接第三方应用" loading="lazy" decoding="async" width="1353" height="933">
+
+      <h3 class="sub">6.6 权限管理：控制它能自己做多少</h3>
+      <div class="grid cols2">
+        <div class="card"><h4><span class="ico">🔒</span>默认权限</h4><p>涉及敏感操作时（如修改文件、在工作空间外执行），需要你<b>确认</b>后才继续。</p></div>
+        <div class="card"><h4><span class="ico">🔓</span>完全访问权限</h4><p>减少确认步骤，允许直接执行更多操作。<b>仅建议在你信任当前任务时使用。</b></p></div>
+      </div>
+      <img class="inst-img" src="assets/img/ui-10-permission.png" alt="权限管理" loading="lazy" decoding="async" width="1326" height="782">
+
+      <h3 class="sub">6.7 新建任务：一个任务 = 一个独立空间</h3>
+      <p>每个对话对应一个<b>独立任务</b>，任务之间互不影响，各自维护独立的工作空间与上下文。</p>
+      <ol class="steps">
+        <li>在主界面点击<b>新建任务</b>（若未提前指定目录，系统会自动创建独立工作目录）；</li>
+        <li>输入任务内容、选择工作目录与模型后发送，即可开始执行。</li>
+      </ol>
+      <div class="callout tip"><span class="cico">🔀</span><div>执行中的任务显示在<b>左侧边栏</b>，可随时切换查看进度。WorkBuddy 支持<b>多任务并行处理</b>——一个在跑数据出图，另一个可以同时写文档。</div></div>
+
+      <h3 class="sub">6.8 右侧边栏：预览文件、看产物、追踪改动</h3>
+      <p>右侧边栏是 WorkBuddy 的核心工作面板，集文件预览编辑、产物管理、变更追踪和网页预览于一体。任务产生对话后，从<b>右上角</b>展开它，就能在同一界面完成阅读、编辑与核对。</p>
+      <img class="inst-img" src="assets/img/ui-11-sidebar.png" alt="右侧边栏功能区" loading="lazy" decoding="async" width="1400" height="461">
+      <img class="inst-img" src="assets/img/ui-12-sidebar2.jpg" alt="右侧边栏展开" loading="lazy" decoding="async" width="1400" height="366">
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>功能</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td><b>产物</b></td><td>查看当前对话中新生成的文件</td></tr>
+            <tr><td><b>工作空间文件</b></td><td>以树状结构浏览当前工作目录</td></tr>
+            <tr><td><b>变更</b></td><td>记录并对比 WorkBuddy 对文件的修改</td></tr>
+            <tr><td><b>浏览器</b></td><td>内置浏览器预览开发中的网页</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint">← 表格可左右滑动查看 →</p>
+
+      <ol class="install-list">
+        <li>
+          <div class="inst-title">产物：拿成果的地方</div>
+          <p>展示当前对话中新生成的文件（PPT、PDF、文档等），点击可查看任务列表及生成内容。</p>
+          <img class="inst-img" src="assets/img/ui-13-artifacts.png" alt="产物面板" loading="lazy" decoding="async" width="1400" height="1274">
+          <p>右键选择<b>打开文件夹</b>，可直接在 Finder / 文件资源管理器中定位文件位置。</p>
+          <img class="inst-img" src="assets/img/ui-14-openfolder.png" alt="右键打开文件夹" loading="lazy" decoding="async" width="1400" height="1236">
+        </li>
+        <li>
+          <div class="inst-title">工作空间文件：树状浏览</div>
+          <p>以树状结构展示当前工作目录下的所有文件，便于直接浏览。</p>
+          <img class="inst-img" src="assets/img/ui-15-files.png" alt="工作空间文件树" loading="lazy" decoding="async" width="1400" height="1238">
+        </li>
+        <li>
+          <div class="inst-title">变更：改了什么一目了然</div>
+          <p>记录 WorkBuddy 对文件的所有修改，展开可查看具体变更文件，通过差异对比快速确认改动。</p>
+          <img class="inst-img" src="assets/img/ui-16-changes.png" alt="变更对比" loading="lazy" decoding="async" width="1400" height="1233">
+        </li>
+        <li>
+          <div class="inst-title">浏览器：网页即时预览</div>
+          <p>内置浏览器可直接预览开发中的网页，无需切换到外部浏览器。</p>
+          <img class="inst-img" src="assets/img/ui-17-browser.png" alt="内置浏览器预览" loading="lazy" decoding="async" width="1400" height="1240">
+        </li>
+      </ol>
+
+      <div class="callout tip"><span class="cico">✅</span><div><b>记住这三处就够开工了：</b>① 对话框左下角选<b>模式</b>；② 发任务前确认<b>工作空间</b>；③ 干完活去<b>右侧边栏 → 产物</b>取文件。</div></div>
+    </section>
+
+    <!-- 第七章 -->
+    <section id="adv">
+      <span class="chap-tag">第七章</span>
+      <h2 class="chap">进阶技巧</h2>
+
+      <h3 class="sub">7.1 专家中心：遇到专业问题，找专家聊</h3>
+      <p>左侧「专家」里按分类浏览 <b>100+</b> 领域专家（法律、金融、医疗、编程等）；点开即可发起专业对话，比通用聊天更准、更对口。</p>
+
+      <h3 class="sub">7.2 自动化：让 AI 定时帮你干活</h3>
+      <p>在任务里描述“每隔 / 每天 / 每周几 做什么”，即可创建定时任务。典型用法：每日行业简报、每周数据巡检、到期提醒；也可以设置“某天某点提醒我”的一次性任务。</p>
+
+      <h3 class="sub">7.3 连接器：把你常用的服务接进来</h3>
+      <p>在设置中信任并启用连接器（如腾讯文档、邮箱、网盘、地图、代码托管等）。接上之后，WorkBuddy 能直接读写这些服务里的数据，少复制、少粘贴。</p>
+
+      <h3 class="sub">7.4 技能市场：装一个技能，多一种本事</h3>
+      <p>技能是可安装的“能力包”，覆盖办公、研发、设计等场景。需要时一句话安装，AI 会自动按技能里的标准流程执行。</p>
+
+      <h3 class="sub">7.5 提示词（Prompt）黄金法则</h3>
+      <div class="grid cols2">
+        <div class="card"><h4><span class="ico">①</span>说清目标</h4><p>你要什么、给谁用、什么格式。</p></div>
+        <div class="card"><h4><span class="ico">②</span>给足上下文</h4><p>贴上数据、文件、参考样例。</p></div>
+        <div class="card"><h4><span class="ico">③</span>定边界</h4><p>范围、禁忌、风格、长度。</p></div>
+        <div class="card"><h4><span class="ico">④</span>会追问</h4><p>结果不对就接着改，越聊越懂你。</p></div>
+      </div>
+      <div class="callout warn"><span class="cico">⚡</span><div><b>三个提效小习惯：</b>① 把参考文件直接拖进对话，比复制文字更完整；② 一次只说清一个目标，复杂任务交给 Plan 模式拆；③ 满意的说法存进备忘，下次改几个词就能复用。</div></div>
+    </section>
+
+    <!-- 第八章 -->
+    <section id="pc">
+      <span class="chap-tag">第八章</span>
+      <h2 class="chap">Prompt 速查卡</h2>
+      <p class="lead">直接复制改写，把方括号里的内容换成你自己的事。</p>
+      <div class="grid cols2 pc">
+        <div class="pcard">
+          <button class="copy">复制</button>
+          <div class="ptitle">写文档</div>
+          <div class="ptext">以[角色/身份]的口吻，写一份关于[主题]的[类型]，给[受众]看，风格[正式/轻松]，字数约[XX]。</div>
+        </div>
+        <div class="pcard">
+          <button class="copy">复制</button>
+          <div class="ptitle">做分析</div>
+          <div class="ptext">分析这份[数据/文件]，重点回答[问题]，用图表展示[维度]，最后给三条可执行结论。</div>
+        </div>
+        <div class="pcard">
+          <button class="copy">复制</button>
+          <div class="ptitle">出素材</div>
+          <div class="ptext">生成一张[场景]的[海报/插画]，用于[用途]，风格[描述]，配色[描述]，尺寸[比例]。</div>
+        </div>
+        <div class="pcard">
+          <button class="copy">复制</button>
+          <div class="ptitle">搭东西</div>
+          <div class="ptext">做一个[功能]的[网页/小工具]，要能[操作]，界面简洁，适配手机，可直接预览。</div>
+        </div>
+        <div class="pcard">
+          <button class="copy">复制</button>
+          <div class="ptitle">自动化</div>
+          <div class="ptext">每天早上[时间]帮我[任务]，数据来源是[系统/文件]，结果输出到[位置]。</div>
+        </div>
+        <div class="pcard">
+          <button class="copy">复制</button>
+          <div class="ptitle">通用公式</div>
+          <div class="ptext">角色 + 任务 + 受众 + 格式 + 约束 + 上下文 = 一个好 Prompt。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第九章 练习 -->
+    <section id="practice">
+      <span class="chap-tag">第九章</span>
+      <h2 class="chap">动手练习</h2>
+      <p class="lead">看十遍不如动手一遍。下面六个练习覆盖了最常用的能力，勾选后进度会自动保存在本机浏览器。</p>
+
+      <div class="pg-bar">
+        <span id="pgText">已完成 0 / 6</span>
+        <span class="pg-track"><span class="pg-fill" id="pgFill"></span></span>
+        <button class="pg-reset" id="pgReset">重置</button>
+      </div>
+
+      <ul class="checklist" id="checklist">
+        <li><label><input type="checkbox" data-k="e1">
+          <span><span class="ct">① 让它自我介绍，并结合你常做的事举例</span>
+          <span class="cd">验收：它给出的例子确实是你日常会遇到的事。</span></span></label></li>
+        <li><label><input type="checkbox" data-k="e2">
+          <span><span class="ct">② 拖一份 Excel / CSV 进去，让它画图并给结论</span>
+          <span class="cd">验收：拿到一张图 + 三条能看懂的结论。</span></span></label></li>
+        <li><label><input type="checkbox" data-k="e3">
+          <span><span class="ct">③ 把一段会议记录整理成结构化表格</span>
+          <span class="cd">验收：输出含决议 / 待办 / 负责人 / 截止时间四列。</span></span></label></li>
+        <li><label><input type="checkbox" data-k="e4">
+          <span><span class="ct">④ 用 Plan 模式提一个复杂任务，先看方案再执行</span>
+          <span class="cd">验收：你看到了拆解步骤，并确认后才开始动手。</span></span></label></li>
+        <li><label><input type="checkbox" data-k="e5">
+          <span><span class="ct">⑤ 进「专家」问一个你本职工作里的专业问题</span>
+          <span class="cd">验收：回答比通用对话更专业、更贴近你的行业。</span></span></label></li>
+        <li><label><input type="checkbox" data-k="e6">
+          <span><span class="ct">⑥ 创建一个自动化：每天固定时间给你一份简报</span>
+          <span class="cd">验收：任务成功保存，第二天能收到结果。</span></span></label></li>
+      </ul>
+
+      <div class="callout tip"><span class="cico">🎯</span><div><b>都做完了？</b>那你已经掌握了 80% 的日常用法。剩下的 20% 是把你自己的重复劳动，一件件交给它。</div></div>
+    </section>
+
+    <!-- 第八章 FAQ -->
+    <section id="faq">
+      <span class="chap-tag">第十章</span>
+      <h2 class="chap">常见问题 FAQ</h2>
+      <details class="faq"><summary>不懂技术也能用吗？</summary><div class="ans">能。它是自然语言驱动的，不用写代码，照着手册里的例子说就行。说不清楚也没关系，它会追问你。</div></details>
+      <details class="faq"><summary>WorkBuddy 会乱动我的文件吗？</summary><div class="ans">只在你授权并下达任务的范围内操作；Ask 模式完全只读，不会改动任何文件。涉及删除等风险操作时会先提示并等你确认。</div></details>
+      <details class="faq"><summary>我的文件和隐私安全吗？</summary><div class="ans">它只读写你指定的工作空间目录，没授权的文件夹碰不到；默认权限下，涉及删除、外发等敏感动作会先弹出确认。身份证、账号密码这类私密材料，建议不要放进工作空间。</div></details>
+      <details class="faq"><summary>和 ChatGPT / 普通大模型有什么区别？</summary><div class="ans">它不是只聊天，而是能调用工具、操作文件、交付成品的“执行型”工作台。区别详见第一章的对比表。</div></details>
+      <details class="faq"><summary>结果不满意怎么办？</summary><div class="ans">直接追问改。告诉它哪里不对、想要什么效果，它会在原结果上继续修改，不用从头重来。</div></details>
+      <details class="faq"><summary>任务卡住了怎么办？</summary><div class="ans">换种说法重试、补充上下文，或切换到 Plan 模式让它先出方案；也可以直接在对话里问它“刚才为什么没成功”。</div></details>
+      <details class="faq"><summary>它能连我常用的其他软件吗？</summary><div class="ans">可以。在设置里启用并信任对应连接器（腾讯文档、邮箱、网盘、地图、代码托管等），之后就能直接读写这些服务里的数据，不用来回导出导入。</div></details>
+      <details class="faq"><summary>登录要用什么账号？</summary><div class="ans">打开客户端后点「登录」，用<b>微信扫码</b>即可，不需要单独注册账号。扫码步骤见 <a href="#install">第五章 安装 WorkBuddy</a>。</div></details>
+    </section>
+
+    <!-- 附录 -->
+    <section id="res">
+      <span class="chap-tag">附录</span>
+      <h2 class="chap">学习资源</h2>
+      <ul class="res">
+        <li><span class="dot"></span><span><b>官方文档中心：</b><a href="https://www.workbuddy.cn/docs/workbuddy/Overview" target="_blank" rel="noopener">www.workbuddy.cn/docs/workbuddy/Overview</a><br><span class="lead">快速开始 / 创建任务 / 任务管理 / 对话 / 结果查看，分章教程配界面截图。</span></span></li>
+        <li><span class="dot"></span><span><b>最快的答疑方式：</b>直接在对话框里问它自己，例如“WorkBuddy 怎么创建定时任务？”——它会边解释边帮你做。</span></li>
+        <li><span class="dot"></span><span><b>配套练习：</b>回到<a href="#practice">第九章 动手练习</a>，六个任务跑完即可独立上手。</span></li>
+        <!-- <li><span class="dot"></span><span><b>本页可离线保存：</b>浏览器「打印 / 导出为 PDF」已做过排版适配，打印版会自动隐藏导航与按钮。</span></li> -->
+      </ul>
+    </section>
+
+    <footer>
+      WorkBuddy 培训手册 · V1.1 · 2026 年 8 月<br>
+      内容参考 WorkBuddy 官方文档整理，产品持续迭代，具体功能以客户端与官网为准。
+    </footer>
+  </main>
+</div>
+
+<button id="toTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script src="assets/js/main.js?v=20260807d"></script>
+</body>
+</html>
