@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" font-family="PingFang SC, Microsoft YaHei, Segoe UI, sans-serif">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1F4E79"/>
+      <stop offset="1" stop-color="#2E75B6"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2E75B6"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="820" fill="#ffffff"/>
+  <text x="60" y="62" font-size="34" font-weight="700" fill="#1F4E79">一条好提示词的六层结构</text>
+  <text x="60" y="96" font-size="18" fill="#5a6672">从外到内：角色 → 背景 → 任务 → 输入 → 输出格式 → 约束</text>
+
+  <!-- connector line -->
+  <line x1="120" y1="170" x2="120" y2="760" stroke="#BDD7EE" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <g font-size="22">
+    <!-- Role -->
+    <rect x="170" y="130" width="970" height="92" rx="14" fill="#EAF2FB" stroke="#BDD7EE"/>
+    <text x="200" y="172" font-size="24" font-weight="700" fill="#1F4E79">① 角色 Role</text>
+    <text x="200" y="202" font-size="17" fill="#5a6672">“你是一位资深数据分析师” —— 设定专业身份，约束语气与知识边界。</text>
+
+    <!-- Context -->
+    <rect x="170" y="242" width="970" height="92" rx="14" fill="#EAF2FB" stroke="#BDD7EE"/>
+    <text x="200" y="284" font-size="24" font-weight="700" fill="#1F4E79">② 背景 Context</text>
+    <text x="200" y="314" font-size="17" fill="#5a6672">目标读者、使用场景、已知前提 —— 让模型知道“为什么做这件事”。</text>
+
+    <!-- Instruction -->
+    <rect x="170" y="354" width="970" height="92" rx="14" fill="#EAF7EE" stroke="#2E8B57" stroke-opacity="0.4"/>
+    <text x="200" y="396" font-size="24" font-weight="700" fill="#2E8B57">③ 任务 Instruction</text>
+    <text x="200" y="426" font-size="17" fill="#5a6672">用动词明确动作：总结 / 改写 / 翻译 / 列出 / 推理，避免“帮我弄一下”。</text>
+
+    <!-- Input -->
+    <rect x="170" y="466" width="970" height="92" rx="14" fill="#ffffff" stroke="#BDD7EE"/>
+    <text x="200" y="508" font-size="24" font-weight="700" fill="#2E75B6">④ 输入 Input</text>
+    <text x="200" y="538" font-size="17" fill="#5a6672">待处理的正文、数据或问题；长文本用分隔符（如 ===）与指令隔开。</text>
+
+    <!-- Output -->
+    <rect x="170" y="578" width="970" height="92" rx="14" fill="#FFF4E5" stroke="#C77700" stroke-opacity="0.4"/>
+    <text x="200" y="620" font-size="24" font-weight="700" fill="#C77700">⑤ 输出格式 Output</text>
+    <text x="200" y="650" font-size="17" fill="#5a6672">要求 JSON / 表格 / 要点列表，并给出字段名，便于下游程序解析。</text>
+
+    <!-- Constraints -->
+    <rect x="170" y="690" width="970" height="92" rx="14" fill="#ffffff" stroke="#BDD7EE"/>
+    <text x="200" y="732" font-size="24" font-weight="700" fill="#1F4E79">⑥ 约束 Constraints</text>
+    <text x="200" y="762" font-size="17" fill="#5a6672">长度、语气、禁止项、语言、引用来源 —— 收敛不确定性，稳定输出。</text>
+  </g>
+</svg>

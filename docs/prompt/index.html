@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1F4E79" id="themeColorMeta">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta name="description" content="大模型提示词工程上手指南：从一句 hello 到写出稳定可控的 AI 工作流。覆盖角色设定、思维链、少样本、结构化输出与实战速查卡。">
+  <title>大模型提示词工程 · 上手指南</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=1">
+</head>
+<body>
+
+<!-- 阅读进度条 -->
+<div id="progress" aria-hidden="true"></div>
+
+<!-- 顶部栏 -->
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menuBtn" aria-label="打开目录">☰</button>
+  <div class="brand">
+    <div class="logo">PE</div>
+    <span class="title">提示词工程指南</span>
+  </div>
+  <div class="spacer"></div>
+  <div class="search">
+    <span class="ic">🔍</span>
+    <input id="searchInput" type="search" placeholder="搜索本指南…  （按 / 聚焦）" aria-label="搜索">
+    <button class="icon-btn search-btn" id="searchBtn" aria-label="搜索">🔍</button>
+    <div class="search-results" id="searchResults" role="listbox"></div>
+  </div>
+  <button class="icon-btn" id="themeBtn" aria-label="切换深浅色" title="切换深浅色">🌙</button>
+</header>
+
+<!-- 抽屉遮罩 -->
+<div class="backdrop" id="backdrop"></div>
+
+<div class="layout">
+
+  <!-- 左侧目录 -->
+  <aside class="toc" id="toc">
+    <h4>目录</h4>
+    <a href="#top">封面</a>
+    <a href="#intro">前言 · 三段式路径</a>
+    <a href="#what">一、提示词工程是什么</a>
+    <a href="#capability">二、能力全景</a>
+    <a href="#scenes">三、真实场景</a>
+    <a href="#steps">四、上手四步</a>
+    <a href="#env">五、环境准备</a>
+    <a href="#interface">六、界面速览</a>
+    <a href="#advanced">七、进阶技巧</a>
+    <a href="#cheatsheet">八、Prompt 速查卡</a>
+    <a href="#practice">九、动手练习</a>
+    <a href="#faq">十、常见问题</a>
+    <a href="#resources">附录 · 学习资源</a>
+  </aside>
+
+  <!-- 主内容 -->
+  <main class="content">
+
+    <!-- Hero -->
+    <section id="top" class="hero">
+      <span class="badge">🤖 AI 实战指南</span>
+      <h1>大模型提示词工程</h1>
+      <p class="lead">从一句 "hello" 到写出稳定、可控、可复用的 AI 工作流。一套人人都能学会的表达方法，把大模型真正用出生产力。</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#intro">📘 开始学习</a>
+        <a class="btn btn-ghost" href="#cheatsheet">⚡ Prompt 速查卡</a>
+      </div>
+      <div class="meta">
+        <span>⏱️ 阅读约 18 分钟</span>
+        <span>🎯 难度：入门 → 进阶</span>
+        <span>🗓️ 更新于 2026-08</span>
+      </div>
+    </section>
+
+    <!-- 前言 -->
+    <section id="intro">
+      <h2 class="chap">前言 · 三段式学习路径</h2>
+      <p class="lead">提示词工程不是"玄学"，而是一套可拆解、可练习的表达技术。跟着下面三段走，你也能从会用到大用。</p>
+      <div class="grid cols3">
+        <div class="card">
+          <div class="c-ico">👀</div>
+          <h3>看懂</h3>
+          <p>先理解大模型"听"懂什么：它按概率续写，靠结构化的意图、上下文和约束来收敛输出。看懂一条好提示的内部构造。</p>
+          <span class="tag">第 1–3 节</span>
+        </div>
+        <div class="card">
+          <div class="c-ico">🛠️</div>
+          <h3>照做</h3>
+          <p>套用模板与速查卡，把角色、任务、输入、格式、约束五要素写全。先模仿，再在真实任务里跑通第一条可用提示。</p>
+          <span class="tag">第 4–6 节</span>
+        </div>
+        <div class="card">
+          <div class="c-ico">🌸</div>
+          <h3>用出花</h3>
+          <p>掌握思维链、少样本、结构化输出等进阶技巧，把零散对话沉淀成可复用的提示词与自动化工作流。</p>
+          <span class="tag">第 7–9 节</span>
+        </div>
+      </div>
+      <div class="callout note">
+        <span class="c-emoji">💡</span>
+        <div class="c-body"><strong>给学习者的话</strong>本指南面向想亲手把 AI 用好的你，不堆术语、不画大饼。每节都配可复制的示例，边读边练效果最好。</div>
+      </div>
+    </section>
+
+    <!-- 是什么 -->
+    <section id="what">
+      <h2 class="chap">一、提示词工程是什么</h2>
+      <p class="lead">提示词工程（Prompt Engineering）是通过设计输入文本，引导大模型稳定、准确地产生期望输出的实践。</p>
+      <p>大模型本质是<b>「根据上文预测下一个词」</b>的概率模型。它不会"理解"你的潜台词，只能根据你写下的文字去推断意图。所谓"会说话"，其实是你把需求表达得足够清晰、结构足够明确。</p>
+      <p>好的提示词有三个特征：<b>意图明确</b>（要它做什么）、<b>上下文充分</b>（为什么做、给什么材料）、<b>约束清晰</b>（长什么样、别做什么）。下面用一张表对比差距：</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>← 表格可左右滑动 →</caption>
+          <thead>
+            <tr><th>维度</th><th>❌ 弱提示</th><th>✅ 强提示</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>任务</td><td>"帮我写点东西"</td><td>"写一段 120 字的小红书种草文案"</td></tr>
+            <tr><td>角色</td><td>无设定</td><td>"你是有 10 年经验的母婴博主"</td></tr>
+            <tr><td>输入</td><td>材料混在指令里</td><td>用 <code>===</code> 分隔材料与指令</td></tr>
+            <tr><td>格式</td><td>随便输出</td><td>"输出 JSON，字段：title、body、tags"</td></tr>
+            <tr><td>约束</td><td>无</td><td>"口语化、不夸大、不出现绝对化用语"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip">
+        <span class="c-emoji">✅</span>
+        <div class="c-body"><strong>核心认知</strong>提示词工程的 ROI 极高：模型能力固定时，把提示写对，往往比换模型更能解决你的问题。</div>
+      </div>
+    </section>
+
+    <!-- 能力全景 -->
+    <section id="capability">
+      <h2 class="chap">二、能力全景</h2>
+      <p class="lead">掌握提示词工程后，你可以用自然语言驱动这些事情。先建立地图，再挑场景深入。</p>
+      <div class="grid cols3">
+        <div class="card"><div class="c-ico">✍️</div><h3>写作与改写</h3><p>公文、营销文案、周报、润色、缩写扩写，统一语气与风格。</p></div>
+        <div class="card"><div class="c-ico">💻</div><h3>代码助手</h3><p>按需生成函数、写单测、解释报错、做 Code Review。</p></div>
+        <div class="card"><div class="c-ico">📊</div><h3>数据分析</h3><p>清洗、汇总、用自然语言查询表格，生成图表建议。</p></div>
+        <div class="card"><div class="c-ico">🌐</div><h3>翻译与本地化</h3><p>保留术语与语气，处理文化适配与行业用语。</p></div>
+        <div class="card"><div class="c-ico">🧠</div><h3>推理与规划</h3><p>拆解问题、列步骤、做决策对比与风险评估。</p></div>
+        <div class="card"><div class="c-ico">🤝</div><h3>角色对话</h3><p>模拟面试官、教练、客服，进行陪练与答疑。</p></div>
+      </div>
+    </section>
+
+    <!-- 真实场景 -->
+    <section id="scenes">
+      <h2 class="chap">三、真实场景</h2>
+      <p class="lead">点开不同标签，看同一套「五要素」如何在各场景落地。可直接复制改造。</p>
+      <div class="tabs" data-group="scene">
+        <button class="tab active" data-t="write">✍️ 写作</button>
+        <button class="tab" data-t="code">💻 代码</button>
+        <button class="tab" data-t="data">📊 数据</button>
+        <button class="tab" data-t="translate">🌐 翻译</button>
+      </div>
+      <div class="panels">
+        <div class="panel active" data-p="write">
+          <h4>把"随便写写"变成可交付文案</h4>
+          <p>关键：定角色 + 定平台语气 + 定结构与禁区。</p>
+          <pre><code>你是一位资深电商文案。为「便携咖啡机」写一条 80 字内的抖音口播稿：
+- 开头 3 秒抓眼球
+- 强调"办公室也能喝现磨"
+- 语气：热情、口语、不浮夸
+- 禁止：绝对化用语、"最"字、虚假承诺</code></pre>
+        </div>
+        <div class="panel" data-p="code">
+          <h4>让模型当靠谱的结对程序员</h4>
+          <p>关键：给语言/框架版本、输入输出契约、约束。</p>
+          <pre><code>用 Python 3.11 写一个函数 parse_csv(text: str) -> list[dict]：
+- 第一行为表头
+- 自动推断 int/float/str 类型
+- 空单元格记为 None
+- 含非法行的抛出 ValueError 并说明行号
+只输出代码与简短注释，不要解释。</code></pre>
+        </div>
+        <div class="panel" data-p="data">
+          <h4>用自然语言查表</h4>
+          <p>关键：贴数据 + 明确口径 + 要结构化结果。</p>
+          <pre><code>以下是本月销售 CSV：
+date,region,amount
+2026-07-01,华东,1200
+2026-07-01,华北,800
+...
+请按 region 汇总 amount，输出 JSON：
+[{"region": "...", "total": ...}]，并列出最高区域。</code></pre>
+        </div>
+        <div class="panel" data-p="translate">
+          <h4>翻译而非字对字转换</h4>
+          <p>关键：给目标读者、术语表、语气。</p>
+          <pre><code>将下面产品说明译为英文，面向北美开发者：
+- 术语：工作流=workflow，插件=plugin
+- 语气：简洁专业，符合技术文档惯例
+- 保留代码块与占位符不变
+原文：=== 在插件市场安装后，工作流会自动加载 ===</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 上手步骤 -->
+    <section id="steps">
+      <h2 class="chap">四、上手四步</h2>
+      <p class="lead">照着走一遍，你就能写出第一条"能用"的提示词。</p>
+      <div class="grid cols2">
+        <div class="card"><div class="c-ico">1️⃣</div><h3>定角色与任务</h3><p>用"你是…"设定身份，用动词写明要做什么（总结/生成/对比），避免"帮我弄一下"。</p></div>
+        <div class="card"><div class="c-ico">2️⃣</div><h3>给材料与背景</h3><p>把待处理文本、目标读者、已知前提写清，长材料用 <code>===</code> 与指令分隔。</p></div>
+        <div class="card"><div class="c-ico">3️⃣</div><h3>要格式与约束</h3><p>指定 JSON/表格/要点，给出字段名；写明长度、语气、禁区，收敛随机性。</p></div>
+        <div class="card"><div class="c-ico">4️⃣</div><h3>试跑与迭代</h3><p>跑 2–3 次看波动点，哪里不稳就补一条约束；存成模板反复复用。</p></div>
+      </div>
+      <div class="callout warning">
+        <span class="c-emoji">⚠️</span>
+        <div class="c-body"><strong>常见坑</strong>一次写太长、堆十几个要求，模型反而顾此失彼。先最小可用，再逐步加约束，每次只改一个变量观察变化。</div>
+      </div>
+    </section>
+
+    <!-- 环境准备 -->
+    <section id="env">
+      <h2 class="chap">五、环境准备</h2>
+      <p class="lead">提示词工程不需要本地部署模型。按你的使用习惯选一种入口即可。</p>
+      <div class="tabs" data-group="platform">
+        <button class="tab active" data-t="web">🌐 网页对话</button>
+        <button class="tab" data-t="api">🔌 API 调用</button>
+        <button class="tab" data-t="local">💾 本地客户端</button>
+      </div>
+      <div class="panels">
+        <div class="panel active" data-p="web">
+          <h4>零门槛：直接用网页/App 对话</h4>
+          <p>适合学习与轻量任务。打开对话产品，把提示词粘进输入框即可。建议开启「新对话」以清空上下文，保证结果可复现。</p>
+          <ul>
+            <li>把提示词存成笔记模板，下次直接复制。</li>
+            <li>同一问题多开几个会话对比不同写法。</li>
+          </ul>
+        </div>
+        <div class="panel" data-p="api">
+          <h4>可编程：用 API 批量/自动化</h4>
+          <p>适合把提示词接进自己的工作流。把 system 字段放"角色与规则"，user 字段放"任务与材料"。</p>
+          <pre><code>import openai
+resp = openai.chat.completions.create(
+  model="gpt-4o-mini",
+  messages=[
+    {"role":"system","content":"你是严谨的数据分析师，只输出 JSON。"},
+    {"role":"user","content":"汇总以下销售：\n===\n地区,金额\n华东,1200"}
+  ],
+  temperature=0.2
+)</code></pre>
+        </div>
+        <div class="panel" data-p="local">
+          <h4>隐私优先：本地客户端</h4>
+          <p>适合处理敏感数据。下载本地推理客户端，加载开源权重后在界面里使用同样的提示词写法。注意本地小模型对长提示的遵循度通常弱于云端大模型。</p>
+          <ul>
+            <li>提示要更短、指令更直白。</li>
+            <li>复杂任务优先拆成多轮。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 界面速览 -->
+    <section id="interface">
+      <h2 class="chap">六、界面速览</h2>
+      <p class="lead">无论哪种入口，一次对话都由「系统设定 + 用户输入 + 模型回复」组成。理解这条结构，你就掌握了调优的旋钮。</p>
+      <figure class="inst-img">
+        <img src="assets/img/prompt-structure.svg" width="1200" height="820" loading="lazy" alt="一条好提示词的六层结构示意图">
+        <figcaption>图 1 · 一条好提示词的六层结构：角色 → 背景 → 任务 → 输入 → 输出格式 → 约束（点击放大）</figcaption>
+      </figure>
+      <div class="callout tip">
+        <span class="c-emoji">✅</span>
+        <div class="c-body"><strong>调优旋钮</strong>角色不稳 → 改 system；格式乱 → 强化输出约束；跑偏 → 降低 temperature；长任务易丢 → 拆多轮并总结。</div>
+      </div>
+    </section>
+
+    <!-- 进阶技巧 -->
+    <section id="advanced">
+      <h2 class="chap">七、进阶技巧</h2>
+      <p class="lead">当你要模型做"难一点"的事，下面这些技巧能显著提升稳定度与质量。</p>
+
+      <h3 class="sub">1. 角色设定（Role Prompting）</h3>
+      <p>开篇用"你是一位…"赋予专业身份，约束知识边界与语气。角色越具体，输出越贴领域。</p>
+
+      <h3 class="sub">2. 少样本（Few-shot）</h3>
+      <p>给 1–3 个"输入→输出"范例，让模型照着学格式与风格，比纯文字描述更稳。</p>
+
+      <h3 class="sub">3. 思维链（Chain-of-Thought）</h3>
+      <p>对推理、数学、多步任务，加一句"请一步步思考"，模型会先列中间过程再给答案，准确率与可解释性都更好。</p>
+      <figure class="inst-img">
+        <img src="assets/img/cot-flow.svg" width="1200" height="560" loading="lazy" alt="思维链推理流程图">
+        <figcaption>图 2 · 思维链：让模型"先想再做"，复杂推理更可靠（点击放大）</figcaption>
+      </figure>
+
+      <h3 class="sub">4. 结构化输出</h3>
+      <p>明确要求 JSON / 表格 / 字段名，便于程序解析；对严格场景要求"只输出 JSON，不要解释"。</p>
+
+      <h3 class="sub">5. 约束与负向指令</h3>
+      <p>用"不要…/必须…/长度≤…"收敛不确定性。约束过多会互相打架，按优先级排。</p>
+
+      <div class="callout warning">
+        <span class="c-emoji">⚠️</span>
+        <div class="c-body"><strong>别迷信技巧</strong>技巧是手段不是目的。简单任务加 CoT 反而更慢更啰嗦；先判断任务类型，再选最省的那招。</div>
+      </div>
+    </section>
+
+    <!-- Prompt 速查卡 -->
+    <section id="cheatsheet">
+      <h2 class="chap">八、Prompt 速查卡</h2>
+      <p class="lead">复制即用。把方括号里的内容换成你的实际信息即可。</p>
+
+      <div class="prompt-card">
+        <div class="pc-title">📌 通用万能模板</div>
+        <button class="copy-btn">复制</button>
+        <pre><code>你是一位[角色]，擅长[领域]。
+背景：[目标读者/场景/已知前提]
+任务：[动词]完成[具体事项]
+输入：
+===
+[待处理材料]
+===
+要求：
+1. 输出格式：[JSON/表格/要点]
+2. 长度：[如 200 字内]
+3. 语气：[如专业克制]
+4. 禁止：[如夸大、绝对化]</code></pre>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-title">🧠 思维链推理</div>
+        <button class="copy-btn">复制</button>
+        <pre><code>你是严谨的[领域]专家。
+请解决下面的问题，要求：
+- 先把问题拆成步骤
+- 一步步写出推理过程
+- 最后用"结论："给出最终答案
+- 若信息不足，明确说明缺什么
+问题：
+=== [问题] ===</code></pre>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-title">🔁 少样本格式学习</div>
+        <button class="copy-btn">复制</button>
+        <pre><code>把下面的用户评论分类为 正向/中性/负向。
+示例：
+"物流太快了，满意" → 正向
+"一般般，没惊喜" → 中性
+"客服半天不回，差评" → 负向
+现在分类：
+=== [待分类评论] ===
+只输出类别名。</code></pre>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-title">📊 结构化数据提取</div>
+        <button class="copy-btn">复制</button>
+        <pre><code>从以下文本抽取信息，只输出 JSON，不要解释：
+{"name":"", "org":"", "date":"", "amount":0}
+文本：
+=== [原文] ===</code></pre>
+      </div>
+    </section>
+
+    <!-- 动手练习 -->
+    <section id="practice">
+      <h2 class="chap">九、动手练习</h2>
+      <p class="lead">勾选完成项，进度会自动保存（存在本机浏览器）。建议真去跑一遍，比看十遍印象深。</p>
+      <div class="exercise">
+        <div class="progress-pill" id="exProgress">0 / 5</div>
+        <ul id="exList">
+          <li><input type="checkbox" id="ex1"><label for="ex1">用万能模板，为"周末徒步装备清单"写一条提示并跑出结果。</label></li>
+          <li><input type="checkbox" id="ex2"><label for="ex2">给同一任务分别写"弱提示"和"强提示"，对比输出差异。</label></li>
+          <li><input type="checkbox" id="ex3"><label for="ex3">对一道数学/逻辑题加"一步步思考"，观察是否更准。</label></li>
+          <li><input type="checkbox" id="ex4"><label for="ex4">用"结构化数据提取"卡，从一段文本抽成 JSON。</label></li>
+          <li><input type="checkbox" id="ex5"><label for="ex5">挑一个重复任务，沉淀成可复用的提示词模板保存起来。</label></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2 class="chap">十、常见问题</h2>
+
+      <details class="faq">
+        <summary>提示词写越长越好吗？</summary>
+        <div class="faq-body">不是。过长、堆砌要求会让模型顾此失彼。优先"最小可用 + 逐步加约束"，每次只改一个变量观察效果。</div>
+      </details>
+      <details class="faq">
+        <summary>为什么同样的提示，两次结果不一样？</summary>
+        <div class="faq-body">大模型有随机性（temperature）。要稳定就降低 temperature、给少样本范例、把关键约束写死；可复现任务建议用 API 并固定随机种子。</div>
+      </details>
+      <details class="faq">
+        <summary>本地小模型能直接用这些技巧吗？</summary>
+        <div class="faq-body">可以，但小模型对长提示和复杂约束的遵循度较弱。提示要更短、更直白，复杂任务拆多轮，关键约束放在开头。</div>
+      </details>
+      <details class="faq">
+        <summary>模型"胡说"（幻觉）怎么办？</summary>
+        <div class="faq-body">让模型"只基于给定材料回答，材料没有就明说不知道"；要求给出依据/引用；对事实类任务降低 temperature 并做交叉验证。</div>
+      </details>
+      <details class="faq">
+        <summary>有哪些必须避开的写法？</summary>
+        <div class="faq-body">避免模糊动词（"弄一下"）、把材料和指令混在一起、一次塞十几个互相冲突的约束、以及用绝对化承诺去要求模型。</div>
+      </details>
+    </section>
+
+    <!-- 资源附录 -->
+    <section id="resources">
+      <h2 class="chap">附录 · 学习资源</h2>
+      <p class="lead">想继续深入，可沿着这些方向扩展。（链接仅为方向示例，请按需检索最新资料）</p>
+      <div class="res-list">
+        <div class="res-item"><span class="r-ico">📚</span><div><a href="#">主流大模型官方提示词文档</a><br><span style="color:var(--grey);font-size:13px">系统/用户角色、temperature、结构化输出等参数说明</span></div></div>
+        <div class="res-item"><span class="r-ico">🧪</span><div><a href="#">提示词评测与对比方法</a><br><span style="color:var(--grey);font-size:13px">如何设计对照实验、量化提示词效果</span></div></div>
+        <div class="res-item"><span class="r-ico">🛠️</span><div><a href="#">提示词管理与模板工具</a><br><span style="color:var(--grey);font-size:13px">把常用提示沉淀为可复用模板与工作流</span></div></div>
+        <div class="res-item"><span class="r-ico">🌐</span><div><a href="#">社区精选提示词库</a><br><span style="color:var(--grey);font-size:13px">参考他人写法，但务必按自己场景改写</span></div></div>
+      </div>
+      <div class="callout note">
+        <span class="c-emoji">📌</span>
+        <div class="c-body"><strong>最后一句</strong>提示词工程的尽头不是"写得更花"，而是"把需求想得更清"。表达清晰，是给人、也是给模型最好的尊重。</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- 图片灯箱 -->
+<div id="lightbox" aria-hidden="true">
+  <span class="lb-close" id="lbClose">×</span>
+  <img id="lbImg" src="" alt="放大图">
+</div>
+
+<!-- 回到顶部 -->
+<button id="toTop" aria-label="回到顶部">↑</button>
+
+<script src="assets/js/main.js?v=1"></script>
+</body>
+</html>
