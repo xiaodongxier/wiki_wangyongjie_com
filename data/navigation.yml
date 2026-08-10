@@ -1,0 +1,284 @@
+# 常用导航数据：新增、修改或删除网站时，只维护本文件。
+# key 用英文小写和连字符；它同时用作页面锚点与分类样式标识。
+
+categories:
+  - key: development
+    title: 开发与参考
+    sites:
+      - name: MDN Web Docs
+        url: https://developer.mozilla.org/
+        description: HTML、CSS、JavaScript 与 Web API 的权威参考。
+      - name: Can I use
+        url: https://caniuse.com/
+        description: 查询浏览器对 Web 特性的支持情况。
+      - name: DevDocs
+        url: https://devdocs.io/
+        description: 聚合多种语言与框架文档，适合快速查阅。
+      - name: Stack Overflow
+        url: https://stackoverflow.com/
+        description: 程序设计问题与实践经验问答社区。
+      - name: CodePen
+        url: https://codepen.io/
+        description: 在线编写与分享前端代码片段。
+      - name: regex101
+        url: https://regex101.com/
+        description: 编写、测试与解释正则表达式。
+      - name: JSON Crack
+        url: https://jsoncrack.com/
+        description: 将 JSON 数据以层级图形方式展开查看。
+      - name: JSON Schema
+        url: https://json-schema.org/
+        description: JSON 数据结构约束与校验规范。
+
+  - key: code-ecosystem
+    title: 代码与包生态
+    sites:
+      - name: GitHub
+        url: https://github.com/
+        description: 代码托管、开源项目与开发协作平台。
+      - name: GitLab
+        url: https://gitlab.com/
+        description: 代码托管与 CI/CD 协作平台。
+      - name: npm
+        url: https://www.npmjs.com/
+        description: JavaScript 与 Node.js 包注册表。
+      - name: PyPI
+        url: https://pypi.org/
+        description: Python 软件包索引。
+      - name: pkg.go.dev
+        url: https://pkg.go.dev/
+        description: Go 模块与包文档查询。
+      - name: Maven Central
+        url: https://central.sonatype.com/
+        description: Java 生态常用依赖仓库检索。
+      - name: Docker Hub
+        url: https://hub.docker.com/
+        description: 容器镜像仓库与镜像检索入口。
+
+  - key: api-data
+    title: API 与数据处理
+    sites:
+      - name: Postman
+        url: https://www.postman.com/
+        description: API 设计、调试、测试与协作平台。
+      - name: Hoppscotch
+        url: https://hoppscotch.io/
+        description: 轻量开源的在线 API 请求工具。
+      - name: Swagger Editor
+        url: https://editor.swagger.io/
+        description: 在线编写与预览 OpenAPI 定义。
+      - name: httpbin
+        url: https://httpbin.org/
+        description: 用于测试 HTTP 请求与响应的服务。
+      - name: ReqRes
+        url: https://reqres.in/
+        description: 提供模拟 REST API 接口用于测试。
+      - name: JSON Formatter
+        url: https://jsonformatter.curiousconcept.com/
+        description: 格式化、校验和查看 JSON 数据。
+
+  - key: ai-providers
+    title: AI 厂商与助手
+    sites:
+      - name: ChatGPT
+        url: https://chatgpt.com/
+        description: 日常对话、写作、分析与辅助学习。
+      - name: Claude
+        url: https://claude.ai/
+        description: Anthropic 提供的通用 AI 助手。
+      - name: Gemini
+        url: https://gemini.google.com/
+        description: Google 提供的通用 AI 助手。
+      - name: Microsoft Copilot
+        url: https://copilot.microsoft.com/
+        description: Microsoft 提供的 AI 助手。
+      - name: Grok
+        url: https://grok.com/
+        description: xAI 提供的通用 AI 助手。
+      - name: Meta AI
+        url: https://www.meta.ai/
+        description: Meta 提供的 AI 助手与模型服务。
+      - name: Le Chat
+        url: https://chat.mistral.ai/
+        description: Mistral AI 提供的对话助手。
+      - name: Perplexity
+        url: https://www.perplexity.ai/
+        description: 以检索与引用为核心的 AI 问答助手。
+      - name: DeepSeek
+        url: https://chat.deepseek.com/
+        description: DeepSeek 提供的对话助手与模型服务。
+      - name: 千问
+        url: https://www.qianwen.com/
+        description: 阿里旗下的通用 AI 助手。
+      - name: 豆包
+        url: https://www.doubao.com/chat/
+        description: 字节跳动旗下的 AI 智能助手。
+      - name: Kimi
+        url: https://www.kimi.com/
+        description: 月之暗面提供的 AI 助手。
+      - name: 腾讯元宝
+        url: https://yuanbao.tencent.com/
+        description: 腾讯提供的 AI 助手。
+      - name: 智谱清言
+        url: https://chatglm.cn/
+        description: 智谱 AI 提供的对话助手。
+      - name: 百度文心助手
+        url: https://wenxin.baidu.com/
+        description: 百度文心大模型的 AI 助手入口。
+      - name: MiniMax
+        url: https://www.minimaxi.com/
+        description: MiniMax 的多模态模型与产品入口。
+      - name: Codex Runway
+        url: https://www.codexrunway.com/zh.html
+        description: 估算 Codex 使用额度的重置情况与下次重置时间。
+
+  - key: ai
+    title: AI 与模型
+    sites:
+      - name: OpenAI 开发者文档
+        url: https://developers.openai.com/api/docs
+        description: OpenAI API、模型与开发实践参考。
+      - name: Hugging Face
+        url: https://huggingface.co/
+        description: 浏览开源模型、数据集与机器学习工具。
+      - name: 魔搭社区
+        url: https://modelscope.cn/
+        description: 中文模型、数据集与 AI 社区入口。
+      - name: 硅基流动
+        url: https://www.siliconflow.cn/
+        description: 模型 API 与推理服务入口。
+      - name: OpenClaw 中文文档
+        url: https://docs.openclaw.ai/zh-CN
+        description: OpenClaw 的官方中文使用文档。
+      - name: OpenClaw 中文社区
+        url: https://clawd.org.cn/
+        description: OpenClaw 的中文社区与交流入口。
+
+  - key: deployment-ops
+    title: 部署与运维
+    sites:
+      - name: Cloudflare
+        url: https://www.cloudflare.com/
+        description: DNS、CDN、安全与边缘网络服务。
+      - name: Vercel
+        url: https://vercel.com/
+        description: 前端与全栈应用部署平台。
+      - name: Netlify
+        url: https://www.netlify.com/
+        description: 静态站点与 Web 应用部署平台。
+      - name: Render
+        url: https://render.com/
+        description: 云应用、服务和数据库托管平台。
+      - name: Docker Docs
+        url: https://docs.docker.com/
+        description: Docker 容器、镜像与 Compose 官方文档。
+      - name: Kubernetes Docs
+        url: https://kubernetes.io/docs/
+        description: Kubernetes 容器编排官方文档。
+      - name: GitHub Actions
+        url: https://docs.github.com/actions
+        description: GitHub 自动化构建与部署文档。
+
+  - key: website-network
+    title: 站点与网络工具
+    sites:
+      - name: PageSpeed Insights
+        url: https://pagespeed.web.dev/
+        description: 分析网页性能与 Core Web Vitals 指标。
+      - name: Google Search Console
+        url: https://search.google.com/search-console/about
+        description: 查看 Google 搜索收录、流量和问题。
+      - name: Rich Results Test
+        url: https://search.google.com/test/rich-results
+        description: 测试网页结构化数据的富媒体结果。
+      - name: SSL Labs
+        url: https://www.ssllabs.com/ssltest/
+        description: 检测 HTTPS 与 TLS 配置质量。
+      - name: HTTP Observatory
+        url: https://developer.mozilla.org/en-US/observatory
+        description: 检查网站常见安全响应头配置。
+      - name: Wappalyzer
+        url: https://www.wappalyzer.com/
+        description: 识别网站使用的技术栈与服务。
+
+  - key: design-media
+    title: 设计、图片与图表
+    sites:
+      - name: Figma
+        url: https://www.figma.com/
+        description: 界面设计、原型协作与设计交付。
+      - name: Excalidraw
+        url: https://excalidraw.com/
+        description: 轻量手绘风格白板，适合快速梳理思路。
+      - name: diagrams.net
+        url: https://app.diagrams.net/
+        description: 在线流程图、架构图与 UML 图工具。
+      - name: TinyPNG
+        url: https://tinypng.com/
+        description: 压缩 PNG、JPEG 与 WebP 图片。
+      - name: Squoosh
+        url: https://squoosh.app/
+        description: 在浏览器中压缩和转换图片格式。
+      - name: Iconify
+        url: https://iconify.design/
+        description: 检索与使用多套开源图标集合。
+      - name: Google Fonts
+        url: https://fonts.google.com/
+        description: 浏览与引用网页字体。
+      - name: Unsplash
+        url: https://unsplash.com/
+        description: 查找可用于项目的摄影图片资源。
+
+  - key: knowledge-efficiency
+    title: 知识与效率
+    sites:
+      - name: Notion
+        url: https://www.notion.com/
+        description: 笔记、文档、任务与数据库工作空间。
+      - name: Obsidian
+        url: https://obsidian.md/
+        description: 基于本地 Markdown 文件的知识管理工具。
+      - name: Todoist
+        url: https://todoist.com/
+        description: 跨平台任务与待办事项管理工具。
+      - name: Trello
+        url: https://trello.com/
+        description: 看板式任务与项目协作工具。
+      - name: DeepL
+        url: https://www.deepl.com/translator
+        description: 文本与文档翻译服务。
+      - name: Google Translate
+        url: https://translate.google.com/
+        description: 多语言翻译与网页翻译入口。
+
+  - key: learning-docs
+    title: 学习与官方文档
+    sites:
+      - name: MDN Learn
+        url: https://developer.mozilla.org/en-US/docs/Learn_web_development
+        description: 面向 Web 开发入门的系统学习路径。
+      - name: Microsoft Learn
+        url: https://learn.microsoft.com/
+        description: Microsoft 产品、云服务与开发技术文档。
+      - name: Python Docs
+        url: https://docs.python.org/3/
+        description: Python 语言与标准库官方文档。
+      - name: Go Docs
+        url: https://go.dev/doc/
+        description: Go 语言官方文档与学习资源。
+      - name: Java Docs
+        url: https://docs.oracle.com/en/java/
+        description: Java 平台与 API 官方文档。
+      - name: Apple Developer
+        url: https://developer.apple.com/documentation/
+        description: Apple 平台 API、示例与开发文档。
+
+  - key: apple-devices
+    title: Apple 与设备
+    sites:
+      - name: iPhone 参数大全
+        url: https://kylebing.cn/
+        description: 查询 iPhone 机型、参数与版本信息。
+      - name: Apple 产品参数中心
+        url: https://hubweb.cn/
+        description: 查阅 Apple 产品的型号与硬件参数。

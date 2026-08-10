@@ -393,6 +393,138 @@ body.home-page::after {
   color: #5c7aa2;
 }
 
+.site-directory__grid {
+  --site-accent: #587597;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 0.5rem 0 1.45rem;
+}
+
+.site-directory__grid--development {
+  --site-accent: #54749a;
+}
+
+.site-directory__grid--ai {
+  --site-accent: #6e718f;
+}
+
+.site-directory__grid--ai-providers {
+  --site-accent: #806f91;
+}
+
+.site-directory__grid--design {
+  --site-accent: #6c8878;
+}
+
+.site-directory__grid--apple-devices {
+  --site-accent: #7a7f89;
+}
+
+.md-typeset h2[data-count] {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin-top: 1.65rem;
+  border: 0;
+  color: var(--md-default-fg-color);
+  font-size: 1.05rem;
+}
+
+.md-typeset h2[data-count]::before {
+  width: 0.2rem;
+  height: 1.05rem;
+  border-radius: 99px;
+  background: var(--md-primary-fg-color);
+  content: "";
+}
+
+.md-typeset h2[data-count]::after {
+  padding: 0.08rem 0.35rem;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 9%, transparent);
+  color: var(--md-default-fg-color--light);
+  content: attr(data-count);
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.56rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.site-directory__card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 4.45rem;
+  padding: 0.52rem 0.6rem 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--site-accent) 22%, transparent);
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--md-default-bg-color) 96%, var(--site-accent));
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.site-directory__card:hover {
+  border-color: color-mix(in srgb, var(--site-accent) 78%, transparent);
+  box-shadow: 0 5px 14px color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
+  color: var(--md-default-fg-color);
+  transform: translateY(-1px);
+}
+
+.site-directory__card::before {
+  position: absolute;
+  top: 0.66rem;
+  left: 0.62rem;
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 0.09rem;
+  background: var(--site-accent);
+  box-shadow: 0 0 0 0.15rem color-mix(in srgb, var(--site-accent) 15%, transparent);
+  content: "";
+}
+
+.site-directory__name {
+  margin-left: 0.62rem;
+  padding-right: 0.85rem;
+  color: var(--md-default-fg-color);
+  font-size: 0.77rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.site-directory__name span {
+  position: absolute;
+  top: 0.48rem;
+  right: 0.55rem;
+  color: var(--site-accent);
+  font-size: 0.65rem;
+}
+
+.site-directory__desc {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 0.2rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.64rem;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.site-directory__domain {
+  align-self: flex-start;
+  padding: 0.16rem 0.3rem;
+  margin-top: auto;
+  border-radius: 0.2rem;
+  background: color-mix(in srgb, var(--site-accent) 9%, transparent);
+  color: color-mix(in srgb, var(--site-accent) 85%, var(--md-default-fg-color));
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.56rem;
+  line-height: 1.1;
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(18px);
@@ -402,6 +534,12 @@ body.home-page::after {
 [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 1220px) {
+  .site-directory__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 960px) {
@@ -423,6 +561,10 @@ body.home-page::after {
 
   .recent-note__category {
     display: none;
+  }
+
+  .site-directory__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -481,5 +623,14 @@ body.home-page::after {
   .recent-note__arrow {
     grid-column: 2;
     grid-row: 1 / span 2;
+  }
+
+  .site-directory__grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .site-directory__card {
+    min-height: 4.3rem;
   }
 }
