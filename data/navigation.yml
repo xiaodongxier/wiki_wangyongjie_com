@@ -29,6 +29,12 @@ categories:
       - name: JSON Schema
         url: https://json-schema.org/
         description: JSON 数据结构约束与校验规范。
+      - name: Pixabay免版税音效可供下载
+        url: https://pixabay.com/zh/sound-effects/
+        description: 130000多种免费音效可供下载 - Pixabay
+      - name: 淘声网
+        url: https://www.tosound.com
+        description: toSound声音搜索引擎 - 免费音效素材资源|视频游戏配乐下载
 
   - key: code-ecosystem
     title: 代码与包生态
