@@ -206,6 +206,10 @@ categories:
       - name: Wappalyzer
         url: https://www.wappalyzer.com/
         description: 识别网站使用的技术栈与服务。
+      - name: 在线解析
+        url: https://dy.kukutool.com
+        description: 无水印解析下载130多个平台视频，图片，实况Live图
+        
 
   - key: design-media
     title: 设计、图片与图表
