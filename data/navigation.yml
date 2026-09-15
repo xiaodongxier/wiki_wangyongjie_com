@@ -2,6 +2,16 @@
 # key 用英文小写和连字符；它同时用作页面锚点与分类样式标识。
 
 categories:
+  - key: recently
+    title: 常用
+    sites:
+      - name: ChatGPT代充
+        url: https://getpro.plus/
+        description: ChatGPT Plus 充值服务
+      - name: Codex小小杂货铺
+        url: https://www.16688.com.cn/shop/S571979
+        description: codex邀请好友额度| 包售后 | 自动兑换| 1分钟到账 | 稳定 ，相关产品购买
+
   - key: development
     title: 开发与参考
     sites:
