@@ -20,6 +20,9 @@ categories:
       - name: Codex Runway
         url: https://www.codexrunway.com/zh.html
         description: 估算 Codex 使用额度的重置情况与下次重置时间。
+      - name: ProdClub
+        url: https://prodclub.xyz
+        description: ProdClub：ChatGPT 会员原号直充，扫码付款，自动开通。
 
   - key: development
     title: 开发与参考
