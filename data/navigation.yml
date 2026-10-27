@@ -23,6 +23,9 @@ categories:
       - name: ProdClub
         url: https://prodclub.xyz
         description: ProdClub：ChatGPT 会员原号直充，扫码付款，自动开通。
+      - name: 搜网盘
+        url: https://pan.vlwx.com
+        description: 搜网盘 - 网盘资源聚合搜索,好用的网盘搜索引擎
 
   - key: development
     title: 开发与参考
