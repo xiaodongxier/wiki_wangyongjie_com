@@ -26,6 +26,9 @@ categories:
       - name: 搜网盘
         url: https://pan.vlwx.com
         description: 搜网盘 - 网盘资源聚合搜索,好用的网盘搜索引擎
+      - name: 免费下载：示例文件。
+        url: https://www.examplefile.com/document/pdf
+        description: 免费下载：示例文件。下载测试文件。在 Examplefile.com，您可以免费下载数百个测试文件。需要更大的测试文件？请访问我们的大型测试文件下载页面。
 
   - key: development
     title: 开发与参考
