@@ -29,6 +29,9 @@ categories:
       - name: 免费下载：示例文件。
         url: https://www.examplefile.com/document/pdf
         description: 免费下载：示例文件。下载测试文件。在 Examplefile.com，您可以免费下载数百个测试文件。需要更大的测试文件？请访问我们的大型测试文件下载页面。
+      - name: wechat-antirecall
+        url: https://github.com/fzlzjerry/wechat-antirecall
+        description: 一个面向普通用户的 macOS 微信 4 工具：保留被撤回的消息，也支持自定义提示、微信多开、屏蔽自动更新和一键还原。
 
   - key: development
     title: 开发与参考
